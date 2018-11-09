@@ -23,25 +23,24 @@ const MatchListItem = ({ match, handlePress }) => {
           }}
         />
       </Left>
-      <Body style={{ flexGrow: 2 }}>
+      <Body>
         <Text>
           {match.place}
           {/* {match.place} @ {moment(match.eventDate).format("hh:mm A")} */}
         </Text>
         <View
           style={{
-            flexGrow: 1,
             flexDirection: "row",
             alignItems: "center",
-            justifyContent: "space-between",
-            paddingTop: 2,
-            paddingRight: 30
+            paddingTop: 2
           }}
         >
           <Badge primary>
             <Text style={{ fontSize: 12 }}>${match.price}</Text>
           </Badge>
-          <Text note>{match.numberOfPlayers / 2} a side</Text>
+          <Text note style={{ paddingLeft: 8 }}>
+            {match.numberOfPlayers / 2} a side
+          </Text>
         </View>
       </Body>
       <Right>

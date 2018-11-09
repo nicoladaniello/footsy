@@ -2,20 +2,17 @@ import React, { Component } from "react";
 import {
   Container,
   Tabs,
-  List,
   ScrollableTab,
   Tab,
   Content,
   Fab,
   Icon,
-  Button,
-  ListItem,
-  Left
+  Button
 } from "native-base";
 import moment from "moment";
 import * as matchesSvc from "../../services/matchesService";
-import MatchListItem from "../../common/matchListItem";
 import AppHeader from "../../common/appHeader";
+import MatchList from "../../common/matchList/matchList";
 
 export default class HomeScreen extends Component {
   static navigationOptions = {
@@ -33,43 +30,17 @@ export default class HomeScreen extends Component {
   }
 
   openDrawer() {
-    console.log("Opened");
     this.props.navigation.openDrawer();
   }
 
   render() {
-    const filtersItem = (
-      <ListItem>
-        <Left>
-          <Button transparent>
-            <Icon name="md-search" />
-          </Button>
-        </Left>
-      </ListItem>
-    );
-
-    const matchesList = this.state.matches.map(m => (
-      <MatchListItem
-        key={m._id}
-        match={m}
-        handlePress={() =>
-          this.props.navigation.navigate("Match", {
-            matchId: m._id
-          })
-        }
-      />
-    ));
-
     return (
       <Container>
         <Tabs renderTabBar={() => <ScrollableTab />}>
           {this.state.dates.map(d => (
             <Tab key={d} heading={d}>
               <Content>
-                <List>
-                  {filtersItem}
-                  {matchesList}
-                </List>
+                <MatchList matches={this.state.matches} filters />
               </Content>
             </Tab>
           ))}

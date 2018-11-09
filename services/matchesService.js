@@ -1,7 +1,7 @@
 const matches = [
   {
     _id: "5b21ca3eeb7f6fbccd471815",
-    place: "123 Kickstart Street",
+    place: "842 Whitmore Gardens, London NW10 5HJ",
     price: 5.5,
     organiser: {
       _id: "5b21ca3eeb7f6fbccd471818",
@@ -15,6 +15,7 @@ const matches = [
   {
     _id: "5b21ca3eeb7f6fbccd471816",
     place: "123 Kickstart Street",
+    price: 17,
     organiser: {
       _id: "5b21ca3eeb7f6fbccd471777",
       name: "Francesco",
