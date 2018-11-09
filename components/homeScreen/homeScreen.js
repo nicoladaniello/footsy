@@ -6,8 +6,7 @@ import {
   Tab,
   Content,
   Fab,
-  Icon,
-  Button
+  Icon
 } from "native-base";
 import moment from "moment";
 import * as matchesSvc from "../../services/matchesService";
@@ -29,10 +28,6 @@ export default class HomeScreen extends Component {
     this.populateMatches();
   }
 
-  openDrawer() {
-    this.props.navigation.openDrawer();
-  }
-
   render() {
     return (
       <Container>
@@ -40,33 +35,32 @@ export default class HomeScreen extends Component {
           {this.state.dates.map(d => (
             <Tab key={d} heading={d}>
               <Content>
-                <MatchList matches={this.state.matches} filters />
+                <MatchList
+                  matches={this.state.matches}
+                  handlePress={id =>
+                    this.props.navigation.navigate("Match", {
+                      matchId: id
+                    })
+                  }
+                  filters
+                />
               </Content>
             </Tab>
           ))}
         </Tabs>
         <Fab
-          active={this.state.active}
-          direction="up"
-          containerStyle={{}}
           style={{ backgroundColor: "#5067FF" }}
-          position="bottomRight"
-          onPress={() => this.setState({ active: !this.state.active })}
+          onPress={() => this.props.navigation.navigate("MatchForm")}
         >
           <Icon name="share" />
-          <Button style={{ backgroundColor: "#34A34F" }}>
-            <Icon name="logo-whatsapp" />
-          </Button>
-          <Button style={{ backgroundColor: "#3B5998" }}>
-            <Icon name="logo-facebook" />
-          </Button>
-          <Button disabled style={{ backgroundColor: "#DD5144" }}>
-            <Icon name="mail" />
-          </Button>
         </Fab>
       </Container>
     );
   }
+
+  openDrawer = () => {
+    this.props.navigation.openDrawer();
+  };
 
   populateMatches = () => {
     const matches = matchesSvc.getMatches();

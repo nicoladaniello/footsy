@@ -10,7 +10,7 @@ const SwitchNavigation = createSwitchNavigator(
     Anonym: AnonymNavigation
   },
   {
-    initialRouteName: "App" //AuthLoading"
+    initialRouteName: "AuthLoading"
   }
 );
 
