@@ -8,9 +8,10 @@ class AppHeader extends Component {
         <Left>
           <Button
             transparent
+            dark
             onPress={() => this.props.navigation.openDrawer()}
           >
-            <Icon name="md-menu" />
+            <Icon name="md-menu" style={{ fontSize: 22 }} />
           </Button>
         </Left>
         <Body>
@@ -19,9 +20,10 @@ class AppHeader extends Component {
         <Right>
           <Button
             transparent
+            dark
             onPress={() => this.props.navigation.navigate("Notifications")}
           >
-            <Icon name="md-notifications" />
+            <Icon name="md-notifications" style={{ fontSize: 22 }} />
           </Button>
         </Right>
       </Header>
