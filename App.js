@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container } from "native-base";
+import { Container, Root } from "native-base";
 import SwitchNavigation from "./navigation/switchNavigation";
 
 // const instructions = Platform.select({
@@ -12,9 +12,11 @@ import SwitchNavigation from "./navigation/switchNavigation";
 export default class App extends Component {
   render() {
     return (
-      <Container>
-        <SwitchNavigation />
-      </Container>
+      <Root>
+        <Container>
+          <SwitchNavigation />
+        </Container>
+      </Root>
     );
   }
 }

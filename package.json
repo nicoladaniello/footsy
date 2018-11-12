@@ -11,7 +11,8 @@
     "moment": "^2.22.2",
     "native-base": "^2.8.1",
     "react": "16.6.0-alpha.8af6728",
-    "react-native": "0.57.3",
+    "react-native": "^0.57.4",
+    "react-native-modal-datetime-picker": "^6.0.0",
     "react-navigation": "^2.18.2"
   },
   "devDependencies": {
