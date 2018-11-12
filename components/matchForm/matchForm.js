@@ -24,11 +24,19 @@ class MatchForm extends Component {
   state = {
     isDatePickerVisible: false,
     data: {
+      address: null,
       chosenDate: "",
       duration: null,
       teamSize: null,
       isPrivate: false
     }
+  };
+
+  _handleAddressPicker = (addrData, details) => {
+    const data = { ...this.state.data };
+    data.address = { addrData, details };
+    console.log("CALLBACK", data.address);
+    this.setState({ data });
   };
 
   _showDurationPicker = () =>
@@ -67,7 +75,13 @@ class MatchForm extends Component {
   };
 
   render() {
-    const { chosenDate, duration, teamSize, isPrivate } = this.state.data;
+    const {
+      address,
+      chosenDate,
+      duration,
+      teamSize,
+      isPrivate
+    } = this.state.data;
     return (
       <Container>
         <Header style={{ borderBottomWidth: 0 }}>
@@ -87,12 +101,23 @@ class MatchForm extends Component {
         </Header>
         <Content>
           <List>
-            <ListItem icon onPress={() => console.log("choose location")}>
+            <ListItem
+              icon
+              onPress={() =>
+                this.props.navigation.navigate("SearchAddress", {
+                  handleAddressPicker: this._handleAddressPicker.bind(this)
+                })
+              }
+            >
               <Left>
                 <Icon name="md-pin" />
               </Left>
               <Body>
-                <Text note>Location</Text>
+                {address ? (
+                  <Text>{address.addrData.description}</Text>
+                ) : (
+                  <Text note>Location</Text>
+                )}
               </Body>
             </ListItem>
 
