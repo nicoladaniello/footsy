@@ -8,15 +8,16 @@ class AppDatePicker extends Component {
     isDatePickerVisible: false
   };
 
-  _showDatePicker = () => this.setState({ isDatePickerVisible: true });
-  _hideDatePicker = () => this.setState({ isDatePickerVisible: false });
   _handleSelect = date => {
     this._hideDatePicker();
     this.props.onSelect(date);
   };
 
+  _showDatePicker = () => this.setState({ isDatePickerVisible: true });
+  _hideDatePicker = () => this.setState({ isDatePickerVisible: false });
+
   render() {
-    const { selectedDate, onSelect } = this.props;
+    const { selected } = this.props;
 
     return (
       <ListItem icon onPress={this._showDatePicker}>
@@ -24,15 +25,15 @@ class AppDatePicker extends Component {
           <Icon name="md-calendar" />
         </Left>
         <Body>
-          {selectedDate ? (
-            <Text>{moment(selectedDate).format("dddd, DD MMM YYYY")}</Text>
+          {selected ? (
+            <Text>{moment(selected).format("dddd, DD MMM YYYY")}</Text>
           ) : (
             <Text note>Date</Text>
           )}
         </Body>
         <Right>
-          {selectedDate ? (
-            <Text>{moment(selectedDate).format("HH:mm")}</Text>
+          {selected ? (
+            <Text>{moment(selected).format("HH:mm")}</Text>
           ) : (
             <Text note>Time</Text>
           )}

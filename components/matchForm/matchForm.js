@@ -12,16 +12,15 @@ import {
   Right,
   List,
   ListItem,
-  Switch,
-  ActionSheet
+  Switch
 } from "native-base";
 import MATCH_DURATION_OPTIONS from "./matchDurationOptions";
 import TEAM_SIZE_OPTIONS from "./teamSizeOptions";
 import AppDatePicker from "../../common/formComponents/appDatePicker";
+import AppActionSheet from "../../common/formComponents/appActionSheet";
 
 class MatchForm extends Component {
   state = {
-    isDatePickerVisible: false,
     data: {
       address: null,
       chosenDate: "",
@@ -38,33 +37,22 @@ class MatchForm extends Component {
     this.setState({ data });
   };
 
-  _showDurationPicker = () =>
-    ActionSheet.show(MATCH_DURATION_OPTIONS, this._handleDurationPicker);
-
-  _showTeamSizePicker = () =>
-    ActionSheet.show(TEAM_SIZE_OPTIONS, this._handleTeamSizePicker);
-
-  _handleDurationPicker = durationIdx => {
+  _handleDurationPicker = duration => {
     const data = { ...this.state.data };
-    data.duration = MATCH_DURATION_OPTIONS.options[durationIdx];
+    data.duration = duration;
     this.setState({ data });
   };
 
-  _handleTeamSizePicker = teamSizeIdx => {
+  _handleTeamSizePicker = teamSize => {
     const data = { ...this.state.data };
-    data.teamSize = TEAM_SIZE_OPTIONS.options[teamSizeIdx];
+    data.teamSize = teamSize;
     this.setState({ data });
   };
-
-  _showDatePicker = () => this.setState({ isDatePickerVisible: true });
-
-  _hideDatePicker = () => this.setState({ isDatePickerVisible: false });
 
   _handleDatePicked = chosenDate => {
     const data = { ...this.state.data };
     data.chosenDate = chosenDate;
     this.setState({ data });
-    this._hideDatePicker();
   };
 
   _togglePrivateOption = () => {
@@ -122,37 +110,25 @@ class MatchForm extends Component {
             </ListItem>
 
             <AppDatePicker
-              selectedDate={chosenDate}
+              selected={chosenDate}
               onSelect={this._handleDatePicked}
             />
 
-            <ListItem icon onPress={this._showDurationPicker}>
-              <Left>
-                <Icon name="md-stopwatch" />
-              </Left>
-              <Body>
-                {duration ? (
-                  <Text>{duration}</Text>
-                ) : (
-                  <Text note>Duration</Text>
-                )}
-              </Body>
-              <Right />
-            </ListItem>
+            <AppActionSheet
+              selected={duration}
+              data={MATCH_DURATION_OPTIONS}
+              onSelect={this._handleDurationPicker}
+              icon="md-stopwatch"
+              placeHolder="Duration"
+            />
 
-            <ListItem icon onPress={this._showTeamSizePicker}>
-              <Left>
-                <Icon name="md-shirt" />
-              </Left>
-              <Body>
-                {teamSize ? (
-                  <Text>{teamSize}</Text>
-                ) : (
-                  <Text note>Team Size</Text>
-                )}
-              </Body>
-              <Right />
-            </ListItem>
+            <AppActionSheet
+              selected={teamSize}
+              data={TEAM_SIZE_OPTIONS}
+              onSelect={this._handleTeamSizePicker}
+              icon="md-shirt"
+              placeHolder="Team Size"
+            />
 
             <ListItem icon>
               <Left>
