@@ -18,6 +18,7 @@ import MATCH_DURATION_OPTIONS from "./matchDurationOptions";
 import TEAM_SIZE_OPTIONS from "./teamSizeOptions";
 import AppDatePicker from "../../common/formComponents/appDatePicker";
 import AppActionSheet from "../../common/formComponents/appActionSheet";
+import AppSwitch from "../../common/formComponents/appSwitch";
 
 class MatchForm extends Component {
   state = {
@@ -49,13 +50,13 @@ class MatchForm extends Component {
     this.setState({ data });
   };
 
-  _handleDatePicked = chosenDate => {
+  _handleDatePicker = chosenDate => {
     const data = { ...this.state.data };
     data.chosenDate = chosenDate;
     this.setState({ data });
   };
 
-  _togglePrivateOption = () => {
+  _handlePrivateToggle = () => {
     const data = { ...this.state.data };
     data.isPrivate = !data.isPrivate;
     this.setState({ data });
@@ -111,7 +112,7 @@ class MatchForm extends Component {
 
             <AppDatePicker
               selected={chosenDate}
-              onSelect={this._handleDatePicked}
+              onSelect={this._handleDatePicker}
             />
 
             <AppActionSheet
@@ -130,20 +131,12 @@ class MatchForm extends Component {
               placeHolder="Team Size"
             />
 
-            <ListItem icon>
-              <Left>
-                <Icon name="ios-hand" />
-              </Left>
-              <Body>
-                <Text>Private</Text>
-              </Body>
-              <Right>
-                <Switch
-                  value={isPrivate}
-                  onValueChange={this._togglePrivateOption}
-                />
-              </Right>
-            </ListItem>
+            <AppSwitch
+              text="Private"
+              icon="ios-hand"
+              isActive={isPrivate}
+              onSelect={this._handlePrivateToggle}
+            />
 
             <ListItem icon onPress={this._showDatePicker}>
               <Left>
