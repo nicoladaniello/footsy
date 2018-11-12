@@ -15,10 +15,9 @@ import {
   Switch,
   ActionSheet
 } from "native-base";
-import DateTimePicker from "react-native-modal-datetime-picker";
-import moment from "moment";
 import MATCH_DURATION_OPTIONS from "./matchDurationOptions";
 import TEAM_SIZE_OPTIONS from "./teamSizeOptions";
+import AppDatePicker from "../../common/formComponents/appDatePicker";
 
 class MatchForm extends Component {
   state = {
@@ -82,6 +81,7 @@ class MatchForm extends Component {
       teamSize,
       isPrivate
     } = this.state.data;
+
     return (
       <Container>
         <Header style={{ borderBottomWidth: 0 }}>
@@ -121,25 +121,10 @@ class MatchForm extends Component {
               </Body>
             </ListItem>
 
-            <ListItem icon onPress={this._showDatePicker}>
-              <Left>
-                <Icon name="md-calendar" />
-              </Left>
-              <Body>
-                {chosenDate ? (
-                  <Text>{moment(chosenDate).format("dddd, DD MMM YYYY")}</Text>
-                ) : (
-                  <Text note>Date</Text>
-                )}
-              </Body>
-              <Right>
-                {chosenDate ? (
-                  <Text>{moment(chosenDate).format("HH:mm")}</Text>
-                ) : (
-                  <Text note>Time</Text>
-                )}
-              </Right>
-            </ListItem>
+            <AppDatePicker
+              selectedDate={chosenDate}
+              onSelect={this._handleDatePicked}
+            />
 
             <ListItem icon onPress={this._showDurationPicker}>
               <Left>
@@ -194,15 +179,6 @@ class MatchForm extends Component {
               <Right />
             </ListItem>
           </List>
-
-          <DateTimePicker
-            mode="datetime"
-            minimumDate={new Date()}
-            maximumDate={new Date(2018, 12, 31)}
-            isVisible={this.state.isDatePickerVisible}
-            onConfirm={this._handleDatePicked}
-            onCancel={this._hideDatePicker}
-          />
 
           {/* <Button onPress={() => this.props.navigation.goBack()}>
             <Text>Create</Text>
