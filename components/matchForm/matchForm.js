@@ -11,14 +11,14 @@ import {
   Icon,
   Right,
   List,
-  ListItem,
-  Switch
+  ListItem
 } from "native-base";
 import MATCH_DURATION_OPTIONS from "./matchDurationOptions";
 import TEAM_SIZE_OPTIONS from "./teamSizeOptions";
 import AppDatePicker from "../../common/formComponents/appDatePicker";
 import AppActionSheet from "../../common/formComponents/appActionSheet";
 import AppSwitch from "../../common/formComponents/appSwitch";
+import AppFormItem from "../../common/formComponents/appFormItem";
 
 class MatchForm extends Component {
   state = {
@@ -90,31 +90,23 @@ class MatchForm extends Component {
         </Header>
         <Content>
           <List>
-            <ListItem
-              icon
+            {/* Address picker */}
+            <AppFormItem
               onPress={() =>
                 this.props.navigation.navigate("SearchAddress", {
                   handleAddressPicker: this._handleAddressPicker.bind(this)
                 })
               }
-            >
-              <Left>
-                <Icon name="md-pin" />
-              </Left>
-              <Body>
-                {address ? (
-                  <Text>{address.addrData.description}</Text>
-                ) : (
-                  <Text note>Location</Text>
-                )}
-              </Body>
-            </ListItem>
-
+              value={address ? address.addrData.description : null}
+              icon="md-pin"
+              placeHolder="Address"
+            />
+            {/* Date Time picker */}
             <AppDatePicker
               selected={chosenDate}
               onSelect={this._handleDatePicker}
             />
-
+            {/* Duration picker */}
             <AppActionSheet
               selected={duration}
               data={MATCH_DURATION_OPTIONS}
@@ -122,7 +114,7 @@ class MatchForm extends Component {
               icon="md-stopwatch"
               placeHolder="Duration"
             />
-
+            {/* Team size picker */}
             <AppActionSheet
               selected={teamSize}
               data={TEAM_SIZE_OPTIONS}
@@ -130,23 +122,19 @@ class MatchForm extends Component {
               icon="md-shirt"
               placeHolder="Team Size"
             />
-
+            {/* Private toggle */}
             <AppSwitch
               text="Private"
               icon="ios-hand"
               isActive={isPrivate}
               onSelect={this._handlePrivateToggle}
             />
-
-            <ListItem icon onPress={this._showDatePicker}>
-              <Left>
-                <Icon name="md-person-add" />
-              </Left>
-              <Body>
-                <Text>Add Players</Text>
-              </Body>
-              <Right />
-            </ListItem>
+            {/* Players picker */}
+            <AppFormItem
+              onPress={() => console.log("pick players")}
+              icon="md-person-add"
+              text="Add players"
+            />
           </List>
 
           {/* <Button onPress={() => this.props.navigation.goBack()}>
