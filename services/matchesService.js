@@ -9,7 +9,7 @@ const matches = [
       img:
         "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3ccc1801fd91dc9cf869fa6a09360c09&auto=format&fit=crop&w=200&q=80"
     },
-    numberOfPlayers: 12,
+    teamSize: 12,
     eventDate: "2018-01-03T19:04:28.809Z"
   },
   {
@@ -22,7 +22,7 @@ const matches = [
       img:
         "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6de094989d0cf912f189ad8b7322d6d2&auto=format&fit=crop&w=200&q=80"
     },
-    numberOfPlayers: 14
+    teamSize: 14
   },
   {
     _id: "5b21ca3eeb7f6fbccd471817",
@@ -34,7 +34,7 @@ const matches = [
       img:
         "https://images.unsplash.com/photo-1522230130022-498e355165c5?ixlib=rb-0.3.5&s=ed7432766bea7599b70175f67cb59e84&auto=format&fit=crop&w=200&q=80"
     },
-    numberOfPlayers: 16
+    teamSize: 16
   },
   {
     _id: "5b21ca3eeb7f6fbccd471819",
@@ -46,7 +46,7 @@ const matches = [
       img:
         "https://images.unsplash.com/photo-1505022610485-0249ba5b3675?ixlib=rb-0.3.5&s=0c174fa9ae5edba809100c5f57a7a563&auto=format&fit=crop&w=200&q=80"
     },
-    numberOfPlayers: 16
+    teamSize: 16
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181a",
@@ -58,7 +58,7 @@ const matches = [
       img:
         "https://images.unsplash.com/photo-1511886929837-354d827aae26?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=964d58042165011dc41fcc8d88098c38&auto=format&fit=crop&w=200&q=80g"
     },
-    numberOfPlayers: 16
+    teamSize: 16
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181b",
@@ -70,7 +70,7 @@ const matches = [
       img:
         "https://images.unsplash.com/photo-1505022610485-0249ba5b3675?ixlib=rb-0.3.5&s=0c174fa9ae5edba809100c5f57a7a563&auto=format&fit=crop&w=200&q=80"
     },
-    numberOfPlayers: 12
+    teamSize: 12
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181e",
@@ -82,7 +82,7 @@ const matches = [
       img:
         "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6de094989d0cf912f189ad8b7322d6d2&auto=format&fit=crop&w=200&q=80"
     },
-    numberOfPlayers: 10
+    teamSize: 10
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181f",
@@ -94,7 +94,7 @@ const matches = [
       img:
         "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3ccc1801fd91dc9cf869fa6a09360c09&auto=format&fit=crop&w=200&q=80"
     },
-    numberOfPlayers: 10
+    teamSize: 10
   },
   {
     _id: "5b21ca3eeb7f6fbccd471821",
@@ -106,7 +106,7 @@ const matches = [
       img:
         "https://images.unsplash.com/photo-1505022610485-0249ba5b3675?ixlib=rb-0.3.5&s=0c174fa9ae5edba809100c5f57a7a563&auto=format&fit=crop&w=200&q=80"
     },
-    numberOfPlayers: 10
+    teamSize: 10
   }
 ];
 
@@ -121,7 +121,7 @@ export function getMatch(id) {
 export function saveMatch(match) {
   let matchInDb = matches.find(m => m._id === match._id) || {};
   //   matchInDb.organiser = genresAPI.genres.find(g => g._id === match.genreId);
-  matchInDb.numberOfPlayers = match.numberOfPlayers;
+  matchInDb.teamSize = match.teamSize;
 
   if (!matchInDb._id) {
     matchInDb._id = Date.now();

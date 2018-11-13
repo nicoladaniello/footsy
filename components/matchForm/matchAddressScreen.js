@@ -61,7 +61,7 @@ const GooglePlacesInput = props => {
       //   predefinedPlaces={[homePlace, workPlace]}
       debounce={200} // debounce the requests in ms. Set to 0 to remove debounce. By default 0ms.
       renderLeftButton={() => (
-        <Button transparent onPress={() => navigation.goBack()}>
+        <Button transparent onPress={() => props.navigation.goBack()}>
           <Icon name="ios-arrow-back" />
         </Button>
       )}

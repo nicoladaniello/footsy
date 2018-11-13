@@ -9,13 +9,33 @@ import {
   Text
 } from "native-base";
 
-const AppActionSheet = ({ data, icon, selected, onSelect, placeHolder }) => {
+const AppActionSheet = ({
+  data,
+  title,
+  icon,
+  selected,
+  onSelect,
+  placeHolder
+}) => {
+  const options = [...Object.values(data), "Cancel"];
+  const cancelButtonIndex = options.length - 1;
+
+  const values = {
+    options,
+    cancelButtonIndex,
+    title
+  };
+
   const handleSelect = idx => {
-    const result = data.options[idx];
+    const result =
+      idx !== cancelButtonIndex
+        ? Object.keys(data).find(key => data[key] === options[idx])
+        : selected;
+
     onSelect(result);
   };
 
-  const showActionSheet = () => ActionSheet.show(data, handleSelect);
+  const showActionSheet = () => ActionSheet.show(values, handleSelect);
 
   return (
     <ListItem icon onPress={showActionSheet}>
@@ -23,7 +43,11 @@ const AppActionSheet = ({ data, icon, selected, onSelect, placeHolder }) => {
         <Icon name={icon} />
       </Left>
       <Body>
-        {selected ? <Text>{selected}</Text> : <Text note>{placeHolder}</Text>}
+        {selected ? (
+          <Text>{data[selected]}</Text>
+        ) : (
+          <Text note>{placeHolder}</Text>
+        )}
       </Body>
       <Right />
     </ListItem>

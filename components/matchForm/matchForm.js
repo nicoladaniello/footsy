@@ -10,25 +10,39 @@ import {
   Button,
   Icon,
   Right,
-  List,
-  ListItem
+  List
 } from "native-base";
-import MATCH_DURATION_OPTIONS from "./matchDurationOptions";
-import TEAM_SIZE_OPTIONS from "./teamSizeOptions";
+import { MatchDurations, TeamSizes } from "../../enviroment";
 import AppDatePicker from "../../common/formComponents/appDatePicker";
 import AppActionSheet from "../../common/formComponents/appActionSheet";
 import AppSwitch from "../../common/formComponents/appSwitch";
 import AppFormItem from "../../common/formComponents/appFormItem";
+import * as matchesSvc from "../../services/matchesService";
 
 class MatchForm extends Component {
   state = {
     data: {
       address: null,
-      chosenDate: "",
+      chosenDate: null,
       duration: null,
       teamSize: null,
       isPrivate: false
     }
+  };
+
+  _handleSubmit = () => {
+    console.log(this.state.data);
+    if (this._invalidForm()) return;
+
+    const match = this.state.data;
+    matchesSvc.saveMatch(match);
+    this.props.navigation.goBack();
+  };
+
+  _invalidForm = () => {
+    const { address, chosenDate, duration, teamSize } = this.state.data;
+    if (address && chosenDate && duration && teamSize) return false;
+    return true;
   };
 
   _handleAddressPicker = (addrData, details) => {
@@ -44,9 +58,9 @@ class MatchForm extends Component {
     this.setState({ data });
   };
 
-  _handleTeamSizePicker = teamSize => {
+  _handleTeamSizePicker = size => {
     const data = { ...this.state.data };
-    data.teamSize = teamSize;
+    data.teamSize = size;
     this.setState({ data });
   };
 
@@ -86,7 +100,15 @@ class MatchForm extends Component {
           <Body>
             <Title>Schedule Match</Title>
           </Body>
-          <Right />
+          <Right>
+            <Button
+              transparent
+              disabled={this._invalidForm()}
+              onPress={this._handleSubmit}
+            >
+              <Text>SAVE</Text>
+            </Button>
+          </Right>
         </Header>
         <Content>
           <List>
@@ -108,19 +130,21 @@ class MatchForm extends Component {
             />
             {/* Duration picker */}
             <AppActionSheet
+              data={MatchDurations}
               selected={duration}
-              data={MATCH_DURATION_OPTIONS}
               onSelect={this._handleDurationPicker}
+              title="Match duration"
               icon="md-stopwatch"
               placeHolder="Duration"
             />
             {/* Team size picker */}
             <AppActionSheet
+              data={TeamSizes}
               selected={teamSize}
-              data={TEAM_SIZE_OPTIONS}
               onSelect={this._handleTeamSizePicker}
+              title="Team size"
               icon="md-shirt"
-              placeHolder="Team Size"
+              placeHolder="Team size"
             />
             {/* Private toggle */}
             <AppSwitch
@@ -136,25 +160,10 @@ class MatchForm extends Component {
               text="Add players"
             />
           </List>
-
-          {/* <Button onPress={() => this.props.navigation.goBack()}>
-            <Text>Create</Text>
-          </Button> */}
         </Content>
       </Container>
     );
   }
 }
-
-const styles = {
-  icon: {
-    flex: 1,
-    padding: 8
-  },
-  formGroup: {
-    padding: 8,
-    borderBottomWidth: 0.3
-  }
-};
 
 export default MatchForm;
