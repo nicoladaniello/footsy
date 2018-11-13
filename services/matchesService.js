@@ -1,7 +1,10 @@
 const matches = [
   {
     _id: "5b21ca3eeb7f6fbccd471815",
-    place: "842 Whitmore Gardens, London NW10 5HJ",
+    address: {
+      place_id: 123,
+      description: "842 Whitmore Gardens, London NW10 5HJ"
+    },
     price: 5.5,
     organiser: {
       _id: "5b21ca3eeb7f6fbccd471818",
@@ -14,7 +17,10 @@ const matches = [
   },
   {
     _id: "5b21ca3eeb7f6fbccd471816",
-    place: "123 Kickstart Street",
+    address: {
+      place_id: 123,
+      description: "842 Whitmore Gardens, London NW10 5HJ"
+    },
     price: 17,
     organiser: {
       _id: "5b21ca3eeb7f6fbccd471777",
@@ -26,7 +32,10 @@ const matches = [
   },
   {
     _id: "5b21ca3eeb7f6fbccd471817",
-    place: "123 Kickstart Street",
+    address: {
+      place_id: 123,
+      description: "842 Whitmore Gardens, London NW10 5HJ"
+    },
     price: 5.5,
     organiser: {
       _id: "5b21ca3eeb7f6fbccd471123",
@@ -38,7 +47,10 @@ const matches = [
   },
   {
     _id: "5b21ca3eeb7f6fbccd471819",
-    place: "123 Kickstart Street",
+    address: {
+      place_id: 123,
+      description: "842 Whitmore Gardens, London NW10 5HJ"
+    },
     price: 5.5,
     organiser: {
       _id: "5b21ca3eeb7f6fbccd471987",
@@ -50,7 +62,10 @@ const matches = [
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181a",
-    place: "123 Kickstart Street",
+    address: {
+      place_id: 123,
+      description: "842 Whitmore Gardens, London NW10 5HJ"
+    },
     price: 5.5,
     organiser: {
       _id: "5b21ca3eeb7f6fbccd471443",
@@ -62,7 +77,10 @@ const matches = [
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181b",
-    place: "123 Kickstart Street",
+    address: {
+      place_id: 123,
+      description: "842 Whitmore Gardens, London NW10 5HJ"
+    },
     price: 5.5,
     organiser: {
       _id: "5b21ca3eeb7f6fbccd471987",
@@ -74,7 +92,10 @@ const matches = [
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181e",
-    place: "123 Kickstart Street",
+    address: {
+      place_id: 123,
+      description: "842 Whitmore Gardens, London NW10 5HJ"
+    },
     price: 5.5,
     organiser: {
       _id: "5b21ca3eeb7f6fbccd471777",
@@ -86,7 +107,10 @@ const matches = [
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181f",
-    place: "123 Kickstart Street",
+    address: {
+      place_id: 123,
+      description: "842 Whitmore Gardens, London NW10 5HJ"
+    },
     price: 5.5,
     organiser: {
       _id: "5b21ca3eeb7f6fbccd471818",
@@ -98,7 +122,11 @@ const matches = [
   },
   {
     _id: "5b21ca3eeb7f6fbccd471821",
-    place: "123 Kickstart Street",
+    address: {
+      place_id: 123,
+      description: "842 Whitmore Gardens, London NW10 5HJ"
+    },
+    duration: "60",
     price: 5.5,
     organiser: {
       _id: "5b21ca3eeb7f6fbccd471987",
@@ -118,17 +146,29 @@ export function getMatch(id) {
   return matches.find(m => m._id === id);
 }
 
-export function saveMatch(match) {
-  let matchInDb = matches.find(m => m._id === match._id) || {};
-  //   matchInDb.organiser = genresAPI.genres.find(g => g._id === match.genreId);
-  matchInDb.teamSize = match.teamSize;
+export async function saveMatch(match) {
+  try {
+    let matchInDb = (await matches.find(m => m._id === match._id)) || {};
+    //   matchInDb.organiser = genresAPI.genres.find(g => g._id === match.genreId);
+    matchInDb.address = {
+      place_id: match.address.place_id,
+      description: match.address.description
+    };
+    matchInDb.duration = match.duration;
+    matchInDb.eventDate = match.eventDate;
+    matchInDb.isPrivate = match.isPrivate;
+    matchInDb.price = match.price;
+    matchInDb.teamSize = match.teamSize;
 
-  if (!matchInDb._id) {
-    matchInDb._id = Date.now();
-    matches.push(matchInDb);
+    if (!matchInDb._id) {
+      matchInDb._id = Date.now();
+      await matches.push(matchInDb);
+    }
+
+    return matchInDb;
+  } catch (ex) {
+    return null;
   }
-
-  return matchInDb;
 }
 
 export function deleteMatch(id) {

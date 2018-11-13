@@ -6,14 +6,15 @@ const AppFormItem = ({
   onPress,
   value,
   text = null,
-  placeHolder = null
+  placeHolder = null,
+  ...rest
 }) => {
   if (!text) {
     text = value ? <Text>{value}</Text> : <Text note>{placeHolder}</Text>;
   } else text = <Text>{text}</Text>;
 
   return (
-    <ListItem icon onPress={onPress}>
+    <ListItem icon onPress={onPress} {...rest}>
       <Left>
         <Icon name={icon} />
       </Left>

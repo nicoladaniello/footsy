@@ -1,8 +1,7 @@
 import React from "react";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { Icon, Button } from "native-base";
-
-googleMapsKey = "AIzaSyCl_FWVBq8D3q5MLAdB-zIs9zdWOQ424G4";
+import { MapsOptions } from "../../enviroment";
 
 const homePlace = {
   description: "Home",
@@ -35,9 +34,10 @@ const GooglePlacesInput = props => {
       getDefaultValue={() => ""}
       query={{
         // available options: https://developers.google.com/places/web-service/autocomplete
-        key: "AIzaSyCl_FWVBq8D3q5MLAdB-zIs9zdWOQ424G4",
-        language: "en", // language of the results
-        types: "(cities)" // default: 'geocode'
+        key: MapsOptions.publicKey,
+        language: MapsOptions.language, // language of the results
+        types: MapsOptions.types, // default: 'geocode'
+        components: MapsOptions.components
       }}
       styles={{
         textInputContainer: {

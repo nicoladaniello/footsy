@@ -23,25 +23,31 @@ class MatchForm extends Component {
   state = {
     data: {
       address: null,
-      chosenDate: null,
       duration: null,
-      teamSize: null,
-      isPrivate: false
+      eventDate: null,
+      isPrivate: false,
+      price: null,
+      teamSize: null
     }
   };
 
   _handleSubmit = () => {
     console.log(this.state.data);
-    if (this._invalidForm()) return;
+    console.log("is invalid data?", this._invalidForm());
+    // if (this._invalidForm()) return;
+
+    console.log("Saving data...");
 
     const match = this.state.data;
-    matchesSvc.saveMatch(match);
-    this.props.navigation.goBack();
+    const promise = matchesSvc.saveMatch(match);
+    this.props.navigation.navigate("Root");
+    callback = this.props.navigation.getParam("callback", null);
+    if (callback) callback(promise);
   };
 
   _invalidForm = () => {
-    const { address, chosenDate, duration, teamSize } = this.state.data;
-    if (address && chosenDate && duration && teamSize) return false;
+    const { address, eventDate, duration, teamSize } = this.state.data;
+    if (address && eventDate && duration && teamSize) return false;
     return true;
   };
 
@@ -64,9 +70,9 @@ class MatchForm extends Component {
     this.setState({ data });
   };
 
-  _handleDatePicker = chosenDate => {
+  _handleDatePicker = eventDate => {
     const data = { ...this.state.data };
-    data.chosenDate = chosenDate;
+    data.eventDate = eventDate;
     this.setState({ data });
   };
 
@@ -79,7 +85,7 @@ class MatchForm extends Component {
   render() {
     const {
       address,
-      chosenDate,
+      eventDate,
       duration,
       teamSize,
       isPrivate
@@ -103,7 +109,7 @@ class MatchForm extends Component {
           <Right>
             <Button
               transparent
-              disabled={this._invalidForm()}
+              //   disabled={this._invalidForm()}
               onPress={this._handleSubmit}
             >
               <Text>SAVE</Text>
@@ -125,7 +131,7 @@ class MatchForm extends Component {
             />
             {/* Date Time picker */}
             <AppDatePicker
-              selected={chosenDate}
+              selected={eventDate}
               onSelect={this._handleDatePicker}
             />
             {/* Duration picker */}
@@ -158,6 +164,7 @@ class MatchForm extends Component {
               onPress={() => console.log("pick players")}
               icon="md-person-add"
               text="Add players"
+              disabled
             />
           </List>
         </Content>

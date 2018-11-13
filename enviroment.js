@@ -13,3 +13,10 @@ export const TeamSizes = Object.freeze({
   10: "10 a side",
   11: "11 a side"
 });
+
+export const MapsOptions = {
+  publicKey: "AIzaSyCl_FWVBq8D3q5MLAdB-zIs9zdWOQ424G4",
+  language: "en", // language of the query results
+  types: "establishment", // default: 'geocode'
+  components: "country:gb"
+};
