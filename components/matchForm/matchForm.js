@@ -10,7 +10,8 @@ import {
   Button,
   Icon,
   Right,
-  List
+  List,
+  Toast
 } from "native-base";
 import { MatchDurations, TeamSizes } from "../../enviroment";
 import AppDatePicker from "../../common/formComponents/appDatePicker";
@@ -18,6 +19,7 @@ import AppActionSheet from "../../common/formComponents/appActionSheet";
 import AppSwitch from "../../common/formComponents/appSwitch";
 import AppFormItem from "../../common/formComponents/appFormItem";
 import * as matchesSvc from "../../services/matchesService";
+import AppCurrencyInput from "../../common/formComponents/appCurrencyInput";
 
 class MatchForm extends Component {
   state = {
@@ -32,29 +34,42 @@ class MatchForm extends Component {
   };
 
   _handleSubmit = () => {
-    console.log(this.state.data);
-    console.log("is invalid data?", this._invalidForm());
-    // if (this._invalidForm()) return;
-
-    console.log("Saving data...");
+    if (this._invalidForm()) return;
 
     const match = this.state.data;
     const promise = matchesSvc.saveMatch(match);
+
+    callback = this._onMatchSave(promise);
     this.props.navigation.navigate("Root");
-    callback = this.props.navigation.getParam("callback", null);
-    if (callback) callback(promise);
+  };
+
+  _onMatchSave = promise => {
+    Toast.show({
+      type: "warning",
+      text: "Saving your match..."
+    });
+
+    promise.then(result => {
+      console.log(result);
+      if (result) {
+        Toast.show({
+          text: "Match saved!",
+          buttonText: "Okay",
+          type: "success"
+        });
+      }
+    });
   };
 
   _invalidForm = () => {
-    const { address, eventDate, duration, teamSize } = this.state.data;
-    if (address && eventDate && duration && teamSize) return false;
+    const { address, duration, eventDate, price, teamSize } = this.state.data;
+    if (address && duration && eventDate && price && teamSize) return false;
     return true;
   };
 
   _handleAddressPicker = (addrData, details) => {
     const data = { ...this.state.data };
-    data.address = { addrData, details };
-    console.log("CALLBACK", data.address);
+    data.address = addrData;
     this.setState({ data });
   };
 
@@ -73,6 +88,13 @@ class MatchForm extends Component {
   _handleDatePicker = eventDate => {
     const data = { ...this.state.data };
     data.eventDate = eventDate;
+    this.setState({ data });
+  };
+
+  _handlePriceChange = price => {
+    console.log(price);
+    const data = { ...this.state.data };
+    data.price = price;
     this.setState({ data });
   };
 
@@ -109,7 +131,7 @@ class MatchForm extends Component {
           <Right>
             <Button
               transparent
-              //   disabled={this._invalidForm()}
+              disabled={this._invalidForm()}
               onPress={this._handleSubmit}
             >
               <Text>SAVE</Text>
@@ -125,7 +147,7 @@ class MatchForm extends Component {
                   handleAddressPicker: this._handleAddressPicker.bind(this)
                 })
               }
-              value={address ? address.addrData.description : null}
+              value={address ? address.description : null}
               icon="md-pin"
               placeHolder="Address"
             />
@@ -152,6 +174,10 @@ class MatchForm extends Component {
               icon="md-shirt"
               placeHolder="Team size"
             />
+
+            {/* Price input */}
+            <AppCurrencyInput onChangeValue={this._handlePriceChange} />
+
             {/* Private toggle */}
             <AppSwitch
               text="Private"

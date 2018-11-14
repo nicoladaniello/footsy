@@ -6,8 +6,7 @@ import {
   Tab,
   Content,
   Fab,
-  Icon,
-  Toast
+  Icon
 } from "native-base";
 import moment from "moment";
 import * as matchesSvc from "../../services/matchesService";
@@ -49,35 +48,13 @@ export default class HomeScreen extends Component {
         </Tabs>
         <Fab
           style={{ backgroundColor: "#5067FF" }}
-          onPress={() =>
-            this.props.navigation.navigate("MatchForm", {
-              callback: promise => this.onMatchSave(promise)
-            })
-          }
+          onPress={() => this.props.navigation.navigate("MatchForm")}
         >
           <Icon name="share" />
         </Fab>
       </Container>
     );
   }
-
-  onMatchSave = promise => {
-    Toast.show({
-      type: "warning",
-      text: "Saving your match..."
-    });
-
-    promise.then(result => {
-      console.log(result);
-      if (result) {
-        Toast.show({
-          text: "Match saved!",
-          buttonText: "Okay",
-          type: "success"
-        });
-      }
-    });
-  };
 
   openDrawer = () => {
     this.props.navigation.openDrawer();
