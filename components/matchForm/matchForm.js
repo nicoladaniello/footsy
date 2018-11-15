@@ -50,7 +50,6 @@ class MatchForm extends Component {
     });
 
     promise.then(result => {
-      console.log(result);
       if (result) {
         Toast.show({
           text: "Match saved!",
@@ -92,7 +91,6 @@ class MatchForm extends Component {
   };
 
   _handlePriceChange = price => {
-    console.log(price);
     const data = { ...this.state.data };
     data.price = price;
     this.setState({ data });

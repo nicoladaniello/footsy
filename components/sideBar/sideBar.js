@@ -1,46 +1,79 @@
-import React from "react";
-import { AppRegistry, Image, StatusBar, ImageBackground } from "react-native";
-import { Container, Content, Text, List, ListItem } from "native-base";
+import React, { Component } from "react";
+import {
+  Container,
+  Content,
+  Text,
+  List,
+  ListItem,
+  Body,
+  Thumbnail,
+  H3
+} from "native-base";
+import { signOut, getCurrentUser } from "../../services/authService";
 
 const routes = ["Home", "My Matches", "Notifications", "Settings"];
 
-const SideBar = props => {
-  return (
-    <Container>
-      <Content>
-        <ImageBackground
-          source={{
-            uri: "https://via.placeholder.com/250/3498db/fff"
-          }}
-          style={{
-            height: 120,
-            alignSelf: "stretch",
-            justifyContent: "center",
-            alignItems: "center"
-          }}
-        >
-          <Image
-            square
-            style={{ height: 80, width: 70 }}
-            source={{
-              uri:
-                "https://facebook.github.io/react-native/docs/assets/favicon.png"
-            }}
-          />
-        </ImageBackground>
-        <List
-          dataArray={routes}
-          renderRow={data => {
-            return (
-              <ListItem button onPress={() => props.navigation.navigate(data)}>
-                <Text>{data}</Text>
+class SideBar extends Component {
+  state = { user: {} };
+
+  async componentWillMount() {
+    try {
+      const user = await getCurrentUser();
+      console.log("user in sidebar:", user);
+      this.setState({ user });
+    } catch (ex) {
+      this.props.navigation.navigate("Anonym");
+    }
+  }
+
+  render() {
+    const { user } = this.state;
+
+    return (
+      <Container>
+        <Content>
+          <List>
+            <ListItem style={{ paddingLeft: 16, paddingTop: 24 }}>
+              <Body>
+                <Thumbnail
+                  circular
+                  source={{ uri: user.img }}
+                  style={{ marginBottom: 16 }}
+                />
+                <H3>{user.name}</H3>
+              </Body>
+            </ListItem>
+            {routes.map(route => (
+              <ListItem
+                key={route}
+                button
+                style={{ height: 60 }}
+                onPress={() => props.navigation.navigate(route)}
+              >
+                <Text style={{ fontSize: 14, marginLeft: 16 }}>{route}</Text>
               </ListItem>
-            );
-          }}
-        />
-      </Content>
-    </Container>
-  );
-};
+            ))}
+            <ListItem
+              button
+              style={{ height: 60 }}
+              onPress={this._handleLogOut}
+            >
+              <Text style={{ fontSize: 14, marginLeft: 16 }}>Logout</Text>
+            </ListItem>
+          </List>
+        </Content>
+      </Container>
+    );
+  }
+
+  _handleLogOut = async () => {
+    try {
+      await signOut();
+      this.props.navigation.navigate("Anonym");
+    } catch (ex) {
+      console.error("Error signing out:", ex);
+    }
+  };
+}
 
 export default SideBar;

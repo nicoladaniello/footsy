@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Dimensions } from "react-native";
+import { Dimensions, AsyncStorage } from "react-native";
 import {
   Container,
   Content,
@@ -10,6 +10,7 @@ import {
   View,
   H1
 } from "native-base";
+import { signInWithSocial } from "../services/authService";
 
 class SignInScreen extends Component {
   render() {
@@ -52,10 +53,12 @@ class SignInScreen extends Component {
   }
 
   _signIn = async () => {
-    this.props.navigation.navigate("App");
-    return;
-    // await AsyncStorage.setItem("userToken", "abc");
-    // this.props.navigation.navigate("App");
+    try {
+      await signInWithSocial();
+      this.props.navigation.navigate("App");
+    } catch (ex) {
+      console.error("Error logging in:", ex);
+    }
   };
 }
 
