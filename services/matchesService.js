@@ -138,8 +138,20 @@ const matches = [
   }
 ];
 
+function randomDate(start, end) {
+  return new Date(
+    start.getTime() + Math.random() * (end.getTime() - start.getTime())
+  );
+}
+
 export function getMatches() {
-  return matches;
+  matches.forEach(d => {
+    d.eventDate = randomDate(new Date(2018, 10, 15), new Date(2018, 10, 20));
+  });
+  const sorted = matches.sort(
+    (a, b) => new Date(a.eventDate) > new Date(b.eventDate)
+  );
+  return sorted;
 }
 
 export function getMatch(id) {

@@ -19,7 +19,6 @@ class SideBar extends Component {
   async componentWillMount() {
     try {
       const user = await getCurrentUser();
-      console.log("user in sidebar:", user);
       this.setState({ user });
     } catch (ex) {
       this.props.navigation.navigate("Anonym");

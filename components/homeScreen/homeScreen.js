@@ -32,15 +32,14 @@ export default class HomeScreen extends Component {
     return (
       <Container>
         <Tabs renderTabBar={() => <ScrollableTab />}>
-          {this.state.dates.map(d => (
-            <Tab key={d} heading={d}>
+          {this.state.dates.map((date, idx) => (
+            <Tab key={idx} heading={date}>
               <Content>
                 <MatchList
-                  matches={this.state.matches}
+                  matches={this.state.matches[idx]}
                   handlePress={id =>
                     this.props.navigation.navigate("Match", { matchId: id })
                   }
-                  filters
                 />
               </Content>
             </Tab>
@@ -61,7 +60,16 @@ export default class HomeScreen extends Component {
   };
 
   populateMatches = () => {
-    const matches = matchesSvc.getMatches();
+    const allMatches = matchesSvc.getMatches();
+    let matches = new Array(7).fill(new Array(0));
+
+    matches.forEach((el, idx) => {
+      const idxDay = moment(new Date()).add(idx, "days");
+      matches[idx] = allMatches.filter(m =>
+        moment(m.eventDate).isSame(idxDay, "day")
+      );
+    });
+
     this.setState({ matches });
   };
 

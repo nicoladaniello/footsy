@@ -1,20 +1,10 @@
 import React from "react";
-import { List, Button, Icon } from "native-base";
+import { List } from "native-base";
 import MatchListItem from "./matchListItem";
 
-const MatchList = ({ matches, handlePress, filters = false }) => {
-  const filtersItem = filters ? (
-    <Button block light>
-      <Icon name="md-search" />
-    </Button>
-  ) : (
-    ""
-  );
-
+const MatchList = ({ matches, handlePress }) => {
   return (
     <List>
-      {filtersItem}
-
       {matches.map(m => {
         return (
           <MatchListItem

@@ -7,7 +7,6 @@ import {
   Left,
   Body,
   Right,
-  H3,
   View
 } from "native-base";
 import moment from "moment";
@@ -16,35 +15,44 @@ const MatchListItem = ({ match, handlePress }) => {
   return (
     <ListItem thumbnail onPress={handlePress}>
       <Left>
-        <Thumbnail
-          square
-          source={{
-            uri: match.organiser.img
-          }}
-        />
+        <Text note style={{ textAlign: "center" }}>
+          {moment(match.eventDate).format("hh:mm")}
+          {"\n"}
+          {moment(match.eventDate).format("A")}
+        </Text>
       </Left>
       <Body>
-        <Text>
-          {match.place}
-          {/* {match.place} @ {moment(match.eventDate).format("hh:mm A")} */}
-        </Text>
+        <Text>{match.address.description}</Text>
         <View
           style={{
             flexDirection: "row",
             alignItems: "center",
-            paddingTop: 2
+            marginTop: 2,
+            marginBottom: 8
           }}
         >
-          <Badge primary>
-            <Text style={{ fontSize: 12 }}>${match.price}</Text>
-          </Badge>
-          <Text note style={{ paddingLeft: 8 }}>
-            {match.numberOfPlayers / 2} a side
+          <Text note>{match.teamSize} a side</Text>
+          <Text primary style={{ fontSize: 14, marginLeft: 8 }}>
+            - ${match.price}
           </Text>
+        </View>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center"
+          }}
+        >
+          <Thumbnail
+            style={{ width: 28, height: 28, borderRadius: 14 }}
+            source={{ uri: match.organiser.img }}
+          />
+          <Text note> Organised by {match.organiser.name}</Text>
         </View>
       </Body>
       <Right>
-        <H3>6/7</H3>
+        <Badge primary>
+          <Text>5 / {match.teamSize}</Text>
+        </Badge>
       </Right>
     </ListItem>
   );
