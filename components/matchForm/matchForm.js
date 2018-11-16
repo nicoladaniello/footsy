@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavigationActions } from "react-navigation";
 import {
   Content,
   Header,
@@ -103,6 +104,7 @@ class MatchForm extends Component {
   };
 
   render() {
+    const { navigation } = this.props;
     const {
       address,
       eventDate,
@@ -118,7 +120,7 @@ class MatchForm extends Component {
             <Button
               transparent
               dark
-              onPress={() => this.props.navigation.goBack()}
+              onPress={() => navigation.dispatch(NavigationActions.back())}
             >
               <Icon name="md-close" style={{ fontSize: 22 }} />
             </Button>
@@ -141,7 +143,7 @@ class MatchForm extends Component {
             {/* Address picker */}
             <AppFormItem
               onPress={() =>
-                this.props.navigation.navigate("SearchAddress", {
+                navigation.navigate("SearchAddress", {
                   handleAddressPicker: this._handleAddressPicker.bind(this)
                 })
               }

@@ -26,6 +26,7 @@ class SideBar extends Component {
   }
 
   render() {
+    const { navigation } = this.props;
     const { user } = this.state;
 
     return (
@@ -47,7 +48,7 @@ class SideBar extends Component {
                 key={route}
                 button
                 style={{ height: 60 }}
-                onPress={() => props.navigation.navigate(route)}
+                onPress={() => navigation.navigate(route)}
               >
                 <Text style={{ fontSize: 14, marginLeft: 16 }}>{route}</Text>
               </ListItem>

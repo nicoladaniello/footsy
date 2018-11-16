@@ -1,3 +1,5 @@
+import { getCurrentUser } from "./authService";
+
 const matches = [
   {
     _id: "5b21ca3eeb7f6fbccd471815",
@@ -171,6 +173,13 @@ export async function saveMatch(match) {
     matchInDb.isPrivate = match.isPrivate;
     matchInDb.price = match.price;
     matchInDb.teamSize = match.teamSize;
+
+    user = await getCurrentUser();
+    matchInDb.organiser = {
+      _id: user.iat,
+      name: user.name,
+      img: user.img
+    };
 
     if (!matchInDb._id) {
       matchInDb._id = Date.now();

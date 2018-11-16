@@ -29,6 +29,8 @@ export default class HomeScreen extends Component {
   }
 
   render() {
+    const { navigation } = this.props;
+
     return (
       <Container>
         <Tabs renderTabBar={() => <ScrollableTab />}>
@@ -38,7 +40,7 @@ export default class HomeScreen extends Component {
                 <MatchList
                   matches={this.state.matches[idx]}
                   handlePress={id =>
-                    this.props.navigation.navigate("Match", { matchId: id })
+                    navigation.navigate("Match", { matchId: id })
                   }
                 />
               </Content>
@@ -47,7 +49,7 @@ export default class HomeScreen extends Component {
         </Tabs>
         <Fab
           style={{ backgroundColor: "#5067FF" }}
-          onPress={() => this.props.navigation.navigate("MatchForm")}
+          onPress={() => navigation.navigate("MatchForm")}
         >
           <Icon name="share" />
         </Fab>
@@ -69,6 +71,9 @@ export default class HomeScreen extends Component {
         moment(m.eventDate).isSame(idxDay, "day")
       );
     });
+
+    console.log(allMatches);
+    console.log(matches);
 
     this.setState({ matches });
   };
