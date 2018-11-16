@@ -140,20 +140,26 @@ const matches = [
   }
 ];
 
-function randomDate(start, end) {
-  return new Date(
-    start.getTime() + Math.random() * (end.getTime() - start.getTime())
-  );
-}
-
 export function getMatches() {
-  matches.forEach(d => {
-    d.eventDate = randomDate(new Date(2018, 10, 15), new Date(2018, 10, 20));
-  });
-  const sorted = matches.sort(
+  assignRandomDates(matches);
+
+  const sortByDate = matches.sort(
     (a, b) => new Date(a.eventDate) > new Date(b.eventDate)
   );
-  return sorted;
+
+  return sortByDate;
+}
+
+export async function getMatchesByCurrentUser() {
+  const user = await getCurrentUser();
+
+  const filteredMatches = matches.filter(m => m.organiser._id === user.iat);
+
+  const sortedMatches = filteredMatches.sort(
+    (a, b) => new Date(a.eventDate) > new Date(b.eventDate)
+  );
+
+  return sortedMatches;
 }
 
 export function getMatch(id) {
@@ -197,3 +203,15 @@ export function deleteMatch(id) {
   matches.splice(matches.indexOf(matchInDb), 1);
   return matchInDb;
 }
+
+const assignRandomDates = matches => {
+  matches.forEach(d => {
+    d.eventDate = randomDate(new Date(2018, 10, 15), new Date(2018, 10, 20));
+  });
+};
+
+const randomDate = (start, end) => {
+  return new Date(
+    start.getTime() + Math.random() * (end.getTime() - start.getTime())
+  );
+};
