@@ -14,8 +14,17 @@ export default class HomeScreen extends Component {
   };
 
   componentWillMount() {
-    this.populateDates();
+    this._populateDates();
   }
+
+  _populateDates = () => {
+    const dates = new Array(7).fill(new Date()).map((d, i) =>
+      moment(d)
+        .add(i, "days")
+        .toDate()
+    );
+    this.setState({ dates });
+  };
 
   render() {
     const { navigation } = this.props;
@@ -34,36 +43,11 @@ export default class HomeScreen extends Component {
         </Tabs>
         <Fab
           style={{ backgroundColor: "#5067FF" }}
-          onPress={() =>
-            navigation.navigate("MatchForm", {
-              newMatchPromise: this._handleNewMatch
-            })
-          }
+          onPress={() => navigation.navigate("MatchForm")}
         >
           <Icon name="share" />
         </Fab>
       </Container>
     );
   }
-
-  populateDates = () => {
-    const dates = new Array(7).fill(new Date()).map((d, i) =>
-      moment(d)
-        .add(i, "days")
-        .toDate()
-    );
-    this.setState({ dates });
-  };
-
-  _handleNewMatch = async promise => {
-    try {
-      const match = await promise;
-      const matches = { ...this.state.matches };
-
-      if (!matches[match.eventDate]) return;
-
-      matches[match.eventDate].push(match);
-      this.setState(matches);
-    } catch (ex) {}
-  };
 }
