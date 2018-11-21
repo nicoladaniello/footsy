@@ -160,55 +160,54 @@ const assignRandomDates = matches => {
 
 assignRandomDates(matches);
 
-export function getMatches() {
-  return sortByDate(matches);
+export async function getMatches() {
+  const data = matches.filter(m => m != null);
+  return new Promise(resolve => setTimeout(() => resolve(data), 1000));
+}
+
+export async function getMatchesByDate(date) {
+  const data = await getMatches();
+  return data.filter(m => moment(m.eventDate).isSame(date, "day"));
 }
 
 export async function getMatchesByCurrentUser() {
   const user = await getCurrentUser();
-  return sortByDate(matches.filter(m => m.organiser._id === user.iat));
-}
-
-export async function getMatchesByDate(date) {
-  return sortByDate(
-    matches.filter(m => moment(m.eventDate).isSame(date, "day"))
-  );
+  const data = await getMatches();
+  return data.filter(m => m.organiser._id === user.iat);
 }
 
 export function getMatch(id) {
-  return matches.find(m => m._id === id);
+  const data = matches.find(m => m._id === id);
+  return new Promise(resolve => setTimeout(resolve(data), 1000));
 }
 
 export async function saveMatch(match) {
-  try {
-    let matchInDb = (await matches.find(m => m._id === match._id)) || {};
-    //   matchInDb.organiser = genresAPI.genres.find(g => g._id === match.genreId);
-    matchInDb.address = {
-      place_id: match.address.place_id,
-      description: match.address.description
-    };
-    matchInDb.duration = match.duration;
-    matchInDb.eventDate = match.eventDate;
-    matchInDb.isPrivate = match.isPrivate;
-    matchInDb.price = match.price;
-    matchInDb.teamSize = match.teamSize;
+  let matchInDb = (await matches.find(m => m._id === match._id)) || {};
+  //   matchInDb.organiser = genresAPI.genres.find(g => g._id === match.genreId);
+  matchInDb.address = {
+    place_id: match.address.place_id,
+    description: match.address.description
+  };
+  matchInDb.duration = match.duration;
+  matchInDb.eventDate = match.eventDate;
+  matchInDb.isPrivate = match.isPrivate;
+  matchInDb.price = match.price;
+  matchInDb.teamSize = match.teamSize;
 
-    user = await getCurrentUser();
-    matchInDb.organiser = {
-      _id: user.iat,
-      name: user.name,
-      img: user.img
-    };
+  user = await getCurrentUser();
+  matchInDb.organiser = {
+    _id: user.iat,
+    name: user.name,
+    img: user.img
+  };
 
-    if (!matchInDb._id) {
-      matchInDb._id = Date.now();
-      await matches.push(matchInDb);
-    }
-
-    return matchInDb;
-  } catch (ex) {
-    return null;
+  if (!matchInDb._id) {
+    matchInDb._id = Date.now();
+    await matches.push(matchInDb);
+    console.log(getMatches());
   }
+
+  return matchInDb;
 }
 
 export function deleteMatch(id) {
@@ -216,7 +215,3 @@ export function deleteMatch(id) {
   matches.splice(matches.indexOf(matchInDb), 1);
   return matchInDb;
 }
-
-const sortByDate = _matches => {
-  return _matches.sort((a, b) => new Date(a.eventDate) > new Date(b.eventDate));
-};
