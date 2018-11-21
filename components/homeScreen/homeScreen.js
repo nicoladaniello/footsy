@@ -23,10 +23,7 @@ export default class HomeScreen extends Component {
 
     return (
       <Container>
-        <Tabs
-          // onChangeTab={tab => this.loadMatches(Object.keys(matches)[tab.i])}
-          renderTabBar={() => <ScrollableTab />}
-        >
+        <Tabs renderTabBar={() => <ScrollableTab />}>
           {dates.map(date => (
             <MatchesTab
               key={date}
