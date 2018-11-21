@@ -12,6 +12,7 @@ const MatchList = ({ matches, handlePress }) => {
           handlePress={() => handlePress(match.item._id)}
         />
       )}
+      keyExtractor={(item, index) => index.toString()}
     />
   );
 };
