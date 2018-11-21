@@ -38,6 +38,7 @@ export default class HomeScreen extends Component {
               key={date}
               date={date}
               heading={moment(date).format("ddd DD")}
+              handlePress={id => navigation.navigate("Match", { matchId: id })}
             />
           ))}
         </Tabs>

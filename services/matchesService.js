@@ -176,9 +176,9 @@ export async function getMatchesByCurrentUser() {
   return data.filter(m => m.organiser._id === user.iat);
 }
 
-export function getMatch(id) {
-  const data = matches.find(m => m._id === id);
-  return new Promise(resolve => setTimeout(resolve(data), 1000));
+export async function getMatch(id) {
+  const data = await getMatches();
+  return data.find(m => m._id === id);
 }
 
 export async function saveMatch(match) {

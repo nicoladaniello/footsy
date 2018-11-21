@@ -32,6 +32,7 @@ class MatchesTab extends Component {
 
   render() {
     const { heading, data: matches } = this.state;
+    const { handlePress } = this.props;
 
     return (
       <Tab heading={heading}>
@@ -43,10 +44,7 @@ class MatchesTab extends Component {
             />
           }
         >
-          <MatchList
-            matches={matches}
-            handlePress={id => navigation.navigate("Match", { matchId: id })}
-          />
+          <MatchList matches={matches} handlePress={id => handlePress(id)} />
         </Content>
       </Tab>
     );
