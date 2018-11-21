@@ -1,17 +1,8 @@
 import React, { Component } from "react";
-import {
-  Container,
-  Tabs,
-  ScrollableTab,
-  Tab,
-  Content,
-  Fab,
-  Icon
-} from "native-base";
+import { Container, Tabs, ScrollableTab, Fab, Icon } from "native-base";
 import moment from "moment";
-import * as matchesSvc from "../../services/matchesService";
 import AppHeader from "../../common/appHeader";
-import MatchList from "../../common/matchList/matchList";
+import MatchesTab from "../../common/matchesTab";
 
 export default class HomeScreen extends Component {
   static navigationOptions = {
@@ -19,39 +10,29 @@ export default class HomeScreen extends Component {
   };
 
   state = {
-    matches: {}
+    dates: []
   };
 
-  async componentWillMount() {
-    await this.populateDates();
-    await this.loadMatches(new Date());
+  componentWillMount() {
+    this.populateDates();
   }
 
   render() {
     const { navigation } = this.props;
-    const { matches } = this.state;
+    const { dates } = this.state;
 
     return (
       <Container>
         <Tabs
-          onChangeTab={tab => this.loadMatches(Object.keys(matches)[tab.i])}
+          // onChangeTab={tab => this.loadMatches(Object.keys(matches)[tab.i])}
           renderTabBar={() => <ScrollableTab />}
         >
-          {Object.keys(matches).map(date => (
-            <Tab
+          {dates.map(date => (
+            <MatchesTab
               key={date}
+              date={date}
               heading={moment(date).format("ddd DD")}
-              // onPress={this.loadMatches(date)}
-            >
-              <Content>
-                <MatchList
-                  matches={matches[date]}
-                  handlePress={id =>
-                    navigation.navigate("Match", { matchId: id })
-                  }
-                />
-              </Content>
-            </Tab>
+            />
           ))}
         </Tabs>
         <Fab
@@ -68,30 +49,13 @@ export default class HomeScreen extends Component {
     );
   }
 
-  populateDates = async () => {
-    const matches = new Object();
-
-    for (let i = 0; i < 7; i++) {
-      const date = moment()
+  populateDates = () => {
+    const dates = new Array(7).fill(new Date()).map((d, i) =>
+      moment(d)
         .add(i, "days")
-        .toDate();
-      matches[date] = new Array();
-    }
-
-    await this.setState({ matches });
-  };
-
-  loadMatches = async date => {
-    if (!this.state.matches[date] || this.state.matches[date].length) return;
-
-    const data = await matchesSvc.getMatchesByDate(date);
-    const matches = { ...this.state.matches };
-    matches[date] = data;
-    console.log(
-      `matches found for date ${moment(date).format("ddd MM")}:`,
-      matches[date]
+        .toDate()
     );
-    this.setState({ matches });
+    this.setState({ dates });
   };
 
   _handleNewMatch = async promise => {
