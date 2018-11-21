@@ -1,4 +1,5 @@
 import { getCurrentUser } from "./authService";
+import moment from "moment";
 
 const matches = [
   {
@@ -140,26 +141,38 @@ const matches = [
   }
 ];
 
-export function getMatches() {
-  assignRandomDates(matches);
-
-  const sortByDate = matches.sort(
-    (a, b) => new Date(a.eventDate) > new Date(b.eventDate)
+const randomDate = (start, end) => {
+  return new Date(
+    start.getTime() + Math.random() * (end.getTime() - start.getTime())
   );
+};
 
-  return sortByDate;
+const assignRandomDates = matches => {
+  matches.forEach(d => {
+    d.eventDate = randomDate(
+      moment().toDate(),
+      moment()
+        .add(7, "days")
+        .toDate()
+    );
+  });
+};
+
+assignRandomDates(matches);
+
+export function getMatches() {
+  return sortByDate(matches);
 }
 
 export async function getMatchesByCurrentUser() {
   const user = await getCurrentUser();
+  return sortByDate(matches.filter(m => m.organiser._id === user.iat));
+}
 
-  const filteredMatches = matches.filter(m => m.organiser._id === user.iat);
-
-  const sortedMatches = filteredMatches.sort(
-    (a, b) => new Date(a.eventDate) > new Date(b.eventDate)
+export async function getMatchesByDate(date) {
+  return sortByDate(
+    matches.filter(m => moment(m.eventDate).isSame(date, "day"))
   );
-
-  return sortedMatches;
 }
 
 export function getMatch(id) {
@@ -204,14 +217,6 @@ export function deleteMatch(id) {
   return matchInDb;
 }
 
-const assignRandomDates = matches => {
-  matches.forEach(d => {
-    d.eventDate = randomDate(new Date(2018, 10, 15), new Date(2018, 10, 20));
-  });
-};
-
-const randomDate = (start, end) => {
-  return new Date(
-    start.getTime() + Math.random() * (end.getTime() - start.getTime())
-  );
+const sortByDate = _matches => {
+  return _matches.sort((a, b) => new Date(a.eventDate) > new Date(b.eventDate));
 };
