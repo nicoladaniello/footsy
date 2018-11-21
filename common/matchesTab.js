@@ -21,9 +21,13 @@ class MatchesTab extends Component {
   }
 
   _loadMatches = async () => {
-    this.setState({ refreshing: true });
-    const data = await matchesSvc.getMatchesByDate(this.state.date);
-    this.setState({ data, refreshing: false });
+    try {
+      this.setState({ refreshing: true });
+      const data = await matchesSvc.getMatchesByDate(this.state.date);
+      this.setState({ data, refreshing: false });
+    } catch (ex) {
+      console.error("Error loading the matches:", ex);
+    }
   };
 
   render() {
@@ -35,7 +39,7 @@ class MatchesTab extends Component {
           refreshControl={
             <RefreshControl
               refreshing={this.state.refreshing}
-              onRefresh={this._onRefresh}
+              onRefresh={this._loadMatches}
             />
           }
         >
