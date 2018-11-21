@@ -1,20 +1,18 @@
 import React from "react";
-import { List } from "native-base";
+import { FlatList } from "react-native";
 import MatchListItem from "./matchListItem";
 
 const MatchList = ({ matches, handlePress }) => {
   return (
-    <List>
-      {matches.map(m => {
-        return (
-          <MatchListItem
-            key={m._id}
-            match={m}
-            handlePress={() => handlePress(m._id)}
-          />
-        );
-      })}
-    </List>
+    <FlatList
+      data={matches}
+      renderItem={match => (
+        <MatchListItem
+          match={match.item}
+          handlePress={() => handlePress(match.item._id)}
+        />
+      )}
+    />
   );
 };
 
