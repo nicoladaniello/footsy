@@ -15,7 +15,7 @@ export const TeamSizes = Object.freeze({
 });
 
 export const MapsOptions = {
-  publicKey: "AIzaSyCl_FWVBq8D3q5MLAdB-zIs9zdWOQ424G4",
+  publicKey: "AIzaSyBi1DOyYAs4acgdDUeglPqxtnSbJHK5pvE", //"AIzaSyCl_FWVBq8D3q5MLAdB-zIs9zdWOQ424G4",
   language: "en", // language of the query results
   types: "establishment", // default: 'geocode'
   components: "country:gb"
