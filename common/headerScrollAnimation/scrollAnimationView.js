@@ -20,19 +20,19 @@ class ScrollAnimationView extends Component {
     this.state.scrollY.removeAllListeners();
   }
 
-  handleRelease = () => {
-    console.log(this.scroller);
+  //   handleRelease = () => {
+  //     console.log(this.scroller);
 
-    if (this.state.readyToRefresh) {
-      this.scroller.scrollTo({ y: -130 }); // .scrollPosition({ y: -130 });
-      this.setState({ refreshing: true });
-      setTimeout(() => {
-        this.scroller.scrollTo({ y: 0 });
-        this.setState({ refreshing: false });
-      }, 2000);
-    }
-    return this.setState({ readyToRefresh: false });
-  };
+  //     if (this.state.readyToRefresh) {
+  //       this.scroller.scrollTo({ y: -130 }); // .scrollPosition({ y: -130 });
+  //       this.setState({ refreshing: true });
+  //       setTimeout(() => {
+  //         this.scroller.scrollTo({ y: 0 });
+  //         this.setState({ refreshing: false });
+  //       }, 2000);
+  //     }
+  //     return this.setState({ readyToRefresh: false });
+  //   };
 
   handleScroll = pullDownDistance => {
     if (pullDownDistance.value <= MIN_PULLDOWN_DISTANCE) {
@@ -41,7 +41,7 @@ class ScrollAnimationView extends Component {
   };
 
   render() {
-    const { animationView, contentView } = this.props;
+    const { animationView, contentView, handleRelease } = this.props;
     const event = Animated.event([
       {
         nativeEvent: {
@@ -69,7 +69,7 @@ class ScrollAnimationView extends Component {
           style={styles.fillParent}
           onScroll={event}
           scrollEventThrottle={16}
-          onResponderRelease={this.handleRelease}
+          onResponderRelease={handleRelease}
           ref={scroller => (this.scroller = scroller)}
         >
           {contentView}
