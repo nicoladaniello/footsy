@@ -1,8 +1,8 @@
 import React from "react";
-import { Image, PixelRatio } from "react-native";
+import { Image, Dimensions, PixelRatio, StyleSheet } from "react-native";
 import { MapsOptions } from "../../enviroment";
 
-const AppMapImage = ({ match, ...rest }) => {
+const AppMapImage = ({ match, style, ...rest }) => {
   const baseUrl = "https://maps.googleapis.com/maps/api/staticmap?";
 
   const locationParams = {
@@ -11,7 +11,7 @@ const AppMapImage = ({ match, ...rest }) => {
   };
 
   const mapParams = {
-    size: `${400}x${400}`,
+    size: `${400}x${240}`,
     scale: PixelRatio.get() > 1 ? 2 : 1
   };
 
@@ -38,11 +38,23 @@ const AppMapImage = ({ match, ...rest }) => {
           .join("%7c");
     }
     const url = baseUrl + formattedParams;
-    console.log(url);
     return url;
   };
 
-  return <Image {...rest} source={{ uri: getImageUrl() }} />;
+  return (
+    <Image
+      style={[styles.image, style]}
+      {...rest}
+      source={{ uri: getImageUrl() }}
+    />
+  );
 };
+
+const styles = StyleSheet.create({
+  image: {
+    width: Dimensions.get("window").width,
+    height: 240
+  }
+});
 
 export default AppMapImage;
