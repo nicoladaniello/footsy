@@ -50,9 +50,12 @@ export default class MatchScreen extends Component {
 
     return (
       <React.Fragment>
-        <AppMapModal visible={mapModalVisible} />
+        <AppMapModal
+          visible={mapModalVisible}
+          onClose={() => this.setState({ mapModalVisible: false })}
+        />
         <ScrollAnimationView
-          handleRelease={this.setState({ mapModalVisible: true })}
+          handleRelease={() => this.setState({ mapModalVisible: true })}
           animationView={props => (
             <ScrollAnimationImage
               {...props}
