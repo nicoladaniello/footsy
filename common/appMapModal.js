@@ -6,18 +6,33 @@ import {
   Body,
   Right,
   Title,
-  Subtitle,
+  // Subtitle,
   Icon,
   Button
 } from "native-base";
-import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 
-const AppMapModal = ({ visible, onClose }) => {
+const AppMapModal = ({ match, visible, onClose }) => {
+  const accuracy = 120;
+  const lat = match.address.latitude;
+  const long = match.address.longitude;
+  const oneDegreeOfLatitudeInMeters = 111.32 * 1000;
+  const latDelta = accuracy / oneDegreeOfLatitudeInMeters;
+  const longDelta =
+    accuracy / (oneDegreeOfLatitudeInMeters * Math.cos(lat * (Math.PI / 180)));
   const region = {
-    latitude: 37.78825,
-    longitude: -122.4324,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421
+    latitude: lat,
+    longitude: long,
+    latitudeDelta: latDelta,
+    longitudeDelta: longDelta,
+    accuracy: accuracy
+  };
+  const marker = {
+    latlng: {
+      latitude: match.address.latitude,
+      longitude: match.address.longitude
+    },
+    title: match.address.description
   };
 
   return (
@@ -29,14 +44,16 @@ const AppMapModal = ({ visible, onClose }) => {
           </Button>
         </Left>
         <Body>
-          <Title>Title</Title>
-          <Subtitle>Subtitle</Subtitle>
+          <Title>{match.address.description}</Title>
+          {/* <Subtitle>Subtitle</Subtitle> */}
         </Body>
         <Right />
       </Header>
       <View style={styles.container}>
         <Text>Map</Text>
-        <MapView initialRegion={region} style={styles.map} />
+        <MapView initialRegion={region} style={styles.map}>
+          <Marker coordinate={marker.latlng} title={marker.title} />
+        </MapView>
       </View>
     </Modal>
   );
@@ -48,6 +65,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    padding: 16,
     justifyContent: "center",
     alignItems: "center"
   },

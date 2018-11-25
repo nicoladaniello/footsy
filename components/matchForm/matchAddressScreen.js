@@ -3,14 +3,14 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import { Icon, Button } from "native-base";
 import { MapsOptions } from "../../enviroment";
 
-const homePlace = {
-  description: "Home",
-  geometry: { location: { lat: 48.8152937, lng: 2.4597668 } }
-};
-const workPlace = {
-  description: "Work",
-  geometry: { location: { lat: 48.8496818, lng: 2.2940881 } }
-};
+// const homePlace = {
+//   description: "Home",
+//   geometry: { location: { lat: 48.8152937, lng: 2.4597668 } }
+// };
+// const workPlace = {
+//   description: "Work",
+//   geometry: { location: { lat: 48.8496818, lng: 2.2940881 } }
+// };
 
 const GooglePlacesInput = props => {
   onAddressSelect = (data, details) => {

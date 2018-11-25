@@ -70,6 +70,8 @@ class MatchForm extends Component {
   _handleAddressPicker = (addrData, details) => {
     const data = { ...this.state.data };
     data.address = addrData;
+    data.address.latitude = details.geometry.location.lat;
+    data.address.longitude = details.geometry.location.lng;
     this.setState({ data });
   };
 
@@ -144,7 +146,7 @@ class MatchForm extends Component {
             <AppFormItem
               onPress={() =>
                 navigation.navigate("SearchAddress", {
-                  handleAddressPicker: this._handleAddressPicker.bind(this)
+                  handleAddressPicker: this._handleAddressPicker
                 })
               }
               value={address ? address.description : null}

@@ -51,6 +51,7 @@ export default class MatchScreen extends Component {
     return (
       <React.Fragment>
         <AppMapModal
+          match={match}
           visible={mapModalVisible}
           onClose={() => this.setState({ mapModalVisible: false })}
         />

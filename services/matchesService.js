@@ -6,7 +6,9 @@ const matches = [
     _id: "5b21ca3eeb7f6fbccd471815",
     address: {
       place_id: 123,
-      description: "842 Whitmore Gardens, London NW10 5HJ"
+      description: "842 Whitmore Gardens, London NW10 5HJ",
+      latitude: 51.507351,
+      longitude: -0.127758
     },
     price: 5.5,
     organiser: {
@@ -22,7 +24,9 @@ const matches = [
     _id: "5b21ca3eeb7f6fbccd471816",
     address: {
       place_id: 123,
-      description: "842 Whitmore Gardens, London NW10 5HJ"
+      description: "842 Whitmore Gardens, London NW10 5HJ",
+      latitude: 51.507351,
+      longitude: -0.127758
     },
     price: 17,
     organiser: {
@@ -37,7 +41,9 @@ const matches = [
     _id: "5b21ca3eeb7f6fbccd471817",
     address: {
       place_id: 123,
-      description: "842 Whitmore Gardens, London NW10 5HJ"
+      description: "842 Whitmore Gardens, London NW10 5HJ",
+      latitude: 51.507351,
+      longitude: -0.127758
     },
     price: 5.5,
     organiser: {
@@ -52,7 +58,9 @@ const matches = [
     _id: "5b21ca3eeb7f6fbccd471819",
     address: {
       place_id: 123,
-      description: "842 Whitmore Gardens, London NW10 5HJ"
+      description: "842 Whitmore Gardens, London NW10 5HJ",
+      latitude: 51.507351,
+      longitude: -0.127758
     },
     price: 5.5,
     organiser: {
@@ -67,7 +75,9 @@ const matches = [
     _id: "5b21ca3eeb7f6fbccd47181a",
     address: {
       place_id: 123,
-      description: "842 Whitmore Gardens, London NW10 5HJ"
+      description: "842 Whitmore Gardens, London NW10 5HJ",
+      latitude: 51.507351,
+      longitude: -0.127758
     },
     price: 5.5,
     organiser: {
@@ -82,7 +92,9 @@ const matches = [
     _id: "5b21ca3eeb7f6fbccd47181b",
     address: {
       place_id: 123,
-      description: "842 Whitmore Gardens, London NW10 5HJ"
+      description: "842 Whitmore Gardens, London NW10 5HJ",
+      latitude: 51.507351,
+      longitude: -0.127758
     },
     price: 5.5,
     organiser: {
@@ -97,7 +109,9 @@ const matches = [
     _id: "5b21ca3eeb7f6fbccd47181e",
     address: {
       place_id: 123,
-      description: "842 Whitmore Gardens, London NW10 5HJ"
+      description: "842 Whitmore Gardens, London NW10 5HJ",
+      latitude: 51.507351,
+      longitude: -0.127758
     },
     price: 5.5,
     organiser: {
@@ -112,7 +126,9 @@ const matches = [
     _id: "5b21ca3eeb7f6fbccd47181f",
     address: {
       place_id: 123,
-      description: "842 Whitmore Gardens, London NW10 5HJ"
+      description: "842 Whitmore Gardens, London NW10 5HJ",
+      latitude: 51.507351,
+      longitude: -0.127758
     },
     price: 5.5,
     organiser: {
@@ -127,7 +143,9 @@ const matches = [
     _id: "5b21ca3eeb7f6fbccd471821",
     address: {
       place_id: 123,
-      description: "842 Whitmore Gardens, London NW10 5HJ"
+      description: "842 Whitmore Gardens, London NW10 5HJ",
+      latitude: 51.507351,
+      longitude: -0.127758
     },
     duration: "60",
     price: 5.5,
@@ -183,10 +201,11 @@ export async function getMatch(id) {
 
 export async function saveMatch(match) {
   let matchInDb = (await matches.find(m => m._id === match._id)) || {};
-  //   matchInDb.organiser = genresAPI.genres.find(g => g._id === match.genreId);
   matchInDb.address = {
     place_id: match.address.place_id,
-    description: match.address.description
+    description: match.address.description,
+    latitude: match.address.latitude,
+    longitude: match.address.longitude
   };
   matchInDb.duration = match.duration;
   matchInDb.eventDate = match.eventDate;
