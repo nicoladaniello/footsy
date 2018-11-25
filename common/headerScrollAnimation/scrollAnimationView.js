@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import { View, ScrollView, StyleSheet, Animated } from "react-native";
-import { Content } from "native-base";
 
-const MIN_PULLDOWN_DISTANCE = -140;
+const MIN_PULLDOWN_DISTANCE = -160;
 
 class ScrollAnimationView extends Component {
   state = {
     refreshing: false,
-    readyToRefresh: false,
     scrollY: new Animated.Value(0)
   };
   scroller = React.createRef();
@@ -20,23 +18,9 @@ class ScrollAnimationView extends Component {
     this.state.scrollY.removeAllListeners();
   }
 
-  //   handleRelease = () => {
-  //     console.log(this.scroller);
-
-  //     if (this.state.readyToRefresh) {
-  //       this.scroller.scrollTo({ y: -130 }); // .scrollPosition({ y: -130 });
-  //       this.setState({ refreshing: true });
-  //       setTimeout(() => {
-  //         this.scroller.scrollTo({ y: 0 });
-  //         this.setState({ refreshing: false });
-  //       }, 2000);
-  //     }
-  //     return this.setState({ readyToRefresh: false });
-  //   };
-
   handleScroll = pullDownDistance => {
     if (pullDownDistance.value <= MIN_PULLDOWN_DISTANCE) {
-      return this.setState({ readyToRefresh: true });
+      this.props.onPullDownDistance();
     }
   };
 

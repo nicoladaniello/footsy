@@ -15,7 +15,7 @@ import * as matchesSvc from "../../services/matchesService";
 import AppMapImage from "../../common/gmaps-static-api/appMapImage";
 import ScrollAnimationView from "../../common/headerScrollAnimation/scrollAnimationView";
 import ScrollAnimationImage from "../../common/headerScrollAnimation/scrollAnimationImage";
-import AppMapModal from "../../common/appMapModal";
+import MatchMapScreen from "./matchMapScreen";
 
 export default class MatchScreen extends Component {
   state = { data: null, mapModalVisible: false };
@@ -50,13 +50,13 @@ export default class MatchScreen extends Component {
 
     return (
       <React.Fragment>
-        <AppMapModal
+        <MatchMapScreen
           match={match}
           visible={mapModalVisible}
           onClose={() => this.setState({ mapModalVisible: false })}
         />
         <ScrollAnimationView
-          handleRelease={() => this.setState({ mapModalVisible: true })}
+          onPullDownDistance={() => this.setState({ mapModalVisible: true })}
           animationView={props => (
             <ScrollAnimationImage
               {...props}

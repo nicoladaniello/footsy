@@ -1,18 +1,9 @@
 import React from "react";
 import { Modal, StyleSheet, Text, View } from "react-native";
-import {
-  Header,
-  Left,
-  Body,
-  Right,
-  Title,
-  // Subtitle,
-  Icon,
-  Button
-} from "native-base";
+import { Header, Left, Body, Right, Title, Icon, Button } from "native-base";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 
-const AppMapModal = ({ match, visible, onClose }) => {
+const MatchMapScreen = ({ match, visible, onClose }) => {
   const accuracy = 120;
   const lat = match.address.latitude;
   const long = match.address.longitude;
@@ -36,7 +27,7 @@ const AppMapModal = ({ match, visible, onClose }) => {
   };
 
   return (
-    <Modal animationType="slide" transparent={false} visible={visible}>
+    <Modal animationType="fade" transparent={false} visible={visible}>
       <Header style={styles.header}>
         <Left>
           <Button transparent onPress={onClose}>
@@ -45,7 +36,6 @@ const AppMapModal = ({ match, visible, onClose }) => {
         </Left>
         <Body>
           <Title>{match.address.description}</Title>
-          {/* <Subtitle>Subtitle</Subtitle> */}
         </Body>
         <Right />
       </Header>
@@ -75,5 +65,5 @@ const styles = StyleSheet.create({
   }
 });
 
-export default AppMapModal;
+export default MatchMapScreen;
 //provider={PROVIDER_GOOGLE}
