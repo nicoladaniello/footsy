@@ -144,14 +144,14 @@ class MatchForm extends Component {
           <List>
             {/* Address picker */}
             <AppFormItem
+              icon="map-marker"
+              value={address ? address.description : null}
+              placeHolder="Address"
               onPress={() =>
                 navigation.navigate("SearchAddress", {
                   handleAddressPicker: this._handleAddressPicker
                 })
               }
-              value={address ? address.description : null}
-              icon="md-pin"
-              placeHolder="Address"
             />
             {/* Date Time picker */}
             <AppDatePicker
@@ -189,10 +189,9 @@ class MatchForm extends Component {
             />
             {/* Players picker */}
             <AppFormItem
+              icon="add-players"
               onPress={() => console.log("pick players")}
-              icon="md-person-add"
               text="Add players"
-              disabled
             />
           </List>
         </Content>

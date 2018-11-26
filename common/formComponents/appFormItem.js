@@ -33,6 +33,11 @@ const APP_ICONS = {
     type: "MaterialCommunityIcons",
     name: "calendar-plus",
     bgColor: "blue"
+  },
+  "add-players": {
+    type: DEFAULT_ICON_TYPE,
+    name: "md-person-add",
+    bgColor: "blue"
   }
 };
 
@@ -44,7 +49,7 @@ const AppFormItem = ({
   text,
   note,
   placeHolder,
-  ...rest
+  children
 }) => {
   if (!text) {
     text = value ? <Text>{value}</Text> : <Text note>{placeHolder}</Text>;
@@ -69,13 +74,14 @@ const AppFormItem = ({
   const subtext = note ? <Text note>{note}</Text> : null;
 
   return (
-    <ListItem icon onPress={onPress} {...rest}>
+    <ListItem icon onPress={onPress}>
       <Left>{appIcon}</Left>
       <Body>
         {text}
         {subtext}
       </Body>
       <Right />
+      {children ? children : null}
     </ListItem>
   );
 };

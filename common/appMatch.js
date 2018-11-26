@@ -34,8 +34,8 @@ export default class AppMatch {
       throw new Error("teamSize must be specified in AppMatch!");
     if (!obj.eventDate)
       throw new Error("eventDate must be specified in AppMatch!");
-    if (typeof obj.private === "undefined")
-      throw new Error("private must be specified in AppMatch!");
+    if (typeof obj.isPrivate === "undefined")
+      throw new Error("isPrivate must be specified in AppMatch!");
     if (!obj.players) throw new Error("players must be specified in AppMatch!");
   }
 }

@@ -5,7 +5,7 @@ import moment from "moment";
 const matches = [
   {
     _id: "5bfbb2663216bafb80a60855",
-    private: true,
+    isPrivate: true,
     eventDate: 1544062644471,
     teamSize: 7,
     price: 1690,
@@ -61,7 +61,7 @@ const matches = [
   },
   {
     _id: "5bfbb266a0bc21a66d0ba88f",
-    private: true,
+    isPrivate: true,
     eventDate: 1542368831732,
     teamSize: 9,
     price: 3131,
@@ -117,7 +117,7 @@ const matches = [
   },
   {
     _id: "5bfbb26649b2b201e9de1942",
-    private: true,
+    isPrivate: true,
     eventDate: 1542934835567,
     teamSize: 8,
     price: 3999,
@@ -173,7 +173,7 @@ const matches = [
   },
   {
     _id: "5bfbb2662b0d2a11b1cec27b",
-    private: true,
+    isPrivate: true,
     eventDate: 1542398521278,
     teamSize: 6,
     price: 2805,
@@ -229,7 +229,7 @@ const matches = [
   },
   {
     _id: "5bfbb266336aec881fb77232",
-    private: false,
+    isPrivate: false,
     eventDate: 1544081140357,
     teamSize: 8,
     price: 2344,
@@ -285,7 +285,7 @@ const matches = [
   },
   {
     _id: "5bfbb266f46faa2cbcf466b0",
-    private: true,
+    isPrivate: true,
     eventDate: 1541433482950,
     teamSize: 7,
     price: 720,
@@ -341,7 +341,7 @@ const matches = [
   },
   {
     _id: "5bfbb266d6fc059ed56265b4",
-    private: false,
+    isPrivate: false,
     eventDate: 1542112813116,
     teamSize: 7,
     price: 3949,
@@ -397,7 +397,7 @@ const matches = [
   },
   {
     _id: "5bfbb2661355dcd97b804fce",
-    private: true,
+    isPrivate: true,
     eventDate: 1545083305721,
     teamSize: 10,
     price: 2621,

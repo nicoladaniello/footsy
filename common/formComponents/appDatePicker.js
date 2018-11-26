@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { ListItem, Left, Icon, Body, Text, Right } from "native-base";
 import DateTimePicker from "react-native-modal-datetime-picker";
 import moment from "moment";
+import AppFormItem from "./appFormItem";
 
 class AppDatePicker extends Component {
   state = {
@@ -20,25 +20,16 @@ class AppDatePicker extends Component {
     const { selected } = this.props;
 
     return (
-      <ListItem icon onPress={this._showDatePicker}>
-        <Left>
-          <Icon name="md-calendar" />
-        </Left>
-        <Body>
-          {selected ? (
-            <Text>{moment(selected).format("dddd, DD MMM YYYY")}</Text>
-          ) : (
-            <Text note>Date</Text>
-          )}
-        </Body>
-        <Right>
-          {selected ? (
-            <Text>{moment(selected).format("HH:mm")}</Text>
-          ) : (
-            <Text note>Time</Text>
-          )}
-        </Right>
-
+      <AppFormItem
+        icon="calendar-clock"
+        text={
+          selected
+            ? moment(selected).format("dddd, DD MMM YYYY [at] hh:mm A")
+            : null
+        }
+        placeHolder="Date"
+        onPress={this._showDatePicker}
+      >
         <DateTimePicker
           mode="datetime"
           minimumDate={new Date()}
@@ -47,7 +38,7 @@ class AppDatePicker extends Component {
           onConfirm={this._handleSelect}
           onCancel={this._hideDatePicker}
         />
-      </ListItem>
+      </AppFormItem>
     );
   }
 }
