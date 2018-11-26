@@ -33,7 +33,7 @@ const MatchListItem = ({ match, handlePress }) => {
         >
           <Text note>{match.teamSize} a side</Text>
           <Text primary style={{ fontSize: 14, marginLeft: 8 }}>
-            - ${match.price}
+            - {match.formattedPrice}
           </Text>
         </View>
         <View
@@ -44,14 +44,16 @@ const MatchListItem = ({ match, handlePress }) => {
         >
           <Thumbnail
             style={{ width: 28, height: 28, borderRadius: 14 }}
-            source={{ uri: match.organiser.img }}
+            source={{ uri: match.organiser.image }}
           />
-          <Text note> Organised by {match.organiser.name}</Text>
+          <Text note> Organised by {match.organiser.fullName}</Text>
         </View>
       </Body>
       <Right>
         <Badge primary>
-          <Text>5 / {match.teamSize}</Text>
+          <Text>
+            {match.numberOfPartecipants} / {match.totalNumberOfPlayers}
+          </Text>
         </Badge>
       </Right>
     </ListItem>

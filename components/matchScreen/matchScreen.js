@@ -8,7 +8,8 @@ import {
   Text,
   Thumbnail,
   Right,
-  List
+  List,
+  Content
 } from "native-base";
 import moment from "moment";
 import * as matchesSvc from "../../services/matchesService";
@@ -16,6 +17,7 @@ import AppMapImage from "../../common/gmaps-static-api/appMapImage";
 import ScrollAnimationView from "../../common/headerScrollAnimation/scrollAnimationView";
 import ScrollAnimationImage from "../../common/headerScrollAnimation/scrollAnimationImage";
 import MatchMapScreen from "./matchMapScreen";
+import AppFormItem from "../../common/formComponents/appFormItem";
 
 export default class MatchScreen extends Component {
   state = { data: null, mapModalVisible: false };
@@ -64,62 +66,33 @@ export default class MatchScreen extends Component {
             />
           )}
           contentView={
-            <List style={{ marginTop: 120, backgroundColor: "white" }}>
-              <ListItem icon>
-                <Left>
-                  <Button style={{ backgroundColor: "#FF9501" }}>
-                    <Icon
-                      active
-                      type="MaterialCommunityIcons"
-                      name="map-marker"
-                    />
-                  </Button>
-                </Left>
-                <Body>
-                  <Text>{match.address.description}</Text>
-                </Body>
-                <Right />
-              </ListItem>
-              <ListItem icon>
-                <Left>
-                  <Button style={{ backgroundColor: "blue" }}>
-                    <Icon
-                      active
-                      type="MaterialCommunityIcons"
-                      name="calendar-clock"
-                    />
-                  </Button>
-                </Left>
-                <Body>
-                  <Text>
-                    {moment(match.eventDate).format("ddd DD MMM YYYY")}
-                  </Text>
-                </Body>
-                <Right>
-                  <Text>{moment(match.eventDate).format("hh:mm")}</Text>
-                </Right>
-              </ListItem>
-              <ListItem icon>
-                <Left>
-                  <Button style={{ backgroundColor: "yellow" }}>
-                    <Icon active name="md-shirt" />
-                  </Button>
-                </Left>
-                <Body>
-                  <Text>{match.teamSize} a side</Text>
-                  <Text note>22/22 partecipated</Text>
-                </Body>
-                <Right />
-              </ListItem>
+            <List style={{ marginTop: 160, backgroundColor: "white" }}>
+              <AppFormItem
+                active
+                icon="map-marker"
+                text={match.address.description}
+              />
+              <AppFormItem
+                active
+                icon="calendar-clock"
+                text={moment(match.eventDate).format("ddd DD MMM YYYY")}
+                note={`at ${moment(match.eventDate).format("hh:mm A")}`}
+              />
+              <AppFormItem
+                active
+                icon="team"
+                text={`${match.teamSize} a side`}
+                note="22/22 partecipated"
+              />
 
               <ListItem itemDivider />
 
               <ListItem avatar>
                 <Left>
-                  <Thumbnail small source={{ uri: match.organiser.img }} />
+                  <Thumbnail small source={{ uri: match.organiser.image }} />
                 </Left>
                 <Body>
-                  <Text>Organised by {match.organiser.name}</Text>
+                  <Text>Organised by {match.organiser.fullName}</Text>
                   <Text note>21 matches organised - 5 stars</Text>
                 </Body>
                 <Right>
@@ -130,34 +103,27 @@ export default class MatchScreen extends Component {
               </ListItem>
               <ListItem avatar>
                 <Left>
-                  <Thumbnail small source={{ uri: match.organiser.img }} />
+                  <Thumbnail small source={{ uri: match.organiser.image }} />
                 </Left>
                 <Body>
-                  <Text>22 Partecipated</Text>
+                  <Text>{match.numberOfPartecipants} Partecipants</Text>
                   <Text note>Filip, Mark and 19 others...</Text>
                 </Body>
                 <Right>
                   <Icon name="arrow-forward" />
                 </Right>
               </ListItem>
+              <AppFormItem
+                active
+                icon="payment"
+                text={match.formattedPrice}
+                note="22/22 partecipated"
+              />
 
               <ListItem itemDivider />
 
-              <ListItem icon>
-                <Left>
-                  <Button style={{ backgroundColor: "blue" }}>
-                    <Icon
-                      active
-                      type="MaterialCommunityIcons"
-                      name="credit-card"
-                    />
-                  </Button>
-                </Left>
-                <Body>
-                  <Text>${match.price}</Text>
-                </Body>
-                <Right />
-              </ListItem>
+              <AppFormItem active icon="share" text="Share" />
+              <AppFormItem active icon="join" text="Join Game" />
             </List>
           }
         />

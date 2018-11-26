@@ -37,10 +37,10 @@ class SideBar extends Component {
               <Body>
                 <Thumbnail
                   circular
-                  source={{ uri: user.img }}
+                  source={{ uri: user.image }}
                   style={{ marginBottom: 16 }}
                 />
-                <H3>{user.name}</H3>
+                <H3>{user.fullName}</H3>
               </Body>
             </ListItem>
             {routes.map(route => (

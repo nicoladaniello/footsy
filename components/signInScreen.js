@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Dimensions, AsyncStorage } from "react-native";
+import { Dimensions } from "react-native";
 import {
   Container,
   Content,

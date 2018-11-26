@@ -9,22 +9,15 @@ import {
 import { getCurrentUser } from "../../services/authService";
 
 class AuthLoadingScreen extends Component {
-  constructor(props) {
-    super(props);
-    this._bootstrap();
-  }
-
-  // Fetch the token from storage then navigate to our appropriate place
-  _bootstrap = async () => {
+  async componentWillMount() {
     try {
       await getCurrentUser();
       this.props.navigation.navigate("App");
     } catch (ex) {
       this.props.navigation.navigate("Anonym");
     }
-  };
+  }
 
-  // Render any loading content that you like here
   render() {
     const { height: screenHeight } = Dimensions.get("window");
 
