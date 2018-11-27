@@ -15,12 +15,12 @@ import {
   Toast
 } from "native-base";
 import { MatchDurations, TeamSizes } from "../../enviroment";
-import AppDatePicker from "../../common/formComponents/appDatePicker";
-import AppActionSheet from "../../common/formComponents/appActionSheet";
-import AppSwitch from "../../common/formComponents/appSwitch";
-import AppFormItem from "../../common/formComponents/appFormItem";
 import * as matchesSvc from "../../services/matchesService";
-import AppCurrencyInput from "../../common/formComponents/appCurrencyInput";
+import FormDatePicker from "../../common/formComponents/formDatePicker";
+import FormActionSheet from "../../common/formComponents/formActionSheet";
+import FormSwitch from "../../common/formComponents/formSwitch";
+import FormItem from "../../common/formComponents/formItem";
+import FormCurrencyInput from "../../common/formComponents/formCurrencyInput";
 
 class MatchForm extends Component {
   state = {
@@ -151,7 +151,7 @@ class MatchForm extends Component {
         <Content>
           <List>
             {/* Address picker */}
-            <AppFormItem
+            <FormItem
               icon="map-marker"
               value={address ? address.description : null}
               placeHolder="Address"
@@ -162,12 +162,12 @@ class MatchForm extends Component {
               }
             />
             {/* Date Time picker */}
-            <AppDatePicker
+            <FormDatePicker
               selected={eventDate}
               onSelect={this._handleDatePicker}
             />
             {/* Duration picker */}
-            <AppActionSheet
+            <FormActionSheet
               data={MatchDurations}
               selected={duration}
               onSelect={this._handleDurationPicker}
@@ -176,7 +176,7 @@ class MatchForm extends Component {
               placeHolder="Duration"
             />
             {/* Team size picker */}
-            <AppActionSheet
+            <FormActionSheet
               data={TeamSizes}
               selected={teamSize}
               onSelect={this._handleTeamSizePicker}
@@ -186,17 +186,17 @@ class MatchForm extends Component {
             />
 
             {/* Price input */}
-            <AppCurrencyInput onChangeValue={this._handlePriceChange} />
+            <FormCurrencyInput onChangeValue={this._handlePriceChange} />
 
             {/* Private toggle */}
-            <AppSwitch
+            <FormSwitch
               text="Private"
               icon="ios-hand"
               isActive={isPrivate}
               onSelect={this._handlePrivateToggle}
             />
             {/* Players picker */}
-            <AppFormItem
+            <FormItem
               icon="add-players"
               text={players.length ? "you added some players" : "Add players"}
               onPress={() =>

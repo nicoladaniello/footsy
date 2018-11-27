@@ -41,7 +41,7 @@ const APP_ICONS = {
   }
 };
 
-const AppFormItem = ({
+const FormItem = ({
   active,
   icon,
   onPress,
@@ -86,4 +86,4 @@ const AppFormItem = ({
   );
 };
 
-export default AppFormItem;
+export default FormItem;

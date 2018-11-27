@@ -9,7 +9,7 @@ import {
   Text
 } from "native-base";
 
-const AppActionSheet = ({
+const FormActionSheet = ({
   data,
   title,
   icon,
@@ -54,4 +54,4 @@ const AppActionSheet = ({
   );
 };
 
-export default AppActionSheet;
+export default FormActionSheet;

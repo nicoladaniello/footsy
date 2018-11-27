@@ -9,7 +9,7 @@ import {
   Icon
 } from "native-base";
 
-const AppListItemAvatar = ({ active, image, text, note, onPress }) => {
+const FormSelectItem = ({ active, image, text, note, onPress }) => {
   return (
     <ListItem avatar={!active} icon={active} onPress={onPress}>
       <Left>
@@ -28,4 +28,4 @@ const AppListItemAvatar = ({ active, image, text, note, onPress }) => {
   );
 };
 
-export default AppListItemAvatar;
+export default FormSelectItem;

@@ -8,8 +8,7 @@ import {
   Text,
   Thumbnail,
   Right,
-  List,
-  Content
+  List
 } from "native-base";
 import moment from "moment";
 import * as matchesSvc from "../../services/matchesService";
@@ -17,7 +16,7 @@ import AppMapImage from "../../common/gmaps-static-api/appMapImage";
 import ScrollAnimationView from "../../common/headerScrollAnimation/scrollAnimationView";
 import ScrollAnimationImage from "../../common/headerScrollAnimation/scrollAnimationImage";
 import MatchMapScreen from "./matchMapScreen";
-import AppFormItem from "../../common/formComponents/appFormItem";
+import FormItem from "../../common/formComponents/formItem";
 
 export default class MatchScreen extends Component {
   state = { data: null, mapModalVisible: false };
@@ -67,18 +66,18 @@ export default class MatchScreen extends Component {
           )}
           contentView={
             <List style={{ marginTop: 160, backgroundColor: "white" }}>
-              <AppFormItem
+              <FormItem
                 active
                 icon="map-marker"
                 text={match.address.description}
               />
-              <AppFormItem
+              <FormItem
                 active
                 icon="calendar-clock"
                 text={moment(match.eventDate).format("ddd DD MMM YYYY")}
                 note={`at ${moment(match.eventDate).format("hh:mm A")}`}
               />
-              <AppFormItem
+              <FormItem
                 active
                 icon="team"
                 text={`${match.teamSize} a side`}
@@ -113,7 +112,7 @@ export default class MatchScreen extends Component {
                   <Icon name="arrow-forward" />
                 </Right>
               </ListItem>
-              <AppFormItem
+              <FormItem
                 active
                 icon="payment"
                 text={match.formattedPrice}
@@ -122,8 +121,8 @@ export default class MatchScreen extends Component {
 
               <ListItem itemDivider />
 
-              <AppFormItem active icon="share" text="Share" />
-              <AppFormItem active icon="join" text="Join Game" />
+              <FormItem active icon="share" text="Share" />
+              <FormItem active icon="join" text="Join Game" />
             </List>
           }
         />

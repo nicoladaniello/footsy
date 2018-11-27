@@ -6,7 +6,7 @@ import { TextInputMask } from "react-native-masked-text";
   props.onChangeValue(valueInPence)
 */
 
-class AppCurrencyInput extends Component {
+class FormCurrencyInput extends Component {
   state = { value: "" };
 
   handleChangeText = value => {
@@ -37,4 +37,4 @@ class AppCurrencyInput extends Component {
   }
 }
 
-export default AppCurrencyInput;
+export default FormCurrencyInput;

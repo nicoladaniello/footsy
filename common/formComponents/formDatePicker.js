@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import DateTimePicker from "react-native-modal-datetime-picker";
 import moment from "moment";
-import AppFormItem from "./appFormItem";
+import FormItem from "./formItem";
 
-class AppDatePicker extends Component {
+class FormDatePicker extends Component {
   state = {
     isDatePickerVisible: false
   };
@@ -20,7 +20,7 @@ class AppDatePicker extends Component {
     const { selected } = this.props;
 
     return (
-      <AppFormItem
+      <FormItem
         icon="calendar-clock"
         text={
           selected
@@ -38,9 +38,9 @@ class AppDatePicker extends Component {
           onConfirm={this._handleSelect}
           onCancel={this._hideDatePicker}
         />
-      </AppFormItem>
+      </FormItem>
     );
   }
 }
 
-export default AppDatePicker;
+export default FormDatePicker;

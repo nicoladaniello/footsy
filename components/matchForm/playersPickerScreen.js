@@ -13,10 +13,9 @@ import {
   Content,
   List,
   ListItem,
-  Body,
-  Left
+  Body
 } from "native-base";
-import AppListItemAvatar from "../../common/formComponents/appListItemAvatar";
+import FormSelectItem from "../../common/formComponents/formSelectItem";
 import AppUser from "../../common/appUser";
 
 class PlayersPickerScreen extends Component {
@@ -72,7 +71,7 @@ class PlayersPickerScreen extends Component {
 
     const friendsList = filteredFriends ? (
       filteredFriends.map(f => (
-        <AppListItemAvatar
+        <FormSelectItem
           active={players.indexOf(f._id) < 0}
           key={f._id}
           image={f.image}

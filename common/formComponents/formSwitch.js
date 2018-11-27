@@ -1,7 +1,7 @@
 import React from "react";
 import { ListItem, Left, Icon, Body, Text, Right, Switch } from "native-base";
 
-const AppSwitch = ({ text, icon, isActive, onSelect }) => {
+const FormSwitch = ({ text, icon, isActive, onSelect }) => {
   return (
     <ListItem icon>
       <Left>
@@ -17,4 +17,4 @@ const AppSwitch = ({ text, icon, isActive, onSelect }) => {
   );
 };
 
-export default AppSwitch;
+export default FormSwitch;
