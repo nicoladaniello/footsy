@@ -4,133 +4,223 @@ const users = [
   {
     _id: "5bfb01a27a52c35626e94843",
     isActive: true,
-    balance: 89,
+    balance: 1137,
     image:
-      "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3ccc1801fd91dc9cf869fa6a09360c09&auto=format&fit=crop&w=200&q=80",
-    age: 28,
+      "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3ccc1801fd91dc9cf869fa6a09360c09&auto=format&fit=crop&w=1600&q=80",
+    age: 20,
     name: {
       first: "Jhon",
       last: "Doe"
     },
-    email: "jhon.doe@undefined.tv",
+    email: "antonia.mcneil@undefined.me",
     about:
-      "Cupidatat ea aute eiusmod quis enim fugiat esse occaecat. Ad dolor labore do sint. Aute eiusmod ea nulla adipisicing consequat sint dolore elit officia. Sint quis mollit sit cillum incididunt enim exercitation consectetur mollit excepteur sint.",
-    registered: "Wednesday, September 27, 2017 1:33 PM",
-    latitude: "8.619338",
-    longitude: "-6.953825"
+      "Cillum esse mollit velit amet qui incididunt in culpa dolore duis quis quis ad Lorem. Cillum excepteur esse proident dolore eiusmod dolor aliqua tempor excepteur ullamco. Labore ipsum nisi exercitation consequat proident laboris ad. Veniam sint ad labore tempor fugiat cupidatat aliqua non. Exercitation dolore esse officia excepteur do nostrud nisi ad Lorem ullamco velit consequat incididunt.",
+    registered: "<TypeError: this.moment(...).getTime is not a function>",
+    friends: [
+      {
+        _id: 0,
+        name: {
+          first: "Selma",
+          last: "Kane"
+        },
+        image: "http://placehold.it/32x32"
+      },
+      {
+        _id: 1,
+        name: {
+          first: "Genevieve",
+          last: "Mcintyre"
+        },
+        image: "http://placehold.it/32x32"
+      },
+      {
+        _id: 2,
+        name: {
+          first: "Allyson",
+          last: "Marsh"
+        },
+        image: "http://placehold.it/32x32"
+      }
+    ]
   },
   {
-    _id: "5bfb01a27cbc80214ac1441c",
-    isActive: true,
-    balance: 761,
+    _id: "5bfbdbdbb5df47048b65412f",
+    isActive: false,
+    balance: 1864,
     image: "http://placehold.it/32x32",
-    age: 23,
+    age: 31,
     name: {
-      first: "Craig",
-      last: "Roberson"
+      first: "Lora",
+      last: "Bruce"
     },
-    email: "craig.roberson@undefined.biz",
+    email: "lora.bruce@undefined.name",
     about:
-      "Nostrud non velit do Lorem deserunt eiusmod consectetur aute qui velit enim enim non ea. Sint in ad sit cupidatat minim anim fugiat laboris eiusmod. Culpa enim irure dolor cupidatat. Nostrud officia irure eiusmod exercitation eu consectetur duis voluptate sit consectetur elit quis minim.",
-    registered: "Sunday, September 23, 2018 8:01 AM",
-    latitude: "42.301215",
-    longitude: "-151.387841"
+      "Culpa in tempor nisi nostrud Lorem magna commodo eiusmod amet. Voluptate officia consequat do nisi aliquip quis. Proident sit velit anim in eu duis ex dolore aute eu laborum ipsum nisi. Aliquip culpa quis velit irure irure esse.",
+    registered: "<TypeError: this.moment(...).getTime is not a function>",
+    friends: [
+      {
+        _id: 0,
+        name: {
+          first: "Nancy",
+          last: "Franco"
+        },
+        image: "http://placehold.it/32x32"
+      },
+      {
+        _id: 1,
+        name: {
+          first: "Jeri",
+          last: "Sawyer"
+        },
+        image: "http://placehold.it/32x32"
+      },
+      {
+        _id: 2,
+        name: {
+          first: "Christie",
+          last: "Pollard"
+        },
+        image: "http://placehold.it/32x32"
+      }
+    ]
   },
   {
-    _id: "5bfb01a2beb5b86bd3164860",
-    isActive: true,
-    balance: 303,
+    _id: "5bfbdbdbe87918afc5879d78",
+    isActive: false,
+    balance: 1807,
     image: "http://placehold.it/32x32",
-    age: 36,
+    age: 31,
     name: {
-      first: "Olson",
-      last: "Soto"
+      first: "Adeline",
+      last: "Crane"
     },
-    email: "olson.soto@undefined.name",
+    email: "adeline.crane@undefined.ca",
     about:
-      "Ipsum aliqua eiusmod enim enim nulla fugiat deserunt minim voluptate. Fugiat ut officia reprehenderit nulla. Ipsum aute nostrud adipisicing enim officia labore aliqua duis minim et occaecat pariatur amet et. Sit labore minim aute aute aute dolor sunt nulla excepteur pariatur amet sint veniam officia. Proident exercitation ad veniam non est reprehenderit aliqua minim qui. Eu voluptate quis proident est ullamco proident voluptate occaecat. Culpa non laborum dolore esse magna commodo culpa culpa ullamco adipisicing cillum laboris.",
-    registered: "Sunday, February 19, 2017 5:00 AM",
-    latitude: "12.915876",
-    longitude: "86.949495"
+      "Enim in ipsum elit dolore officia. Sit non mollit irure do enim. Deserunt nostrud duis non nisi pariatur labore anim reprehenderit duis est.",
+    registered: "<TypeError: this.moment(...).getTime is not a function>",
+    friends: [
+      {
+        _id: 0,
+        name: {
+          first: "Gayle",
+          last: "Hendricks"
+        },
+        image: "http://placehold.it/32x32"
+      },
+      {
+        _id: 1,
+        name: {
+          first: "Murphy",
+          last: "Mejia"
+        },
+        image: "http://placehold.it/32x32"
+      },
+      {
+        _id: 2,
+        name: {
+          first: "Dodson",
+          last: "Yates"
+        },
+        image: "http://placehold.it/32x32"
+      }
+    ]
   },
   {
-    _id: "5bfb01a24fd279807ed611b8",
+    _id: "5bfbdbdb96d13e6f9a2224e8",
+    isActive: false,
+    balance: 1443,
+    image: "http://placehold.it/32x32",
+    age: 31,
+    name: {
+      first: "Kim",
+      last: "Walters"
+    },
+    email: "kim.walters@undefined.org",
+    about:
+      "Id incididunt ea officia ex eiusmod sint in quis ea quis aute duis laborum. Velit dolor velit nostrud labore adipisicing ut incididunt cillum ut enim qui in aute irure. Nostrud esse eiusmod nostrud non esse dolore minim officia deserunt officia ipsum minim ea mollit. Quis labore esse minim cupidatat pariatur incididunt est dolore. Ad sint Lorem irure ad duis do ea minim occaecat sit. Do labore elit sunt eu id excepteur aliquip ipsum anim reprehenderit consequat.",
+    registered: "<TypeError: this.moment(...).getTime is not a function>",
+    friends: [
+      {
+        _id: 0,
+        name: {
+          first: "Nicholson",
+          last: "Anthony",
+          image: "http://placehold.it/32x32"
+        }
+      },
+      {
+        _id: 1,
+        name: {
+          first: "Madge",
+          last: "Ferguson",
+          image: "http://placehold.it/32x32"
+        }
+      },
+      {
+        _id: 2,
+        name: {
+          first: "Tracy",
+          last: "Strong",
+          image: "http://placehold.it/32x32"
+        }
+      }
+    ]
+  },
+  {
+    _id: "5bfbdbdbdfac166bedcfbe6b",
     isActive: true,
-    balance: 620,
+    balance: 650,
     image: "http://placehold.it/32x32",
     age: 27,
     name: {
-      first: "Beck",
-      last: "Avila"
+      first: "Harper",
+      last: "Booker"
     },
-    email: "beck.avila@undefined.org",
+    email: "harper.booker@undefined.tv",
     about:
-      "Non exercitation minim ullamco sit laborum officia officia culpa esse officia labore id. Duis in velit aliqua labore est commodo qui elit. Anim commodo id excepteur occaecat est commodo veniam aute irure consectetur anim elit.",
-    registered: "Tuesday, December 9, 2014 3:14 PM",
-    latitude: "-79.831527",
-    longitude: "91.80828"
-  },
-  {
-    _id: "5bfb01a2bd2cd8befb7ab69c",
-    isActive: true,
-    balance: 184,
-    image: "http://placehold.it/32x32",
-    age: 35,
-    name: {
-      first: "Hodges",
-      last: "Brock"
-    },
-    email: "hodges.brock@undefined.us",
-    about:
-      "Reprehenderit amet nisi anim proident laboris fugiat. Minim id ad commodo reprehenderit pariatur mollit. Duis nisi consequat mollit cillum Lorem do magna ullamco mollit voluptate. Deserunt laborum irure adipisicing sint Lorem aliquip voluptate tempor aute eu.",
-    registered: "Monday, May 26, 2014 8:07 PM",
-    latitude: "-44.514",
-    longitude: "-144.998951"
-  },
-  {
-    _id: "5bfb01a2d11cbf7bb589f845",
-    isActive: false,
-    balance: 69,
-    image: "http://placehold.it/32x32",
-    age: 33,
-    name: {
-      first: "Morton",
-      last: "Quinn"
-    },
-    email: "morton.quinn@undefined.io",
-    about:
-      "Consequat consectetur nisi id in reprehenderit reprehenderit velit. Consectetur minim ipsum sint exercitation excepteur minim excepteur velit Lorem fugiat. Aute nulla incididunt veniam tempor velit incididunt eu eiusmod non proident dolor qui. Lorem ex magna officia id laborum est do dolore incididunt veniam ipsum irure. Qui incididunt nisi velit magna tempor velit aliqua qui nostrud. Mollit anim non qui pariatur velit. Id id aliqua consequat mollit fugiat aute qui.",
-    registered: "Tuesday, February 6, 2018 3:33 PM",
-    latitude: "-21.631086",
-    longitude: "44.663422"
-  },
-  {
-    _id: "5bfb01a24552cb0a37a9f47a",
-    isActive: false,
-    balance: 628,
-    image: "http://placehold.it/32x32",
-    age: 38,
-    name: {
-      first: "Watson",
-      last: "Padilla"
-    },
-    email: "watson.padilla@undefined.net",
-    about:
-      "Elit duis occaecat et laboris sint esse consequat culpa minim qui ad dolore proident dolore. Eu officia sint velit incididunt et non sit qui dolor minim ut. Duis deserunt duis enim do sunt labore. Nostrud dolor ullamco et enim eiusmod enim officia aute voluptate.",
-    registered: "Sunday, October 16, 2016 6:45 AM",
-    latitude: "-88.190597",
-    longitude: "-95.768029"
+      "Non exercitation excepteur proident aliqua. Dolor deserunt dolor sunt aliqua do incididunt elit proident sit. Exercitation sit incididunt minim dolor laboris enim id dolore aute consequat amet culpa.",
+    registered: "<TypeError: this.moment(...).getTime is not a function>",
+    friends: [
+      {
+        _id: 0,
+        name: {
+          first: "Green",
+          last: "Griffin",
+          image: "http://placehold.it/32x32"
+        }
+      },
+      {
+        _id: 1,
+        name: {
+          first: "Deleon",
+          last: "Bradley",
+          image: "http://placehold.it/32x32"
+        }
+      },
+      {
+        _id: 2,
+        name: {
+          first: "Alma",
+          last: "Beard",
+          image: "http://placehold.it/32x32"
+        }
+      }
+    ]
   }
 ];
 
 export async function getUsers() {
-  const data = users.map(m => new AppUser(m));
-  return new Promise(resolve => setTimeout(() => resolve(data), 1000));
+  return new Promise(resolve => setTimeout(() => resolve(users), 1000));
 }
 
 export async function getUser(id) {
   const data = await getUsers();
   return data.find(m => m._id === id);
+}
+
+export async function getUserFriends(id) {
+  const user = await this.getUser(id);
+  return user.friends;
 }
 
 export function getUserServerSide(id) {

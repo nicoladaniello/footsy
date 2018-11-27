@@ -507,6 +507,7 @@ export async function saveMatch(match) {
   matchInDb.isPrivate = match.isPrivate;
   matchInDb.price = match.price;
   matchInDb.teamSize = match.teamSize;
+  matchInDb.players = match.players;
 
   user = await getCurrentUser();
   matchInDb.organiser = {

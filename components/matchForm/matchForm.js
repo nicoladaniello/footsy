@@ -30,7 +30,8 @@ class MatchForm extends Component {
       eventDate: null,
       isPrivate: false,
       price: null,
-      teamSize: null
+      teamSize: null,
+      players: []
     }
   };
 
@@ -75,6 +76,12 @@ class MatchForm extends Component {
     this.setState({ data });
   };
 
+  _handlePlayersPicker = players => {
+    const data = { ...this.state.data };
+    data.players = players;
+    this.setState({ data });
+  };
+
   _handleDurationPicker = duration => {
     const data = { ...this.state.data };
     data.duration = duration;
@@ -112,7 +119,8 @@ class MatchForm extends Component {
       eventDate,
       duration,
       teamSize,
-      isPrivate
+      isPrivate,
+      players
     } = this.state.data;
 
     return (
@@ -190,8 +198,12 @@ class MatchForm extends Component {
             {/* Players picker */}
             <AppFormItem
               icon="add-players"
-              onPress={() => console.log("pick players")}
-              text="Add players"
+              text={players.length ? "you added some players" : "Add players"}
+              onPress={() =>
+                navigation.navigate("AddPlayers", {
+                  handlePlayersPicker: this._handlePlayersPicker
+                })
+              }
             />
           </List>
         </Content>

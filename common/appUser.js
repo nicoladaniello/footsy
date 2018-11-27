@@ -4,6 +4,7 @@ export default class AppUser {
   constructor(user) {
     this.isValid(user);
     Object.assign(this, user);
+    this.friends = user.friends ? user.friends.map(f => AppUser(f)) : [];
   }
 
   get fullName() {

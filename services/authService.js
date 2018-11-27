@@ -22,7 +22,7 @@ export function signOut() {
 
 export async function getCurrentUser() {
   const currentUser = await AsyncStorage.getItem("currentUser");
-  return new AppUser(JSON.parse(currentUser));
+  return JSON.parse(currentUser);
 }
 
 // server side implementing this

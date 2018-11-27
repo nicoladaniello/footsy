@@ -30,6 +30,8 @@ export default class HomeScreen extends Component {
     const { navigation } = this.props;
     const { dates } = this.state;
 
+    if (!dates) return <Text>Loading...</Text>;
+
     return (
       <Container>
         <Tabs renderTabBar={() => <ScrollableTab />}>
