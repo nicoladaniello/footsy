@@ -1,4 +1,5 @@
 import React from "react";
+import { StyleSheet } from "react-native";
 import {
   ListItem,
   Left,
@@ -11,12 +12,12 @@ import {
 
 const FormSelectItem = ({ active, image, text, note, onPress }) => {
   return (
-    <ListItem avatar={!active} icon={active} onPress={onPress}>
+    <ListItem avatar onPress={onPress}>
       <Left>
         {!active ? (
           <Thumbnail small source={{ uri: image }} />
         ) : (
-          <Icon name="md-checkmark-circle" />
+          <Icon style={styles.icon} name="md-checkmark-circle" />
         )}
       </Left>
       <Body>
@@ -27,5 +28,13 @@ const FormSelectItem = ({ active, image, text, note, onPress }) => {
     </ListItem>
   );
 };
+
+const styles = StyleSheet.create({
+  icon: {
+    width: 36,
+    height: 36,
+    fontSize: 36
+  }
+});
 
 export default FormSelectItem;

@@ -30,7 +30,11 @@ class PlayersPickerScreen extends Component {
 
   _loadFriends = async () => {
     try {
-      this.setState({ refreshing: true });
+      const players = this.props.navigation.state.params.players.map(
+        p => p._id
+      );
+      this.setState({ refreshing: true, players });
+
       const currentUser = await authService.getCurrentUser();
       const friends = (await userService.getUserFriends(currentUser._id)).map(
         f => new AppUser(f)

@@ -21,6 +21,7 @@ import FormActionSheet from "../../common/formComponents/formActionSheet";
 import FormSwitch from "../../common/formComponents/formSwitch";
 import FormItem from "../../common/formComponents/formItem";
 import FormCurrencyInput from "../../common/formComponents/formCurrencyInput";
+import FormPlayersItem from "../../common/formComponents/formPlayersItem";
 
 class MatchForm extends Component {
   state = {
@@ -196,11 +197,11 @@ class MatchForm extends Component {
               onSelect={this._handlePrivateToggle}
             />
             {/* Players picker */}
-            <FormItem
-              icon="add-players"
-              text={players.length ? "you added some players" : "Add players"}
+            <FormPlayersItem
+              players={players}
               onPress={() =>
                 navigation.navigate("AddPlayers", {
+                  players: players,
                   handlePlayersPicker: this._handlePlayersPicker
                 })
               }

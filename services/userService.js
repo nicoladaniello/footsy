@@ -40,6 +40,22 @@ const users = [
           last: "Marsh"
         },
         image: "http://placehold.it/32x32"
+      },
+      {
+        _id: "5bfbdbdbb5df47048b65412f",
+        name: {
+          first: "Lora",
+          last: "Bruce"
+        },
+        image: "http://placehold.it/32x32"
+      },
+      {
+        _id: "5bfbdbdbe87918afc5879d78",
+        name: {
+          first: "Adeline",
+          last: "Crane"
+        },
+        image: "http://placehold.it/32x32"
       }
     ]
   },
