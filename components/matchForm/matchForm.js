@@ -22,6 +22,7 @@ import FormSwitch from "../../common/formComponents/formSwitch";
 import FormItem from "../../common/formComponents/formItem";
 import FormCurrencyInput from "../../common/formComponents/formCurrencyInput";
 import FormPlayersItem from "../../common/formComponents/formPlayersItem";
+import AppUserList from "../../common/appUserList";
 
 class MatchForm extends Component {
   state = {
@@ -32,7 +33,7 @@ class MatchForm extends Component {
       isPrivate: false,
       price: null,
       teamSize: null,
-      players: []
+      players: new AppUserList()
     }
   };
 
@@ -79,7 +80,7 @@ class MatchForm extends Component {
 
   _handlePlayersPicker = players => {
     const data = { ...this.state.data };
-    data.players = players;
+    data.players = new AppUserList(players);
     this.setState({ data });
   };
 

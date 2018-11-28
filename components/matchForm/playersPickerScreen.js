@@ -30,9 +30,9 @@ class PlayersPickerScreen extends Component {
 
   _loadFriends = async () => {
     try {
-      const players = this.props.navigation.state.params.players.map(
-        p => p._id
-      );
+      const { params } = this.props.navigation.state;
+      const players = params.players.list;
+
       this.setState({ refreshing: true, players });
 
       const currentUser = await authService.getCurrentUser();
@@ -40,13 +40,14 @@ class PlayersPickerScreen extends Component {
         f => new AppUser(f)
       );
       const filteredFriends = friends;
+
       this.setState({ friends, filteredFriends, refreshing: false });
     } catch (ex) {
       console.error("Error loading friends in PlayersPickerScreen:", ex);
     }
   };
 
-  _onChangeQuery = (query = "") => {
+  _filterFriends = (query = "") => {
     const filteredFriends = query
       ? this.state.filteredFriends.filter(f => f.fullName.includes(query))
       : this.state.friends;
@@ -54,22 +55,24 @@ class PlayersPickerScreen extends Component {
     this.setState({ filteredFriends, query });
   };
 
-  _onComplete = () => {
-    const { friends, players } = this.state;
-    const pickedPlayers = friends.filter(f => players.includes(f._id));
-    this.props.navigation.state.params.handlePlayersPicker(pickedPlayers);
+  _onSave = () => {
+    this.props.navigation.state.params.handlePlayersPicker(this.state.players);
     this.props.navigation.goBack();
   };
 
-  _onPlayerSelect = id => {
+  _onSelect = player => {
     const players = [...this.state.players];
-    const index = players.indexOf(id);
-    console.log(players);
+    const index = players.map(p => p._id).indexOf(player._id);
 
-    if (index < 0) players.push(id);
+    console.log("Player:", player);
+    console.log("players:", players);
+    console.log("index:", index);
+
+    if (index < 0) players.push(player);
     else players.splice(index, 1);
 
     this.setState({ players });
+    console.log("new list", players);
   };
 
   render() {
@@ -90,15 +93,15 @@ class PlayersPickerScreen extends Component {
             <Input
               placeholder="Search"
               value={query}
-              onChangeText={text => this._onChangeQuery(text)}
+              onChangeText={text => this._filterFriends(text)}
             />
             {query.length ? (
-              <TouchableOpacity onPress={() => this._onChangeQuery()}>
+              <TouchableOpacity onPress={() => this._filterFriends()}>
                 <Icon name="ios-close-circle" />
               </TouchableOpacity>
             ) : null}
           </Item>
-          <Button transparent onPress={this._onComplete}>
+          <Button transparent onPress={this._onSave}>
             <Text>SAVE</Text>
           </Button>
         </Header>
@@ -114,20 +117,14 @@ class PlayersPickerScreen extends Component {
           <FlatList
             data={filteredFriends}
             extraData={players}
-            renderItem={f => {
-              console.log(
-                "is friend in list? ",
-                players.indexOf(f.item._id) >= 0
-              );
-              return (
-                <FormSelectItem
-                  active={players.indexOf(f.item._id) >= 0}
-                  image={f.item.image}
-                  text={f.item.fullName}
-                  onPress={() => this._onPlayerSelect(f.item._id)}
-                />
-              );
-            }}
+            renderItem={f => (
+              <FormSelectItem
+                active={players.map(p => p._id).indexOf(f.item._id) > -1}
+                image={f.item.image}
+                text={f.item.fullName}
+                onPress={() => this._onSelect(f.item)}
+              />
+            )}
             keyExtractor={(item, index) => index.toString()}
           />
         </Content>
