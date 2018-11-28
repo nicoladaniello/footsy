@@ -13,7 +13,7 @@ const FormSelectItem = ({ active, image, text, note, onPress }) => {
   return (
     <ListItem avatar={!active} icon={active} onPress={onPress}>
       <Left>
-        {active ? (
+        {!active ? (
           <Thumbnail small source={{ uri: image }} />
         ) : (
           <Icon name="md-checkmark-circle" />

@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { TouchableOpacity } from "react-native";
-import * as authService from "../../services/authService";
-import * as userService from "../../services/userService";
+import { TouchableOpacity, RefreshControl, FlatList } from "react-native";
 import {
   Container,
   Header,
@@ -10,34 +8,39 @@ import {
   Icon,
   Button,
   Text,
-  Content,
-  List,
-  ListItem,
-  Body
+  Content
 } from "native-base";
-import FormSelectItem from "../../common/formComponents/formSelectItem";
+import * as authService from "../../services/authService";
+import * as userService from "../../services/userService";
 import AppUser from "../../common/appUser";
+import FormSelectItem from "../../common/formComponents/formSelectItem";
 
 class PlayersPickerScreen extends Component {
   state = {
     friends: [],
     filteredFriends: [],
     players: [],
-    query: ""
+    query: "",
+    refreshing: false
   };
 
   async componentWillMount() {
+    await this._loadFriends();
+  }
+
+  _loadFriends = async () => {
     try {
+      this.setState({ refreshing: true });
       const currentUser = await authService.getCurrentUser();
       const friends = (await userService.getUserFriends(currentUser._id)).map(
         f => new AppUser(f)
       );
       const filteredFriends = friends;
-      this.setState({ friends, filteredFriends });
+      this.setState({ friends, filteredFriends, refreshing: false });
     } catch (ex) {
       console.error("Error loading friends in PlayersPickerScreen:", ex);
     }
-  }
+  };
 
   _onChangeQuery = (query = "") => {
     const filteredFriends = query
@@ -66,26 +69,8 @@ class PlayersPickerScreen extends Component {
   };
 
   render() {
-    const { players, query, filteredFriends } = this.state;
+    const { query, filteredFriends, players } = this.state;
     const { navigation } = this.props;
-
-    const friendsList = filteredFriends ? (
-      filteredFriends.map(f => (
-        <FormSelectItem
-          active={players.indexOf(f._id) < 0}
-          key={f._id}
-          image={f.image}
-          text={f.fullName}
-          onPress={() => this._onPlayerSelect(f._id)}
-        />
-      ))
-    ) : (
-      <ListItem>
-        <Body>
-          <Text>Loading...</Text>
-        </Body>
-      </ListItem>
-    );
 
     return (
       <Container>
@@ -113,8 +98,30 @@ class PlayersPickerScreen extends Component {
             <Text>SAVE</Text>
           </Button>
         </Header>
-        <Content padder>
-          <List>{friendsList}</List>
+        <Content
+          padder
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={this._loadFriends}
+            />
+          }
+        >
+          <FlatList
+            data={filteredFriends}
+            renderItem={f => {
+              console.log(f);
+              return (
+                <FormSelectItem
+                  active={players.indexOf(f.item._id) >= 0}
+                  image={f.item.image}
+                  text={f.item.fullName}
+                  onPress={() => this._onPlayerSelect(f.item._id)}
+                />
+              );
+            }}
+            keyExtractor={(item, index) => index.toString()}
+          />
         </Content>
       </Container>
     );
