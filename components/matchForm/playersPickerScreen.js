@@ -109,8 +109,12 @@ class PlayersPickerScreen extends Component {
         >
           <FlatList
             data={filteredFriends}
+            extraData={players}
             renderItem={f => {
-              console.log(f);
+              console.log(
+                "is friend in list? ",
+                players.indexOf(f.item._id) >= 0
+              );
               return (
                 <FormSelectItem
                   active={players.indexOf(f.item._id) >= 0}
