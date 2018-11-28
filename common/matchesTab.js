@@ -3,6 +3,7 @@ import { RefreshControl } from "react-native";
 import { Content, Tab } from "native-base";
 import MatchList from "./matchList/matchList";
 import * as matchesSvc from "../services/matchesService";
+import AppMatch from "./appMatch";
 
 class MatchesTab extends Component {
   state = {
@@ -23,10 +24,12 @@ class MatchesTab extends Component {
   _loadMatches = async () => {
     try {
       this.setState({ refreshing: true });
-      const data = await matchesSvc.getMatchesByDate(this.state.date);
+      const data = (await matchesSvc.getMatchesByDate(this.state.date)).map(
+        m => new AppMatch(m)
+      );
       this.setState({ data, refreshing: false });
     } catch (ex) {
-      console.error("Error loading the matches:", ex);
+      console.error("MatchesTab - Error loading the matches:", ex);
     }
   };
 

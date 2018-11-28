@@ -1,4 +1,6 @@
 import AppUser from "./appUser";
+import AppUsersList from "./appUsersList";
+import moment from "moment";
 
 export default class AppMatch {
   _id = null;
@@ -7,6 +9,8 @@ export default class AppMatch {
     this.isValid(match);
     Object.assign(this, match);
     this.organiser = new AppUser(this.organiser);
+    this.players = new AppUsersList(this.players);
+    this.eventDate = moment(this.eventDate);
   }
 
   get formattedPrice() {

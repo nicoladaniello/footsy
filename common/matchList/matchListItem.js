@@ -9,16 +9,15 @@ import {
   Right,
   View
 } from "native-base";
-import moment from "moment";
 
 const MatchListItem = ({ match, handlePress }) => {
   return (
     <ListItem thumbnail onPress={handlePress}>
       <Left>
         <Text note style={{ textAlign: "center" }}>
-          {moment(match.eventDate).format("hh:mm")}
+          {match.eventDate.format("hh:mm")}
           {"\n"}
-          {moment(match.eventDate).format("A")}
+          {match.eventDate.format("A")}
         </Text>
       </Left>
       <Body>

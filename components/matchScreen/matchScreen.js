@@ -10,13 +10,14 @@ import {
   Right,
   List
 } from "native-base";
-import moment from "moment";
 import * as matchesSvc from "../../services/matchesService";
 import AppMapImage from "../../common/gmaps-static-api/appMapImage";
 import ScrollAnimationView from "../../common/headerScrollAnimation/scrollAnimationView";
 import ScrollAnimationImage from "../../common/headerScrollAnimation/scrollAnimationImage";
 import MatchMapScreen from "./matchMapScreen";
 import FormItem from "../../common/formComponents/formItem";
+import ListPlayersItem from "../../common/listComponents/listPlayersItem";
+import AppMatch from "../../common/appMatch";
 
 export default class MatchScreen extends Component {
   state = { data: null, mapModalVisible: false };
@@ -31,12 +32,14 @@ export default class MatchScreen extends Component {
     try {
       const { navigation } = this.props;
       const matchId = navigation.getParam("matchId", "NO-ID");
-      const data = await matchesSvc.getMatch(matchId);
+      let data = await matchesSvc.getMatch(matchId);
 
       if (!data) return;
 
+      data = new AppMatch(data);
+
       this.props.navigation.setParams({
-        title: moment(data.eventDate).fromNow()
+        title: data.eventDate.fromNow()
       });
       this.setState({ data });
     } catch (ex) {
@@ -74,8 +77,8 @@ export default class MatchScreen extends Component {
               <FormItem
                 active
                 icon="calendar-clock"
-                text={moment(match.eventDate).format("ddd DD MMM YYYY")}
-                note={`at ${moment(match.eventDate).format("hh:mm A")}`}
+                text={match.eventDate.format("ddd DD MMM YYYY")}
+                note={`at ${match.eventDate.format("hh:mm A")}`}
               />
               <FormItem
                 active
@@ -100,7 +103,7 @@ export default class MatchScreen extends Component {
                   </Button>
                 </Right>
               </ListItem>
-              <ListItem avatar>
+              {/* <ListItem avatar>
                 <Left>
                   <Thumbnail small source={{ uri: match.organiser.image }} />
                 </Left>
@@ -111,7 +114,11 @@ export default class MatchScreen extends Component {
                 <Right>
                   <Icon name="arrow-forward" />
                 </Right>
-              </ListItem>
+              </ListItem> */}
+              <ListPlayersItem
+                players={match.players}
+                onPress={() => console.log("press")}
+              />
               <FormItem
                 active
                 icon="payment"

@@ -26,36 +26,30 @@ const matches = [
       longitude: 113.182821
     },
     players: [
-      [
-        {
-          _id: "5bfbb266c5104da9a8ff3164",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Stein",
-            last: "Wiley"
-          }
+      {
+        _id: "5bfbb266c5104da9a8ff3164",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Stein",
+          last: "Wiley"
         }
-      ],
-      [
-        {
-          _id: "5bfbb266364754ff59901b7e",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Fannie",
-            last: "Willis"
-          }
+      },
+      {
+        _id: "5bfbb266364754ff59901b7e",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Fannie",
+          last: "Willis"
         }
-      ],
-      [
-        {
-          _id: "5bfbb266ab765323279752dc",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Jacquelyn",
-            last: "Morrow"
-          }
+      },
+      {
+        _id: "5bfbb266ab765323279752dc",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Jacquelyn",
+          last: "Morrow"
         }
-      ]
+      }
     ],
     createdAt: 1541529839979
   },
@@ -82,36 +76,30 @@ const matches = [
       longitude: 113.081431
     },
     players: [
-      [
-        {
-          _id: "5bfbb266ee39a889d42f4342",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Rene",
-            last: "Peterson"
-          }
+      {
+        _id: "5bfbb266ee39a889d42f4342",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Rene",
+          last: "Peterson"
         }
-      ],
-      [
-        {
-          _id: "5bfbb26691a8b3a83ce04b44",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Medina",
-            last: "Hernandez"
-          }
+      },
+      {
+        _id: "5bfbb26691a8b3a83ce04b44",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Medina",
+          last: "Hernandez"
         }
-      ],
-      [
-        {
-          _id: "5bfbb266fa3762809a22282e",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Greene",
-            last: "Mccarthy"
-          }
+      },
+      {
+        _id: "5bfbb266fa3762809a22282e",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Greene",
+          last: "Mccarthy"
         }
-      ]
+      }
     ],
     createdAt: 1541514047875
   },
@@ -138,36 +126,30 @@ const matches = [
       longitude: -69.638856
     },
     players: [
-      [
-        {
-          _id: "5bfbb2660e946157fe914d4b",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Gretchen",
-            last: "Morrison"
-          }
+      {
+        _id: "5bfbb2660e946157fe914d4b",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Gretchen",
+          last: "Morrison"
         }
-      ],
-      [
-        {
-          _id: "5bfbb266ede082b039a34ad9",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Collier",
-            last: "Clark"
-          }
+      },
+      {
+        _id: "5bfbb266ede082b039a34ad9",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Collier",
+          last: "Clark"
         }
-      ],
-      [
-        {
-          _id: "5bfbb266508e2f48b034cbac",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Nolan",
-            last: "Swanson"
-          }
+      },
+      {
+        _id: "5bfbb266508e2f48b034cbac",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Nolan",
+          last: "Swanson"
         }
-      ]
+      }
     ],
     createdAt: 1541877001102
   },
@@ -194,36 +176,30 @@ const matches = [
       longitude: 126.617034
     },
     players: [
-      [
-        {
-          _id: "5bfbb2664d7280a3cbbd3d40",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Johnnie",
-            last: "Barnes"
-          }
+      {
+        _id: "5bfbb2664d7280a3cbbd3d40",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Johnnie",
+          last: "Barnes"
         }
-      ],
-      [
-        {
-          _id: "5bfbb266a9043ed483ee2f04",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Boyer",
-            last: "Chapman"
-          }
+      },
+      {
+        _id: "5bfbb266a9043ed483ee2f04",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Boyer",
+          last: "Chapman"
         }
-      ],
-      [
-        {
-          _id: "5bfbb266e7e3cfcd68e48ab6",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Keri",
-            last: "Rivers"
-          }
+      },
+      {
+        _id: "5bfbb266e7e3cfcd68e48ab6",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Keri",
+          last: "Rivers"
         }
-      ]
+      }
     ],
     createdAt: 1542267474666
   },
@@ -250,36 +226,30 @@ const matches = [
       longitude: -177.803174
     },
     players: [
-      [
-        {
-          _id: "5bfbb2669dcf1cb8c5e874ba",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Frances",
-            last: "Casey"
-          }
+      {
+        _id: "5bfbb2669dcf1cb8c5e874ba",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Frances",
+          last: "Casey"
         }
-      ],
-      [
-        {
-          _id: "5bfbb26698b2eb5d2fa3d268",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Alberta",
-            last: "Hood"
-          }
+      },
+      {
+        _id: "5bfbb26698b2eb5d2fa3d268",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Alberta",
+          last: "Hood"
         }
-      ],
-      [
-        {
-          _id: "5bfbb266e8c16077a4992655",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Walls",
-            last: "Reilly"
-          }
+      },
+      {
+        _id: "5bfbb266e8c16077a4992655",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Walls",
+          last: "Reilly"
         }
-      ]
+      }
     ],
     createdAt: 1542904800615
   },
@@ -306,36 +276,30 @@ const matches = [
       longitude: 108.524542
     },
     players: [
-      [
-        {
-          _id: "5bfbb2663b1b890aeebc7dbf",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Stacey",
-            last: "Humphrey"
-          }
+      {
+        _id: "5bfbb2663b1b890aeebc7dbf",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Stacey",
+          last: "Humphrey"
         }
-      ],
-      [
-        {
-          _id: "5bfbb26657ea9dd055554d64",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Jeannette",
-            last: "Gilbert"
-          }
+      },
+      {
+        _id: "5bfbb26657ea9dd055554d64",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Jeannette",
+          last: "Gilbert"
         }
-      ],
-      [
-        {
-          _id: "5bfbb266217ce3da9741c408",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Rosa",
-            last: "Ratliff"
-          }
+      },
+      {
+        _id: "5bfbb266217ce3da9741c408",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Rosa",
+          last: "Ratliff"
         }
-      ]
+      }
     ],
     createdAt: 1541649846800
   },
@@ -362,36 +326,30 @@ const matches = [
       longitude: -143.732348
     },
     players: [
-      [
-        {
-          _id: "5bfbb2666f6ace9fd0c2f09b",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Rutledge",
-            last: "Roy"
-          }
+      {
+        _id: "5bfbb2666f6ace9fd0c2f09b",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Rutledge",
+          last: "Roy"
         }
-      ],
-      [
-        {
-          _id: "5bfbb2664c7d47d02686fb2f",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Crawford",
-            last: "Page"
-          }
+      },
+      {
+        _id: "5bfbb2664c7d47d02686fb2f",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Crawford",
+          last: "Page"
         }
-      ],
-      [
-        {
-          _id: "5bfbb2668d15e373e1b77919",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Caitlin",
-            last: "Higgins"
-          }
+      },
+      {
+        _id: "5bfbb2668d15e373e1b77919",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Caitlin",
+          last: "Higgins"
         }
-      ]
+      }
     ],
     createdAt: 1541363907689
   },
@@ -418,36 +376,30 @@ const matches = [
       longitude: -56.646647
     },
     players: [
-      [
-        {
-          _id: "5bfbb266945cc7dd13047e0b",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Lessie",
-            last: "Rutledge"
-          }
+      {
+        _id: "5bfbb266945cc7dd13047e0b",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Lessie",
+          last: "Rutledge"
         }
-      ],
-      [
-        {
-          _id: "5bfbb2667aa3bed35290bf82",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Hooper",
-            last: "Miller"
-          }
+      },
+      {
+        _id: "5bfbb2667aa3bed35290bf82",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Hooper",
+          last: "Miller"
         }
-      ],
-      [
-        {
-          _id: "5bfbb2668805d5686c34b9a3",
-          image: "http://placehold.it/64x64",
-          name: {
-            first: "Lori",
-            last: "Rivas"
-          }
+      },
+      {
+        _id: "5bfbb2668805d5686c34b9a3",
+        image: "http://placehold.it/64x64",
+        name: {
+          first: "Lori",
+          last: "Rivas"
         }
-      ]
+      }
     ],
     createdAt: 1542560024393
   }
@@ -473,8 +425,7 @@ const assignRandomDates = matches => {
 assignRandomDates(matches);
 
 export async function getMatches() {
-  const data = matches.map(m => new AppMatch(m));
-  console.log(matches);
+  const data = matches.filter(d => d !== null);
   return new Promise(resolve => setTimeout(() => resolve(data), 1000));
 }
 
