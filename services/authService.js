@@ -1,6 +1,5 @@
 import { AsyncStorage } from "react-native";
 import jwtDecode from "jwt-decode";
-import AppUser from "../common/appUser";
 import * as userService from "./userService";
 
 const token =
@@ -14,6 +13,8 @@ export async function signInWithSocial() {
     ["userToken", userToken],
     ["currentUser", JSON.stringify(user)]
   ]);
+
+  return user;
 }
 
 export function signOut() {

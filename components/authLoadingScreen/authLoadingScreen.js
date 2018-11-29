@@ -11,10 +11,12 @@ import { getCurrentUser } from "../../services/authService";
 class AuthLoadingScreen extends Component {
   async componentWillMount() {
     try {
-      await getCurrentUser();
-      this.props.navigation.navigate("App");
+      const user = await getCurrentUser();
+
+      if (!user) return this.props.navigation.navigate("Anonym");
+      this.props.navigation.navigate("App", { user });
     } catch (ex) {
-      this.props.navigation.navigate("Anonym");
+      console.error(ex);
     }
   }
 

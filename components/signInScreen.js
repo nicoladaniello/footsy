@@ -54,8 +54,8 @@ class SignInScreen extends Component {
 
   _signIn = async () => {
     try {
-      await signInWithSocial();
-      this.props.navigation.navigate("App");
+      const user = await signInWithSocial();
+      this.props.navigation.navigate("App", { user });
     } catch (ex) {
       console.error("Error logging in:", ex);
     }

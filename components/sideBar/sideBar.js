@@ -9,16 +9,17 @@ import {
   Thumbnail,
   H3
 } from "native-base";
-import { signOut, getCurrentUser } from "../../services/authService";
+import { signOut } from "../../services/authService";
 
 const routes = ["Home", "My Matches", "Notifications", "Settings"];
 
 class SideBar extends Component {
-  state = { user: {} };
+  state = { user: { name: {} } };
 
   async componentWillMount() {
     try {
-      const user = await getCurrentUser();
+      const user = this.props.navigation.state.params.user;
+      if (!user) throw new Error();
       this.setState({ user });
     } catch (ex) {
       this.props.navigation.navigate("Anonym");
@@ -40,7 +41,7 @@ class SideBar extends Component {
                   source={{ uri: user.image }}
                   style={{ marginBottom: 16 }}
                 />
-                <H3>{user.fullName}</H3>
+                <H3>{`${user.name.first} ${user.name.last}`}</H3>
               </Body>
             </ListItem>
             {routes.map(route => (
