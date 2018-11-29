@@ -8,7 +8,8 @@ import {
   Text,
   Thumbnail,
   Right,
-  List
+  List,
+  Spinner
 } from "native-base";
 import * as matchesSvc from "../../services/matchesService";
 import AppMapImage from "../../common/gmaps-static-api/appMapImage";
@@ -20,7 +21,7 @@ import ListPlayersItem from "../../common/listComponents/listPlayersItem";
 import AppMatch from "../../common/appMatch";
 
 export default class MatchScreen extends Component {
-  state = { data: null, mapModalVisible: false };
+  state = { data: null, mapModalVisible: false, loading: true };
 
   static navigationOptions = ({ navigation }) => {
     return {
@@ -34,23 +35,24 @@ export default class MatchScreen extends Component {
       const matchId = navigation.getParam("matchId", "NO-ID");
       let data = await matchesSvc.getMatch(matchId);
 
-      if (!data) return;
+      if (!data) return this.setState({ loading: false });
 
       data = new AppMatch(data);
 
       this.props.navigation.setParams({
         title: data.eventDate.fromNow()
       });
-      this.setState({ data });
+      this.setState({ data, loading: false });
     } catch (ex) {
       console.error(ex);
     }
   }
 
   render() {
-    const { data: match, mapModalVisible } = this.state;
+    const { data: match, mapModalVisible, loading } = this.state;
 
-    if (!match) return <Text>Not Found...</Text>;
+    if (loading) return <Spinner />;
+    if (!match) return <Text>Not found...</Text>;
 
     return (
       <React.Fragment>
