@@ -64,15 +64,10 @@ class PlayersPickerScreen extends Component {
     const players = [...this.state.players];
     const index = players.map(p => p._id).indexOf(player._id);
 
-    console.log("Player:", player);
-    console.log("players:", players);
-    console.log("index:", index);
-
     if (index < 0) players.push(player);
     else players.splice(index, 1);
 
     this.setState({ players });
-    console.log("new list", players);
   };
 
   render() {

@@ -470,7 +470,6 @@ export async function saveMatch(match) {
   if (!matchInDb._id) {
     matchInDb._id = Date.now();
     await matches.push(matchInDb);
-    console.log(getMatches());
   }
 
   return matchInDb;
