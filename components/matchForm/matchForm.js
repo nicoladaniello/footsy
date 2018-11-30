@@ -41,6 +41,7 @@ class MatchForm extends Component {
     if (this._invalidForm()) return;
 
     const match = this.state.data;
+    match.players = match.players.list;
     const promise = matchesSvc.saveMatch(match);
 
     callback = this._onMatchSave(promise);
