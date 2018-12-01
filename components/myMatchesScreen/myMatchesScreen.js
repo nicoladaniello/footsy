@@ -7,6 +7,10 @@ import AppHeader from "../../common/appHeader";
 import MatchList from "../../common/matchList/matchList";
 
 class MyMatchesScreen extends Component {
+  static navigationOptions = {
+    header: props => <AppHeader {...props} />
+  };
+
   state = {
     matches: [],
     refreshing: false
@@ -35,7 +39,6 @@ class MyMatchesScreen extends Component {
 
     return (
       <Container>
-        <AppHeader {...this.props} />
         <Content
           refreshControl={
             <RefreshControl
@@ -46,7 +49,7 @@ class MyMatchesScreen extends Component {
         >
           <MatchList
             matches={matches}
-            handlePress={id => navigation.navigate("Matches", { id })}
+            handlePress={id => navigation.navigate("Match", { matchId: id })}
           />
         </Content>
       </Container>
