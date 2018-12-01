@@ -1,5 +1,4 @@
 import { getCurrentUser } from "./authService";
-import AppMatch from "../common/appMatch";
 import moment from "moment";
 
 const matches = [
@@ -12,11 +11,12 @@ const matches = [
     description:
       "Occaecat aliqua deserunt aliquip reprehenderit id adipisicing ut id non incididunt nostrud mollit dolor. Enim enim veniam duis deserunt laboris officia non. Reprehenderit culpa reprehenderit magna labore amet tempor incididunt. Ex ut labore quis exercitation eiusmod velit non.",
     organiser: {
-      _id: "5bfbb266788a1769800a448f",
-      image: "http://placehold.it/64x64",
+      _id: "5bfb01a27a52c35626e94843",
+      image:
+        "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3ccc1801fd91dc9cf869fa6a09360c09&auto=format&fit=crop&w=1600&q=80",
       name: {
-        first: "Dawson",
-        last: "Fernandez"
+        first: "Jhon",
+        last: "Doe"
       },
       organised: "<TypeError: this.number is not a function>"
     },
@@ -62,11 +62,12 @@ const matches = [
     description:
       "Eiusmod officia irure eu fugiat. Dolore adipisicing ad cupidatat non eiusmod duis dolor sit. Aliquip adipisicing culpa commodo excepteur ex deserunt amet duis non. Nisi aliqua excepteur officia incididunt cillum sunt culpa. Laboris ipsum sit amet irure aliqua incididunt in enim occaecat. Sunt magna reprehenderit in nulla adipisicing. Laborum nisi sint id sit.",
     organiser: {
-      _id: "5bfbb266b7ddd491b7c05e40",
-      image: "http://placehold.it/64x64",
+      _id: "5bfb01a27a52c35626e94843",
+      image:
+        "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3ccc1801fd91dc9cf869fa6a09360c09&auto=format&fit=crop&w=1600&q=80",
       name: {
-        first: "Johnson",
-        last: "Barlow"
+        first: "Jhon",
+        last: "Doe"
       },
       organised: "<TypeError: this.number is not a function>"
     },
@@ -127,6 +128,15 @@ const matches = [
     },
     players: [
       {
+        _id: "5bfb01a27a52c35626e94843",
+        image:
+          "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3ccc1801fd91dc9cf869fa6a09360c09&auto=format&fit=crop&w=1600&q=80",
+        name: {
+          first: "Jhon",
+          last: "Doe"
+        }
+      },
+      {
         _id: "5bfbb2660e946157fe914d4b",
         image: "http://placehold.it/64x64",
         name: {
@@ -177,6 +187,15 @@ const matches = [
     },
     players: [
       {
+        _id: "5bfb01a27a52c35626e94843",
+        image:
+          "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3ccc1801fd91dc9cf869fa6a09360c09&auto=format&fit=crop&w=1600&q=80",
+        name: {
+          first: "Jhon",
+          last: "Doe"
+        }
+      },
+      {
         _id: "5bfbb2664d7280a3cbbd3d40",
         image: "http://placehold.it/64x64",
         name: {
@@ -226,6 +245,15 @@ const matches = [
       longitude: -177.803174
     },
     players: [
+      {
+        _id: "5bfb01a27a52c35626e94843",
+        image:
+          "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3ccc1801fd91dc9cf869fa6a09360c09&auto=format&fit=crop&w=1600&q=80",
+        name: {
+          first: "Jhon",
+          last: "Doe"
+        }
+      },
       {
         _id: "5bfbb2669dcf1cb8c5e874ba",
         image: "http://placehold.it/64x64",
@@ -479,4 +507,9 @@ export function deleteMatch(id) {
   let matchInDb = matches.find(m => m._id === id);
   matches.splice(matches.indexOf(matchInDb), 1);
   return matchInDb;
+}
+
+export async function getMatchesByIds(ids) {
+  const data = await this.getMatches();
+  return data.filter(m => ids.includes(m._id));
 }

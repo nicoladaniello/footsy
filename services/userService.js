@@ -1,5 +1,3 @@
-import AppUser from "../common/appUser";
-
 const users = [
   {
     _id: "5bfb01a27a52c35626e94843",
