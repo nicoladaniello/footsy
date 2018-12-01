@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavigationActions } from "react-navigation";
 import {
   ListItem,
   Left,
@@ -25,7 +26,15 @@ export default class MatchScreen extends Component {
 
   static navigationOptions = ({ navigation }) => {
     return {
-      title: navigation.getParam("title", "Match")
+      title: navigation.getParam("title", "Match"),
+      headerLeft: (
+        <Button
+          transparent
+          onPress={() => navigation.dispatch(NavigationActions.back())}
+        >
+          <Icon type="MaterialCommunityIcons" name="chevron-left" />
+        </Button>
+      )
     };
   };
 
@@ -50,6 +59,7 @@ export default class MatchScreen extends Component {
 
   render() {
     const { data: match, mapModalVisible, loading } = this.state;
+    const { navigation } = this.props;
 
     if (loading) return <Spinner />;
     if (!match) return <Text>Not found...</Text>;
@@ -105,21 +115,11 @@ export default class MatchScreen extends Component {
                   </Button>
                 </Right>
               </ListItem>
-              {/* <ListItem avatar>
-                <Left>
-                  <Thumbnail small source={{ uri: match.organiser.image }} />
-                </Left>
-                <Body>
-                  <Text>{match.numberOfPartecipants} Partecipants</Text>
-                  <Text note>Filip, Mark and 19 others...</Text>
-                </Body>
-                <Right>
-                  <Icon name="arrow-forward" />
-                </Right>
-              </ListItem> */}
               <ListPlayersItem
                 players={match.players}
-                onPress={() => console.log("press")}
+                onPress={() =>
+                  navigation.navigate("Players", { players: match.players })
+                }
               />
               <FormItem
                 active
