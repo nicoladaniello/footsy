@@ -33,7 +33,41 @@ export default (variables /*: * */ = variable) => {
           marginBottom: variables.lineHeightH2 / 2
         }
       },
-      paddingBottom: variables.listItemPadding/2
+      paddingBottom: variables.listItemPadding / 2
+    },
+    ".matchItem": {
+      "NativeBase.Left": {
+        alignSelf: null,
+        flexGrow: 0.2,
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "space-between",
+        marginRight: variables.listItemPaddingHorizontal
+      },
+      "NativeBase.Body": {
+        "NativeBase.View": {
+          ".organiser": {
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center"
+          }
+        },
+        flexDirection: "column",
+        alignItems: "flex-start",
+        justifyContent: "space-between"
+      },
+      "NativeBase.Right": {
+        alignSelf: null,
+        flexGrow: 0.1,
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "space-between"
+      },
+      alignItems: "stretch",
+      paddingLeft: variables.listItemPaddingHorizontal / 2,
+      paddingBottom: variables.listItemPadding / 2,
+      paddingRight: 0,
+      height: 96
     },
     "NativeBase.Left": {
       "NativeBase.Icon": {
@@ -42,7 +76,6 @@ export default (variables /*: * */ = variable) => {
       flexDirection: "row"
     },
     "NativeBase.Body": {
-      flex: 1,
       alignSelf: null,
       alignItems: null
     },

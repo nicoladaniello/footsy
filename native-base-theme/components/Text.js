@@ -9,6 +9,15 @@ export default (variables /*: * */ = variable) => {
     ".note": {
       color: "#a7a7a7",
       fontSize: variables.noteFontSize
+    },
+    ".small": {
+      fontSize: variables.fontSizeSmall
+    },
+    ".sub": {
+      fontSize: variables.fontSizeBody2
+    },
+    ".center": {
+      textAlign: "center"
     }
   };
 

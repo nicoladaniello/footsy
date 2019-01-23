@@ -260,6 +260,8 @@ export default {
   fontSizeH1: textStyles.h1.fontSize,
   fontSizeH2: textStyles.h2.fontSize,
   fontSizeH3: textStyles.h3.fontSize,
+  fontSizeBody2: textStyles.body2.fontSize,
+  fontSizeSmall: textStyles.small.fontSize,
 
   fontWeightH2: textStyles.h2.fontWeight,
   fontWeightH3: textStyles.h3.fontWeight,

@@ -40,8 +40,8 @@ export default (matchItemStyle = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    position: "absolute",
-    bottom: 0,
+    // position: "absolute",
+    // bottom: 0,
     ...textStyles.small
   },
   right: {
