@@ -3,7 +3,7 @@ import { RefreshControl } from "react-native";
 import { Container, Content } from "native-base";
 import * as userMatchesService from "../../../services/userMatchesService";
 import AppMatch from "../../../common/appMatch";
-import MatchList from "../../../common/matchList/matchList";
+import MatchList from "../../organisms/matchList/matchList";
 
 class MyMatchesScreen extends Component {
   state = {
@@ -44,7 +44,7 @@ class MyMatchesScreen extends Component {
         >
           <MatchList
             matches={matches}
-            handlePress={id => navigation.navigate("Match", { matchId: id })}
+            onItemPress={id => navigation.navigate("Match", { matchId: id })}
           />
         </Content>
       </Container>

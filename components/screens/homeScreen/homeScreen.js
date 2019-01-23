@@ -1,49 +1,19 @@
 import React, { Component } from "react";
-import { Container, Tabs, ScrollableTab } from "native-base";
-import moment from "moment";
+import { Container } from "native-base";
 import HomeScreenHeader from "./homeScreenHeader";
-import MatchesTab from "../../../common/matchesTab";
+import HomeTabsBar from "../../organisms/homeTabsBar/homeTabsBar";
 
 export default class HomeScreen extends Component {
-  static navigationOptions = {
-    header: props => <HomeScreenHeader {...props} />
-  };
-
-  state = {
-    dates: []
-  };
-
-  componentWillMount() {
-    this._populateDates();
-  }
-
-  _populateDates = () => {
-    const dates = new Array(7).fill(new Date()).map((d, i) =>
-      moment(d)
-        .add(i, "days")
-        .toDate()
-    );
-    this.setState({ dates });
-  };
+  header = <HomeScreenHeader />;
 
   render() {
     const { navigation } = this.props;
-    const { dates } = this.state;
-
-    if (!dates) return <Text>Loading...</Text>;
 
     return (
       <Container>
-        <Tabs renderTabBar={() => <ScrollableTab />}>
-          {dates.map(date => (
-            <MatchesTab
-              key={date}
-              date={date}
-              heading={moment(date).format("ddd DD")}
-              handlePress={id => navigation.navigate("Match", { matchId: id })}
-            />
-          ))}
-        </Tabs>
+        <HomeTabsBar
+          onItemPress={id => navigation.navigate("Match", { matchId: id })}
+        />
       </Container>
     );
   }

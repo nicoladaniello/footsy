@@ -1,14 +1,16 @@
 import React from "react";
 import { TouchableOpacity } from "react-native";
 import { Thumbnail, Text, View } from "native-base";
+import PropTypes from "prop-types";
 
-import style from "../../assets/styles/matchItemStyle";
-import { textStyles } from "../../assets/styles/styles";
-import SpacesLeftPie from "../spacesLeftPie/spacesLeftPie";
+import style from "../../../assets/styles/matchItemStyle";
+import { textStyles } from "../../../assets/styles/styles";
+import SpacesLeftPie from "../../../common/spacesLeftPie/spacesLeftPie";
+import AppMatch from "../../../common/appMatch";
 
-const MatchListItem = ({ match, handlePress }) => {
+const MatchListItem = ({ match, onPress }) => {
   return (
-    <TouchableOpacity style={style.Item} onPress={handlePress}>
+    <TouchableOpacity style={style.Item} onPress={onPress}>
       <View style={style.left}>
         <Text style={style.leftTitle}>
           {match.eventDate.format("hh:mm")}
@@ -40,6 +42,11 @@ const MatchListItem = ({ match, handlePress }) => {
       </View>
     </TouchableOpacity>
   );
+};
+
+MatchListItem.propTypes = {
+  match: PropTypes.instanceOf(AppMatch).isRequired,
+  onPress: PropTypes.func.isRequired
 };
 
 export default MatchListItem;
