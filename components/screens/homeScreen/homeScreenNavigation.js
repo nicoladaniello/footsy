@@ -1,9 +1,8 @@
 import { createStackNavigator } from "react-navigation";
 import HomeScreen from "./homeScreen";
-import matchFormNavigation from "../matchForm/matchFormNavigation";
 import MatchScreenNavigation from "../matchScreen/matchScreenNavigation";
 
-const rootScreenNavigation = createStackNavigator({
+const homeScreenNavigation = createStackNavigator({
   Home: {
     screen: HomeScreen
   },
@@ -14,20 +13,5 @@ const rootScreenNavigation = createStackNavigator({
     }
   }
 });
-
-const homeScreenNavigation = createStackNavigator(
-  {
-    Root: {
-      screen: rootScreenNavigation
-    },
-    MatchForm: {
-      screen: matchFormNavigation
-    }
-  },
-  {
-    mode: "modal",
-    headerMode: "none"
-  }
-);
 
 export default homeScreenNavigation;

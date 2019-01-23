@@ -1,48 +1,41 @@
 import React from "react";
-import { ListItem, Left, Body, Right, Icon, Text, Button } from "native-base";
+import { ListItem, Left, Body, Right, Icon, Text } from "native-base";
+import { colors } from "../../assets/styles/styles";
 
 const DEFAULT_ICON_TYPE = "Ionicons";
 
 const APP_ICONS = {
   "map-marker": {
     type: "MaterialCommunityIcons",
-    name: "map-marker",
-    bgColor: "#FF9501"
+    name: "map-marker"
   },
   "calendar-clock": {
     type: "MaterialCommunityIcons",
-    name: "calendar-clock",
-    bgColor: "blue"
+    name: "calendar-clock"
   },
   team: {
     type: DEFAULT_ICON_TYPE,
-    name: "md-shirt",
-    bgColor: "yellow"
+    name: "md-shirt"
   },
   payment: {
     type: "MaterialCommunityIcons",
-    name: "credit-card",
-    bgColor: "blue"
+    name: "credit-card"
   },
   share: {
     type: "MaterialCommunityIcons",
-    name: "share-variant",
-    bgColor: "green"
+    name: "share-variant"
   },
   join: {
     type: "MaterialCommunityIcons",
-    name: "calendar-plus",
-    bgColor: "blue"
+    name: "calendar-plus"
   },
   "add-players": {
     type: DEFAULT_ICON_TYPE,
-    name: "md-person-add",
-    bgColor: "blue"
+    name: "md-person-add"
   }
 };
 
 const FormItem = ({
-  active,
   icon,
   onPress,
   value,
@@ -55,22 +48,13 @@ const FormItem = ({
     text = value ? <Text>{value}</Text> : <Text note>{placeHolder}</Text>;
   } else text = <Text>{text}</Text>;
 
-  const appIcon = active ? (
-    <Button style={{ backgroundColor: APP_ICONS[icon].bgColor }}>
-      <Icon
-        active={active}
-        type={APP_ICONS[icon].type}
-        name={APP_ICONS[icon].name}
-      />
-    </Button>
-  ) : (
+  const appIcon = (
     <Icon
-      active={active}
       type={APP_ICONS[icon].type}
       name={APP_ICONS[icon].name}
+      style={{ color: colors.primary }}
     />
   );
-
   const subtext = note ? <Text note>{note}</Text> : null;
 
   return (

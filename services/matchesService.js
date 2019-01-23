@@ -21,9 +21,11 @@ const matches = [
       organised: "<TypeError: this.number is not a function>"
     },
     address: {
+      main_text: "Market Road ATP",
+      secondary_text: "Market Road, London, UK",
       description: "115 Virginia Place, Juntura, Illinois, 8382",
-      latitude: 51.194488,
-      longitude: 113.182821
+      latitude: 51.507351,
+      longitude: -0.127758
     },
     players: [
       {
@@ -72,9 +74,11 @@ const matches = [
       organised: "<TypeError: this.number is not a function>"
     },
     address: {
+      main_text: "Market Road ATP",
+      secondary_text: "Market Road, London, UK",
       description: "630 Kings Hwy, Clarksburg, Virginia, 4741",
-      latitude: -7.192042,
-      longitude: 113.081431
+      latitude: 51.507351,
+      longitude: -0.127758
     },
     players: [
       {
@@ -108,7 +112,7 @@ const matches = [
     _id: "5bfbb26649b2b201e9de1942",
     isPrivate: true,
     eventDate: 1542934835567,
-    teamSize: 8,
+    teamSize: 2,
     price: 3999,
     description:
       "Labore Lorem culpa ut laborum occaecat nisi ipsum quis ipsum esse laboris. Lorem nostrud aliqua ipsum labore est amet ex consectetur voluptate. Labore veniam nostrud ut deserunt non incididunt qui ad. Anim ipsum cupidatat nostrud sint cillum dolor nostrud excepteur id voluptate. Elit elit adipisicing quis occaecat qui aute duis. Consectetur ad nostrud proident aliqua occaecat consequat duis.",
@@ -122,9 +126,11 @@ const matches = [
       organised: "<TypeError: this.number is not a function>"
     },
     address: {
+      main_text: "Market Road ATP",
+      secondary_text: "Market Road, London, UK",
       description: "505 Sullivan Place, Chaparrito, Iowa, 9470",
-      latitude: -58.231223,
-      longitude: -69.638856
+      latitude: 51.507351,
+      longitude: -0.127758
     },
     players: [
       {
@@ -181,9 +187,11 @@ const matches = [
       organised: "<TypeError: this.number is not a function>"
     },
     address: {
+      main_text: "Market Road ATP",
+      secondary_text: "Market Road, London, UK",
       description: "282 Hubbard Place, Slovan, Georgia, 4950",
-      latitude: 18.032463,
-      longitude: 126.617034
+      latitude: 51.507351,
+      longitude: -0.127758
     },
     players: [
       {
@@ -240,9 +248,11 @@ const matches = [
       organised: "<TypeError: this.number is not a function>"
     },
     address: {
+      main_text: "Market Road ATP",
+      secondary_text: "Market Road, London, UK",
       description: "842 Farragut Road, Robinette, South Dakota, 2596",
-      latitude: 88.060375,
-      longitude: -177.803174
+      latitude: 51.507351,
+      longitude: -0.127758
     },
     players: [
       {
@@ -299,9 +309,11 @@ const matches = [
       organised: "<TypeError: this.number is not a function>"
     },
     address: {
+      main_text: "Market Road ATP",
+      secondary_text: "Market Road, London, UK",
       description: "815 Kings Place, Groveville, New York, 7154",
-      latitude: -23.731317,
-      longitude: 108.524542
+      latitude: 51.507351,
+      longitude: -0.127758
     },
     players: [
       {
@@ -349,9 +361,11 @@ const matches = [
       organised: "<TypeError: this.number is not a function>"
     },
     address: {
+      main_text: "Market Road ATP",
+      secondary_text: "Market Road, London, UK",
       description: "242 Baltic Street, Sultana, Alabama, 6961",
-      latitude: -7.085624,
-      longitude: -143.732348
+      latitude: 51.507351,
+      longitude: -0.127758
     },
     players: [
       {
@@ -399,9 +413,11 @@ const matches = [
       organised: "<TypeError: this.number is not a function>"
     },
     address: {
+      main_text: "Market Road ATP",
+      secondary_text: "Market Road, London, UK",
       description: "526 Benson Avenue, Osage, Maine, 5230",
-      latitude: -10.714881,
-      longitude: -56.646647
+      latitude: 51.507351,
+      longitude: -0.127758
     },
     players: [
       {

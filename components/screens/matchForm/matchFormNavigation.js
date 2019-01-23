@@ -3,7 +3,7 @@ import MatchForm from "./matchForm";
 import GooglePlacesInput from "./matchAddressScreen";
 import PlayersPickerScreen from "./playersPickerScreen";
 
-const matchFormNavigation = createStackNavigator(
+const MatchFormNavigation = createStackNavigator(
   {
     Home: {
       screen: MatchForm
@@ -20,4 +20,4 @@ const matchFormNavigation = createStackNavigator(
   }
 );
 
-export default matchFormNavigation;
+export default MatchFormNavigation;

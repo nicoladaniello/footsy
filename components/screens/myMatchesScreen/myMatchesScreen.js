@@ -1,16 +1,11 @@
 import React, { Component } from "react";
 import { RefreshControl } from "react-native";
 import { Container, Content } from "native-base";
-import * as userMatchesService from "../../services/userMatchesService";
-import AppMatch from "../../common/appMatch";
-import AppHeader from "../../common/appHeader";
-import MatchList from "../../common/matchList/matchList";
+import * as userMatchesService from "../../../services/userMatchesService";
+import AppMatch from "../../../common/appMatch";
+import MatchList from "../../../common/matchList/matchList";
 
 class MyMatchesScreen extends Component {
-  static navigationOptions = {
-    header: props => <AppHeader {...props} />
-  };
-
   state = {
     matches: [],
     refreshing: false

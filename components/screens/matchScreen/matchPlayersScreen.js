@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { FlatList } from "react-native";
 import { Container, Content } from "native-base";
-import FormSelectItem from "../../common/formComponents/formSelectItem";
+import FormSelectItem from "../../../common/formComponents/formSelectItem";
 
 class MatchPlayersScreen extends Component {
   constructor(props) {

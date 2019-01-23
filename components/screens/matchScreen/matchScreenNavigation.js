@@ -1,7 +1,6 @@
 import { createStackNavigator } from "react-navigation";
-import MatchScreen from "../matchScreen/matchScreen";
+import MatchScreen from "./matchScreen";
 import MatchPlayersScreen from "./matchPlayersScreen";
-import { Button } from "native-base";
 
 const MatchScreenNavigation = createStackNavigator({
   Home: {

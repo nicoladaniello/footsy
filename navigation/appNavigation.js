@@ -1,22 +1,17 @@
-import React from "react";
+import { createBottomTabNavigator } from "react-navigation";
 
-import { createDrawerNavigator } from "react-navigation";
-import homeScreenNavigation from "../components/homeScreen/homeScreenNavigation";
-import SideBar from "../components/sideBar/sideBar";
-import NotificationsScreen from "../components/notificationsScreen/notificationsScreen";
-import SettingsScreen from "../components/settingsScreen/settingsScreen";
-import MyMatchesNavigation from "../components/myMatchesScreen/myMatchesNavigation";
+import homeScreenNavigation from "../components/screens/homeScreen/homeScreenNavigation";
+import MyMatchesNavigation from "../components/screens/myMatchesScreen/myMatchesNavigation";
+import MatchFormNavigation from "../components/screens/matchForm/matchFormNavigation";
+import NotificationsScreen from "../components/screens/notificationsScreen/notificationsScreen";
+import SettingsScreen from "../components/screens/settingsScreen/settingsScreen";
 
-const AppNavigation = createDrawerNavigator(
-  {
-    Home: { screen: homeScreenNavigation },
-    "My Matches": { screen: MyMatchesNavigation },
-    Notifications: { screen: NotificationsScreen },
-    Settings: { screen: SettingsScreen }
-  },
-  {
-    contentComponent: props => <SideBar {...props} />
-  }
-);
+const AppNavigation = createBottomTabNavigator({
+  Home: { screen: homeScreenNavigation },
+  "My Matches": { screen: MyMatchesNavigation },
+  Scheduler: { screen: MatchFormNavigation },
+  Notifications: { screen: NotificationsScreen },
+  Settings: { screen: SettingsScreen }
+});
 
 export default AppNavigation;

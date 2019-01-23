@@ -1,16 +1,16 @@
 import { createSwitchNavigator } from "react-navigation";
 import AppNavigation from "./appNavigation";
-import AnonymNavigation from "./anonymNavigation";
-import AuthLoadingScreen from "../components/authLoadingScreen/authLoadingScreen";
+import BootstrapScreen from "../components/screens/bootstrapScreen";
+import SignInScreen from "../components/screens/signInScreen";
 
 const SwitchNavigation = createSwitchNavigator(
   {
-    AuthLoading: AuthLoadingScreen,
-    App: AppNavigation,
-    Anonym: AnonymNavigation
+    Bootstrap: BootstrapScreen,
+    SignIn: SignInScreen,
+    App: AppNavigation
   },
   {
-    initialRouteName: "AuthLoading"
+    initialRouteName: "Bootstrap"
   }
 );
 

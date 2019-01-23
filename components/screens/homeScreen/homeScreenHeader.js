@@ -1,20 +1,12 @@
 import React, { Component } from "react";
 import { Header, Title, Button, Left, Right, Body, Icon } from "native-base";
 
-class AppHeader extends Component {
+class HomeScreenHeader extends Component {
   render() {
     return (
       <Header>
-        <Left>
-          <Button
-            transparent
-            dark
-            onPress={() => this.props.navigation.openDrawer()}
-          >
-            <Icon name="md-menu" style={{ fontSize: 22 }} />
-          </Button>
-        </Left>
-        <Body>
+        <Left />
+        <Body style={{ flexGrow: 5, alignItems: "center" }}>
           <Title>Footsy</Title>
         </Body>
         <Right>
@@ -23,7 +15,7 @@ class AppHeader extends Component {
             dark
             onPress={() => this.props.navigation.navigate("Notifications")}
           >
-            <Icon name="md-notifications" style={{ fontSize: 22 }} />
+            <Icon name="md-search" />
           </Button>
         </Right>
       </Header>
@@ -31,4 +23,4 @@ class AppHeader extends Component {
   }
 }
 
-export default AppHeader;
+export default HomeScreenHeader;

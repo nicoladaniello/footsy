@@ -14,15 +14,15 @@ import {
   List,
   Toast
 } from "native-base";
-import { MatchDurations, TeamSizes } from "../../enviroment";
-import * as matchesSvc from "../../services/matchesService";
-import FormDatePicker from "../../common/formComponents/formDatePicker";
-import FormActionSheet from "../../common/formComponents/formActionSheet";
-import FormSwitch from "../../common/formComponents/formSwitch";
-import FormItem from "../../common/formComponents/formItem";
-import FormCurrencyInput from "../../common/formComponents/formCurrencyInput";
-import FormPlayersItem from "../../common/formComponents/formPlayersItem";
-import AppUserList from "../../common/appUserList";
+import { MatchDurations, TeamSizes } from "../../../enviroment";
+import * as matchesSvc from "../../../services/matchesService";
+import FormDatePicker from "../../../common/formComponents/formDatePicker";
+import FormActionSheet from "../../../common/formComponents/formActionSheet";
+import FormSwitch from "../../../common/formComponents/formSwitch";
+import FormItem from "../../../common/formComponents/formItem";
+import FormCurrencyInput from "../../../common/formComponents/formCurrencyInput";
+import FormPlayersItem from "../../../common/formComponents/formPlayersItem";
+import AppUserList from "../../../common/appUserList";
 
 class MatchForm extends Component {
   state = {
@@ -72,6 +72,8 @@ class MatchForm extends Component {
   };
 
   _handleAddressPicker = (addrData, details) => {
+    // console.log("addrData", addrData);
+    // console.log("details", details);
     const data = { ...this.state.data };
     data.address = addrData;
     data.address.latitude = details.geometry.location.lat;

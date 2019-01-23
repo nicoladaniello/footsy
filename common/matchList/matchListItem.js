@@ -1,61 +1,44 @@
 import React from "react";
-import {
-  ListItem,
-  Thumbnail,
-  Badge,
-  Text,
-  Left,
-  Body,
-  Right,
-  View
-} from "native-base";
+import { TouchableOpacity } from "react-native";
+import { Thumbnail, Text, View } from "native-base";
+
+import style from "../../assets/styles/matchItemStyle";
+import { textStyles } from "../../assets/styles/styles";
+import SpacesLeftPie from "../spacesLeftPie/spacesLeftPie";
 
 const MatchListItem = ({ match, handlePress }) => {
   return (
-    <ListItem thumbnail onPress={handlePress}>
-      <Left>
-        <Text note style={{ textAlign: "center" }}>
+    <TouchableOpacity style={style.Item} onPress={handlePress}>
+      <View style={style.left}>
+        <Text style={style.leftTitle}>
           {match.eventDate.format("hh:mm")}
           {"\n"}
           {match.eventDate.format("A")}
         </Text>
-      </Left>
-      <Body>
-        <Text>{match.address.description}</Text>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            marginTop: 2,
-            marginBottom: 8
-          }}
-        >
-          <Text note>{match.teamSize} a side</Text>
-          <Text primary style={{ fontSize: 14, marginLeft: 8 }}>
-            - {match.formattedPrice}
-          </Text>
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center"
-          }}
-        >
+        <Text note style={style.leftSubtitle}>
+          300m
+        </Text>
+      </View>
+      <View style={style.body}>
+        <Text style={textStyles.h4}>
+          {match.address.main_text}, {match.teamSize} a side
+        </Text>
+        <Text style={textStyles.body2}>{match.address.secondary_text}</Text>
+        <View style={style.organiser}>
           <Thumbnail
-            style={{ width: 28, height: 28, borderRadius: 14 }}
+            style={{ width: 16, height: 16, borderRadius: 8, marginRight: 4 }}
             source={{ uri: match.organiser.image }}
           />
-          <Text note> Organised by {match.organiser.fullName}</Text>
-        </View>
-      </Body>
-      <Right>
-        <Badge primary>
-          <Text>
-            {match.numberOfPartecipants} / {match.totalNumberOfPlayers}
+          <Text style={textStyles.small}>
+            Organised by {match.organiser.fullName}
           </Text>
-        </Badge>
-      </Right>
-    </ListItem>
+        </View>
+      </View>
+      <View style={style.right}>
+        <SpacesLeftPie match={match} />
+        <Text style={style.rightSubtitle}>{match.formattedPrice}</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 

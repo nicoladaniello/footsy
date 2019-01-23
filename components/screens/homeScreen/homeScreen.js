@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { Container, Tabs, ScrollableTab, Fab, Icon } from "native-base";
+import { Container, Tabs, ScrollableTab } from "native-base";
 import moment from "moment";
-import AppHeader from "../../common/appHeader";
-import MatchesTab from "../../common/matchesTab";
+import HomeScreenHeader from "./homeScreenHeader";
+import MatchesTab from "../../../common/matchesTab";
 
 export default class HomeScreen extends Component {
   static navigationOptions = {
-    header: props => <AppHeader {...props} />
+    header: props => <HomeScreenHeader {...props} />
   };
 
   state = {
@@ -44,12 +44,6 @@ export default class HomeScreen extends Component {
             />
           ))}
         </Tabs>
-        <Fab
-          style={{ backgroundColor: "#5067FF" }}
-          onPress={() => navigation.navigate("MatchForm")}
-        >
-          <Icon name="share" />
-        </Fab>
       </Container>
     );
   }

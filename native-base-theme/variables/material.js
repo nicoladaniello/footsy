@@ -2,7 +2,138 @@
 
 import color from "color";
 
-import { Platform, Dimensions, PixelRatio } from "react-native";
+import { Platform, Dimensions, PixelRatio, StyleSheet } from "react-native";
+
+const colors = {
+  color_primary: "#43a272",
+  color_primaryLight: "#97dbb8",
+  color_primaryLighter: "#c5efda",
+  color_accent: "#f45f5f",
+  color_accentLight: "#ff8787",
+  color_accentLighter: "#ffb2b2",
+  color_dark: "#1a051d",
+  color_darkLight: "#3f3356",
+  color_darkLighter: "#d0c9d6",
+  color_gray: "#ecebed",
+  color_grayLight: "#f7f5f9",
+  color_white: "#ffffff",
+  color_success: "#00c48c",
+  color_successLight: "#7ddfc3",
+  color_successLighter: "#d5f2ea",
+  color_danger: "#ff647c",
+  color_dangerLight: "#fdafbb",
+  color_dangerLighter: "#fbe4e8",
+  color_warning: "#ffcf5c",
+  color_warningLight: "#ffe29d",
+  color_warningLighter: "#fff8e7",
+  color_shadow1: "rgba(0, 0, 0, 0.07)",
+  color_shadow2: "rgba(208, 201, 214, 0.4)"
+};
+
+const textStyles = StyleSheet.create({
+  h1: {
+    fontFamily: "Quicksand",
+    fontSize: 34,
+    fontWeight: "bold",
+    fontStyle: "normal",
+    lineHeight: 41,
+    letterSpacing: 0,
+    color: colors.dark
+  },
+  h2: {
+    fontFamily: "Quicksand",
+    fontSize: 22,
+    fontWeight: "bold",
+    fontStyle: "normal",
+    lineHeight: 28,
+    letterSpacing: 0,
+    color: colors.dark
+  },
+  button1: {
+    fontFamily: "Quicksand",
+    fontSize: 17,
+    fontWeight: "bold",
+    fontStyle: "normal",
+    lineHeight: 22,
+    letterSpacing: 0,
+    color: colors.dark
+  },
+  h3: {
+    fontFamily: "Quicksand",
+    fontSize: 15,
+    fontWeight: "500",
+    fontStyle: "normal",
+    lineHeight: 20,
+    letterSpacing: 0,
+    color: colors.dark
+  },
+  button2: {
+    fontFamily: "Quicksand",
+    fontSize: 13,
+    fontWeight: "500",
+    fontStyle: "normal",
+    lineHeight: 18,
+    letterSpacing: 0,
+    color: colors.dark
+  },
+  caption1: {
+    fontFamily: "Quicksand",
+    fontSize: 12,
+    fontWeight: "500",
+    fontStyle: "normal",
+    lineHeight: 16,
+    letterSpacing: 0,
+    color: colors.dark
+  },
+  caption2: {
+    fontFamily: "Quicksand",
+    fontSize: 11,
+    fontWeight: "500",
+    fontStyle: "normal",
+    lineHeight: 13,
+    letterSpacing: 0,
+    color: colors.dark
+  },
+  body1: {
+    fontFamily: "Quicksand",
+    fontSize: 15,
+    fontWeight: "normal",
+    fontStyle: "normal",
+    lineHeight: 20,
+    letterSpacing: 0,
+    color: colors.dark
+  },
+  body2: {
+    fontFamily: "Quicksand",
+    fontSize: 13,
+    fontWeight: "normal",
+    fontStyle: "normal",
+    lineHeight: 18,
+    letterSpacing: 0,
+    color: colors.dark
+  },
+  small: {
+    fontFamily: "Quicksand",
+    fontSize: 11,
+    fontWeight: "normal",
+    fontStyle: "normal",
+    lineHeight: 13,
+    letterSpacing: 0,
+    color: colors.dark
+  }
+});
+
+const shadows = StyleSheet.create({
+  navBot: {
+    shadowColor: "#D0C9D6",
+    shadowOpacity: 1,
+    shadowRadius: 0.4,
+    shadowOffset: {
+      width: 0,
+      height: 1
+    }
+  }
+});
 
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
@@ -14,6 +145,8 @@ const isIphoneX =
 export default {
   platformStyle,
   platform,
+
+  ...colors,
 
   //Accordion
   headerStyle: "#edebed",
@@ -80,10 +213,10 @@ export default {
     return this.fontSizeBase * 3.8;
   },
   get iconSizeLarge() {
-    return this.iconFontSize * 1.5;
+    return 36;
   },
   get iconSizeSmall() {
-    return this.iconFontSize * 0.6;
+    return 18;
   },
 
   // Card
@@ -121,18 +254,18 @@ export default {
   datePickerBg: "transparent",
 
   // Font
-  DefaultFontSize: 16,
-  fontFamily: "QuickSand",
+  DefaultFontSize: textStyles.body1.fontSize,
+  fontFamily: textStyles.body1.fontFamily,
   fontSizeBase: 15,
-  get fontSizeH1() {
-    return this.fontSizeBase * 1.8;
-  },
-  get fontSizeH2() {
-    return this.fontSizeBase * 1.6;
-  },
-  get fontSizeH3() {
-    return this.fontSizeBase * 1.4;
-  },
+  fontSizeH1: textStyles.h1.fontSize,
+  fontSizeH2: textStyles.h2.fontSize,
+  fontSizeH3: textStyles.h3.fontSize,
+
+  fontWeightH2: textStyles.h2.fontWeight,
+  fontWeightH3: textStyles.h3.fontWeight,
+
+  lineHeightH2: textStyles.h2.lineHeight,
+  lineHeightH3: textStyles.h3.lineHeight,
 
   // Footer
   footerHeight: 55,
@@ -171,7 +304,7 @@ export default {
 
   // Icon
   iconFamily: "Ionicons",
-  iconFontSize: 28,
+  iconFontSize: 20,
   iconHeaderSize: 24,
 
   // InputGroup
@@ -199,7 +332,8 @@ export default {
   listBorderColor: "#c9c9c9",
   listDividerBg: "#f4f4f4",
   listBtnUnderlayColor: "#DDD",
-  listItemPadding: 12,
+  listItemPadding: 16,
+  listItemPaddingHorizontal: 32,
   listNoteColor: "#808080",
   listNoteSize: 13,
   listItemSelected: "#43A272",

@@ -10,7 +10,7 @@ import {
   View,
   H1
 } from "native-base";
-import { signInWithSocial } from "../services/authService";
+import { signInWithSocial } from "../../services/authService";
 
 class SignInScreen extends Component {
   render() {

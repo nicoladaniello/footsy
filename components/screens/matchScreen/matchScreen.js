@@ -12,14 +12,14 @@ import {
   List,
   Spinner
 } from "native-base";
-import * as matchesSvc from "../../services/matchesService";
-import AppMapImage from "../../common/gmaps-static-api/appMapImage";
-import ScrollAnimationView from "../../common/headerScrollAnimation/scrollAnimationView";
-import ScrollAnimationImage from "../../common/headerScrollAnimation/scrollAnimationImage";
+import * as matchesSvc from "../../../services/matchesService";
+import AppMapImage from "../../../common/gmaps-static-api/appMapImage";
+import ScrollAnimationView from "../../../common/headerScrollAnimation/scrollAnimationView";
+import ScrollAnimationImage from "../../../common/headerScrollAnimation/scrollAnimationImage";
 import MatchMapScreen from "./matchMapScreen";
-import FormItem from "../../common/formComponents/formItem";
-import ListPlayersItem from "../../common/listComponents/listPlayersItem";
-import AppMatch from "../../common/appMatch";
+import FormItem from "../../../common/formComponents/formItem";
+import ListPlayersItem from "../../../common/listComponents/listPlayersItem";
+import AppMatch from "../../../common/appMatch";
 
 export default class MatchScreen extends Component {
   state = { data: null, mapModalVisible: false, loading: true };
@@ -80,27 +80,28 @@ export default class MatchScreen extends Component {
             />
           )}
           contentView={
-            <List style={{ marginTop: 160, backgroundColor: "white" }}>
-              <FormItem
-                active
-                icon="map-marker"
-                text={match.address.description}
-              />
-              <FormItem
-                active
-                icon="calendar-clock"
-                text={match.eventDate.format("ddd DD MMM YYYY")}
-                note={`at ${match.eventDate.format("hh:mm A")}`}
-              />
-              <FormItem
-                active
-                icon="team"
-                text={`${match.teamSize} a side`}
-                note="22/22 partecipated"
-              />
+            <List
+              style={{
+                marginTop: 160,
+                paddingTop: 8,
+                backgroundColor: "white",
+                borderRadius: 16
+              }}
+            >
+              {/* Header */}
+              <ListItem header>
+                <Body>
+                  <Text>Match in {match.address.main_text}</Text>
+                  <Text note>
+                    {match.eventDate.format("dddd DD MMMM YYYY - hh:mm A")}
+                  </Text>
+                </Body>
+              </ListItem>
+              {/* End Header */}
 
-              <ListItem itemDivider />
+              <FormItem icon="map-marker" text={match.address.secondary_text} />
 
+              {/* Organiser */}
               <ListItem avatar>
                 <Left>
                   <Thumbnail small source={{ uri: match.organiser.image }} />
@@ -110,28 +111,38 @@ export default class MatchScreen extends Component {
                   <Text note>21 matches organised - 5 stars</Text>
                 </Body>
                 <Right>
-                  <Button transparent>
-                    <Icon type="MaterialCommunityIcons" name="email-outline" />
-                  </Button>
+                  <Icon
+                    small
+                    type="MaterialCommunityIcons"
+                    name="email-outline"
+                  />
                 </Right>
               </ListItem>
+              {/* End Organiser */}
+
+              {/* Partecipants List */}
               <ListPlayersItem
                 players={match.players}
                 onPress={() =>
                   navigation.navigate("Players", { players: match.players })
                 }
               />
+              {/* End Partecipants List */}
+
+              {/* Team Size */}
               <FormItem
-                active
-                icon="payment"
-                text={match.formattedPrice}
+                icon="team"
+                text={`${match.teamSize} a side`}
                 note="22/22 partecipated"
               />
+              {/* End Team Size */}
 
-              <ListItem itemDivider />
+              {/* Price */}
+              <FormItem icon="payment" text={match.formattedPrice} />
+              {/* End Price */}
 
-              <FormItem active icon="share" text="Share" />
-              <FormItem active icon="join" text="Join Game" />
+              <FormItem icon="share" text="Share" />
+              <FormItem icon="join" text="Join Game" />
             </List>
           }
         />

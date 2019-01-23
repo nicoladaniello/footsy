@@ -10,10 +10,10 @@ import {
   Text,
   Content
 } from "native-base";
-import * as authService from "../../services/authService";
-import * as userService from "../../services/userService";
-import AppUser from "../../common/appUser";
-import FormSelectItem from "../../common/formComponents/formSelectItem";
+import * as authService from "../../../services/authService";
+import * as userService from "../../../services/userService";
+import AppUser from "../../../common/appUser";
+import FormSelectItem from "../../../common/formComponents/formSelectItem";
 
 class PlayersPickerScreen extends Component {
   state = {

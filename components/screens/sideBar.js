@@ -22,7 +22,7 @@ class SideBar extends Component {
       if (!user) throw new Error();
       this.setState({ user });
     } catch (ex) {
-      this.props.navigation.navigate("Anonym");
+      this.props.navigation.navigate("SignIn");
     }
   }
 
@@ -70,7 +70,7 @@ class SideBar extends Component {
   _handleLogOut = async () => {
     try {
       await signOut();
-      this.props.navigation.navigate("Anonym");
+      this.props.navigation.navigate("SignIn");
     } catch (ex) {
       console.error("Error signing out:", ex);
     }

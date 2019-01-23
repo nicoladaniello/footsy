@@ -1,7 +1,7 @@
 import React from "react";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { Icon, Button } from "native-base";
-import { MapsOptions } from "../../enviroment";
+import { MapsOptions } from "../../../enviroment";
 
 // const homePlace = {
 //   description: "Home",

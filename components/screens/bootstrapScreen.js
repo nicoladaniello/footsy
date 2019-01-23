@@ -8,12 +8,12 @@ import {
 } from "react-native";
 import { getCurrentUser } from "../../services/authService";
 
-class AuthLoadingScreen extends Component {
+class BootstrapScreen extends Component {
   async componentWillMount() {
     try {
       const user = await getCurrentUser();
 
-      if (!user) return this.props.navigation.navigate("Anonym");
+      if (!user) return this.props.navigation.navigate("SignIn");
       this.props.navigation.navigate("App", { user });
     } catch (ex) {
       console.error(ex);
@@ -41,4 +41,4 @@ class AuthLoadingScreen extends Component {
   }
 }
 
-export default AuthLoadingScreen;
+export default BootstrapScreen;
