@@ -1,12 +1,10 @@
 import React from "react";
 import { Text } from "react-native";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
-import { colors } from "../../assets/styles/styles";
-import { textStyles } from "../../assets/styles/styles";
 
 const SpacesLeftPie = ({ match }) => {
   const fill = (match.numberOfPartecipants / match.totalNumberOfPlayers) * 100;
-  const tintColor = fill === 100 ? colors.danger : colors.primary;
+  const tintColor = fill === 100 ? "#ff647c" : "#43a272";
   const spacesLeft = match.totalNumberOfPlayers - match.numberOfPartecipants;
   const text = fill === 100 ? "full" : `${spacesLeft} left`;
 
@@ -16,9 +14,9 @@ const SpacesLeftPie = ({ match }) => {
       width={6}
       fill={fill}
       tintColor={tintColor}
-      backgroundColor={colors.gray}
+      backgroundColor={"#ecebed"}
     >
-      {() => <Text style={textStyles.small}>{text}</Text>}
+      {() => <Text small>{text}</Text>}
     </AnimatedCircularProgress>
   );
 };

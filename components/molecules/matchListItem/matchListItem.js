@@ -12,8 +12,6 @@ import {
 } from "native-base";
 import PropTypes from "prop-types";
 
-import style from "../../../assets/styles/matchItemStyle";
-import { textStyles } from "../../../assets/styles/styles";
 import SpacesLeftPie from "../../../common/spacesLeftPie/spacesLeftPie";
 import AppMatch from "../../../common/appMatch";
 

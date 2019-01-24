@@ -1,6 +1,5 @@
 import React from "react";
 import { ListItem, Left, Body, Right, Icon, Text } from "native-base";
-import { colors } from "../../assets/styles/styles";
 
 const DEFAULT_ICON_TYPE = "Ionicons";
 
@@ -49,11 +48,7 @@ const FormItem = ({
   } else text = <Text>{text}</Text>;
 
   const appIcon = (
-    <Icon
-      type={APP_ICONS[icon].type}
-      name={APP_ICONS[icon].name}
-      style={{ color: colors.primary }}
-    />
+    <Icon primary type={APP_ICONS[icon].type} name={APP_ICONS[icon].name} />
   );
   const subtext = note ? <Text note>{note}</Text> : null;
 

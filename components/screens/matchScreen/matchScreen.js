@@ -20,6 +20,8 @@ import MatchMapScreen from "./matchMapScreen";
 import FormItem from "../../../common/formComponents/formItem";
 import ListPlayersItem from "../../../common/listComponents/listPlayersItem";
 import AppMatch from "../../../common/appMatch";
+import MatchHeader from "../../molecules/matchHeader/matchHeader";
+import MatchItem from "../../molecules/matchItem/matchItem";
 
 export default class MatchScreen extends Component {
   state = { data: null, mapModalVisible: false, loading: true };
@@ -89,17 +91,18 @@ export default class MatchScreen extends Component {
               }}
             >
               {/* Header */}
-              <ListItem header>
-                <Body>
-                  <Text>Match in {match.address.main_text}</Text>
-                  <Text note>
-                    {match.eventDate.format("dddd DD MMMM YYYY - hh:mm A")}
-                  </Text>
-                </Body>
-              </ListItem>
+              <MatchHeader
+                title={`Match in ${match.address.main_text}`}
+                subtitle={match.eventDate.format("dddd DD MMMM YYYY - hh:mm A")}
+              />
               {/* End Header */}
 
-              <FormItem icon="map-marker" text={match.address.secondary_text} />
+              {/* Address */}
+              <MatchItem
+                icon="map-marker"
+                title={match.address.secondary_text}
+              />
+              {/* End Address */}
 
               {/* Organiser */}
               <ListItem avatar>
