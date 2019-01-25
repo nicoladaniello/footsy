@@ -12,7 +12,7 @@ import {
 } from "native-base";
 import PropTypes from "prop-types";
 
-import SpacesLeftPie from "../../../common/spacesLeftPie/spacesLeftPie";
+import SpacesLeftPie from "../spacesLeftPie/spacesLeftPie";
 import AppMatch from "../../../common/appMatch";
 
 const MatchListItem = ({ match, onPress }) => {

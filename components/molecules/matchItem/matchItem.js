@@ -4,13 +4,13 @@ import PropTypes from "prop-types";
 
 import Icon from "../../atoms/icon/Icon";
 
-const MatchItem = ({ title, subtitle, icon, avatar, type, onPress }) => {
-  const types = {
-    nav: "chevron-right",
-    more: "more",
-    directions: "directions"
-  };
+const ItemTypes = {
+  nav: "chevron-right",
+  more: "more",
+  directions: "directions"
+};
 
+const MatchItem = ({ title, subtitle, icon, avatar, type, onPress }) => {
   return (
     <ListItem icon={!!icon} avatar={!!avatar} onPress={onPress}>
       <Left>
@@ -23,7 +23,7 @@ const MatchItem = ({ title, subtitle, icon, avatar, type, onPress }) => {
       </Body>
       {type && (
         <Right>
-          <Icon name={types[type]} />
+          <Icon name={ItemTypes[type]} />
         </Right>
       )}
     </ListItem>
@@ -34,7 +34,7 @@ MatchItem.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
   icon: PropTypes.any,
-  type: PropTypes.oneOf(MatchItem.types),
+  type: PropTypes.oneOf(Object.keys(ItemTypes)),
   onPress: PropTypes.func
 };
 

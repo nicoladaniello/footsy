@@ -3,7 +3,7 @@ import { NavigationActions } from "react-navigation";
 import { Button, Text, List, Spinner } from "native-base";
 
 import * as matchesSvc from "../../../services/matchesService";
-import AppMapImage from "../../../common/gmaps-static-api/appMapImage";
+import MapStaticImage from "../../molecules/mapStaticImage/mapStaticImage";
 import ScrollAnimationView from "../../../common/headerScrollAnimation/scrollAnimationView";
 import ScrollAnimationImage from "../../../common/headerScrollAnimation/scrollAnimationImage";
 import MatchMapScreen from "./matchMapScreen";
@@ -68,7 +68,7 @@ export default class MatchScreen extends Component {
           animationView={props => (
             <ScrollAnimationImage
               {...props}
-              image={<AppMapImage match={match} />}
+              image={<MapStaticImage match={match} />}
             />
           )}
           contentView={
