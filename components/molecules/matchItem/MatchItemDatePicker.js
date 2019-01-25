@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import DateTimePicker from "react-native-modal-datetime-picker";
 import moment from "moment";
-import FormItem from "./formItem";
+import DateTimePicker from "react-native-modal-datetime-picker";
 
-class FormDatePicker extends Component {
+import MatchItem from "./matchItem";
+
+class MatchItemDatePicker extends Component {
   state = {
     isDatePickerVisible: false
   };
@@ -20,16 +21,16 @@ class FormDatePicker extends Component {
     const { selected } = this.props;
 
     return (
-      <FormItem
-        icon="calendar-clock"
-        text={
-          selected
-            ? moment(selected).format("dddd, DD MMM YYYY [at] hh:mm A")
-            : null
-        }
-        placeHolder="Date"
-        onPress={this._showDatePicker}
-      >
+      <React.Fragment>
+        <MatchItem
+          icon="calendar-clock"
+          title={
+            selected &&
+            moment(selected).format("dddd, DD MMM YYYY [at] hh:mm A")
+          }
+          subtitle={!selected && "Date"}
+          onPress={this._showDatePicker}
+        />
         <DateTimePicker
           mode="datetime"
           minimumDate={new Date()}
@@ -38,9 +39,9 @@ class FormDatePicker extends Component {
           onConfirm={this._handleSelect}
           onCancel={this._hideDatePicker}
         />
-      </FormItem>
+      </React.Fragment>
     );
   }
 }
 
-export default FormDatePicker;
+export default MatchItemDatePicker;

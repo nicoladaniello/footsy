@@ -18,7 +18,7 @@ const MatchItem = ({ title, subtitle, icon, avatar, type, onPress }) => {
         {avatar && <Thumbnail small source={avatar} />}
       </Left>
       <Body>
-        <Text>{title}</Text>
+        {title && <Text>{title}</Text>}
         {subtitle && <Text note>{subtitle}</Text>}
       </Body>
       {type && (
@@ -31,7 +31,7 @@ const MatchItem = ({ title, subtitle, icon, avatar, type, onPress }) => {
 };
 
 MatchItem.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   subtitle: PropTypes.string,
   icon: PropTypes.any,
   type: PropTypes.oneOf(Object.keys(ItemTypes)),

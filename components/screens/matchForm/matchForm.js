@@ -16,13 +16,13 @@ import {
 } from "native-base";
 import { MatchDurations, TeamSizes } from "../../../enviroment";
 import * as matchesSvc from "../../../services/matchesService";
-import FormDatePicker from "../../../common/formComponents/formDatePicker";
+import MatchItemDatePicker from "../../molecules/matchItem/MatchItemDatePicker";
 import FormActionSheet from "../../../common/formComponents/formActionSheet";
 import FormSwitch from "../../../common/formComponents/formSwitch";
-import FormItem from "../../../common/formComponents/formItem";
 import FormCurrencyInput from "../../../common/formComponents/formCurrencyInput";
 import FormPlayersItem from "../../../common/formComponents/formPlayersItem";
 import AppUserList from "../../../common/appUserList";
+import MatchItem from "../../molecules/matchItem/matchItem";
 
 class MatchForm extends Component {
   state = {
@@ -156,18 +156,21 @@ class MatchForm extends Component {
         <Content>
           <List>
             {/* Address picker */}
-            <FormItem
+            <MatchItem
               icon="map-marker"
-              value={address ? address.description : null}
-              placeHolder="Address"
+              title={address && address.description}
+              subtitle={!address && "Choose address"}
               onPress={() =>
                 navigation.navigate("SearchAddress", {
                   handleAddressPicker: this._handleAddressPicker
                 })
               }
             />
+            {/* End Address picker */}
+
             {/* Date Time picker */}
-            <FormDatePicker
+
+            <MatchItemDatePicker
               selected={eventDate}
               onSelect={this._handleDatePicker}
             />
