@@ -10,7 +10,15 @@ const ItemTypes = {
   directions: "directions"
 };
 
-const MatchItem = ({ title, subtitle, icon, avatar, type, onPress }) => {
+const MatchItem = ({
+  title,
+  subtitle,
+  icon,
+  avatar,
+  type,
+  onPress,
+  children
+}) => {
   return (
     <ListItem icon={!!icon} avatar={!!avatar} onPress={onPress}>
       <Left>
@@ -20,6 +28,7 @@ const MatchItem = ({ title, subtitle, icon, avatar, type, onPress }) => {
       <Body>
         {title && <Text>{title}</Text>}
         {subtitle && <Text note>{subtitle}</Text>}
+        {children}
       </Body>
       {type && (
         <Right>

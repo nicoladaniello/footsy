@@ -19,7 +19,7 @@ import * as matchesSvc from "../../../services/matchesService";
 import MatchItemDatePicker from "../../molecules/matchItem/MatchItemDatePicker";
 import MatchItemActionSheet from "../../molecules/matchItem/matchItemActionSheet";
 import FormSwitch from "../../../common/formComponents/formSwitch";
-import FormCurrencyInput from "../../../common/formComponents/formCurrencyInput";
+import MatchItemCurrencyInput from "../../molecules/matchItem/matchItemCurrencyInput";
 import FormPlayersItem from "../../../common/formComponents/formPlayersItem";
 import AppUserList from "../../../common/appUserList";
 import MatchItem from "../../molecules/matchItem/matchItem";
@@ -198,7 +198,7 @@ class MatchForm extends Component {
             {/* End Team size picker */}
 
             {/* Price input */}
-            <FormCurrencyInput onChangeValue={this._handlePriceChange} />
+            <MatchItemCurrencyInput onChangeValue={this._handlePriceChange} />
 
             {/* Private toggle */}
             <FormSwitch
@@ -207,9 +207,11 @@ class MatchForm extends Component {
               isActive={isPrivate}
               onSelect={this._handlePrivateToggle}
             />
+
             {/* Players picker */}
-            <FormPlayersItem
-              players={players}
+            <MatchItem
+              icon="add-players"
+              title={players.formattedText || "Invite Friends"}
               onPress={() =>
                 navigation.navigate("AddPlayers", {
                   players: players,

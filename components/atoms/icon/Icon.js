@@ -21,6 +21,10 @@ const APP_ICONS = {
     type: "MaterialIcons",
     name: "timer"
   },
+  money: {
+    type: "MaterialIcons",
+    name: "attach_money"
+  },
   payment: {
     type: "MaterialCommunityIcons",
     name: "credit-card"
