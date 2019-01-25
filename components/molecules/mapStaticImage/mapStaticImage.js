@@ -1,47 +1,11 @@
 import React from "react";
-import { Image, Dimensions, PixelRatio, StyleSheet } from "react-native";
+import { Image, Dimensions, StyleSheet } from "react-native";
+import { PropTypes } from "prop-types";
+
 import { getStaticImage } from "../../../services/mapStaticImageService";
-import { MapsOptions } from "../../../enviroment";
+import AppMatch from "../../../common/appMatch";
 
 const MapStaticImage = ({ match, style, ...rest }) => {
-  const baseUrl = "https://maps.googleapis.com/maps/api/staticmap?";
-
-  const locationParams = {
-    // center: encodeURI(match.address.description),
-    zoom: 15
-  };
-
-  const mapParams = {
-    size: `${400}x${240}`,
-    scale: PixelRatio.get() > 1 ? 2 : 1
-  };
-
-  const mapOptions = {
-    key: MapsOptions.publicKey
-  };
-
-  const markers = {
-    size: "mid",
-    "": encodeURI(match.address.description)
-  };
-
-  const getImageUrl = () => {
-    const params = { ...locationParams, ...mapParams, ...mapOptions };
-    let formattedParams = Object.keys(params)
-      .map(key => `${key}=${params[key]}`)
-      .join("&");
-
-    if (markers) {
-      formattedParams +=
-        "&markers=" +
-        Object.keys(markers)
-          .map(key => `${key}:${markers[key]}`)
-          .join("%7c");
-    }
-    const url = baseUrl + formattedParams;
-    return url;
-  };
-
   return (
     <Image
       style={[styles.image, style]}
@@ -57,5 +21,9 @@ const styles = StyleSheet.create({
     height: 240
   }
 });
+
+MapStaticImage.propTypes = {
+  match: PropTypes.instanceOf(AppMatch).isRequired
+};
 
 export default MapStaticImage;

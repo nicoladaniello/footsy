@@ -3,9 +3,10 @@ import { NavigationActions } from "react-navigation";
 import { Button, Text, List, Spinner } from "native-base";
 
 import * as matchesSvc from "../../../services/matchesService";
+
 import MapStaticImage from "../../molecules/mapStaticImage/mapStaticImage";
-import ScrollAnimationView from "../../../common/headerScrollAnimation/scrollAnimationView";
-import ScrollAnimationImage from "../../../common/headerScrollAnimation/scrollAnimationImage";
+import ScrollAnimationView from "../../organisms/headerScrollAnimation/scrollAnimationView";
+import ScrollAnimationImage from "../../organisms/headerScrollAnimation/scrollAnimationImage";
 import MatchMapScreen from "./matchMapScreen";
 import AppMatch from "../../../common/appMatch";
 import MatchHeader from "../../molecules/matchHeader/matchHeader";
@@ -24,7 +25,7 @@ export default class MatchScreen extends Component {
           transparent
           onPress={() => navigation.dispatch(NavigationActions.back())}
         >
-          <Icon name="chevron-right" />
+          <Icon name="chevron-left" />
         </Button>
       )
     };
