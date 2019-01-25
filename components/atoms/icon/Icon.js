@@ -17,6 +17,10 @@ const APP_ICONS = {
     type: DEFAULT_ICON_TYPE,
     name: "md-shirt"
   },
+  duration: {
+    type: "MaterialIcons",
+    name: "timer"
+  },
   payment: {
     type: "MaterialCommunityIcons",
     name: "credit-card"

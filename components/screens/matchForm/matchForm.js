@@ -17,7 +17,7 @@ import {
 import { MatchDurations, TeamSizes } from "../../../enviroment";
 import * as matchesSvc from "../../../services/matchesService";
 import MatchItemDatePicker from "../../molecules/matchItem/MatchItemDatePicker";
-import FormActionSheet from "../../../common/formComponents/formActionSheet";
+import MatchItemActionSheet from "../../molecules/matchItem/matchItemActionSheet";
 import FormSwitch from "../../../common/formComponents/formSwitch";
 import FormCurrencyInput from "../../../common/formComponents/formCurrencyInput";
 import FormPlayersItem from "../../../common/formComponents/formPlayersItem";
@@ -169,29 +169,33 @@ class MatchForm extends Component {
             {/* End Address picker */}
 
             {/* Date Time picker */}
-
             <MatchItemDatePicker
               selected={eventDate}
               onSelect={this._handleDatePicker}
             />
+            {/* End Date Time picker */}
+
             {/* Duration picker */}
-            <FormActionSheet
+            <MatchItemActionSheet
+              icon="duration"
+              title="Match duration"
+              placeholder="Duration"
               data={MatchDurations}
               selected={duration}
               onSelect={this._handleDurationPicker}
-              title="Match duration"
-              icon="md-stopwatch"
-              placeHolder="Duration"
             />
+            {/* End Duration picker */}
+
             {/* Team size picker */}
-            <FormActionSheet
+            <MatchItemActionSheet
+              icon="team"
+              title="Team size"
+              placeholder="Team size"
               data={TeamSizes}
               selected={teamSize}
               onSelect={this._handleTeamSizePicker}
-              title="Team size"
-              icon="md-shirt"
-              placeHolder="Team size"
             />
+            {/* End Team size picker */}
 
             {/* Price input */}
             <FormCurrencyInput onChangeValue={this._handlePriceChange} />

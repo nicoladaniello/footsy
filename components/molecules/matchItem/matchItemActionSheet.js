@@ -1,21 +1,15 @@
 import React from "react";
-import {
-  ActionSheet,
-  ListItem,
-  Left,
-  Icon,
-  Body,
-  Right,
-  Text
-} from "native-base";
+import { ActionSheet } from "native-base";
 
-const FormActionSheet = ({
+import MatchItem from "./matchItem";
+
+const MatchItemActionSheet = ({
   data,
   title,
   icon,
   selected,
   onSelect,
-  placeHolder
+  placeholder
 }) => {
   const options = [...Object.values(data), "Cancel"];
   const cancelButtonIndex = options.length - 1;
@@ -38,20 +32,13 @@ const FormActionSheet = ({
   const showActionSheet = () => ActionSheet.show(values, handleSelect);
 
   return (
-    <ListItem icon onPress={showActionSheet}>
-      <Left>
-        <Icon name={icon} />
-      </Left>
-      <Body>
-        {selected ? (
-          <Text>{data[selected]}</Text>
-        ) : (
-          <Text note>{placeHolder}</Text>
-        )}
-      </Body>
-      <Right />
-    </ListItem>
+    <MatchItem
+      icon={icon}
+      title={selected && data[selected]}
+      subtitle={!selected && placeholder}
+      onPress={showActionSheet}
+    />
   );
 };
 
-export default FormActionSheet;
+export default MatchItemActionSheet;
