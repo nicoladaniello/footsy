@@ -10,7 +10,7 @@ import {
   Icon
 } from "native-base";
 
-const FormSelectItem = ({ active, image, text, note, onPress }) => {
+const ListItemSelect = ({ active, image, text, note, onPress }) => {
   return (
     <ListItem avatar onPress={onPress}>
       <Left>
@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default FormSelectItem;
+export default ListItemSelect;

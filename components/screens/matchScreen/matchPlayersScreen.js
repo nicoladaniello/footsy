@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { FlatList } from "react-native";
 import { Container, Content } from "native-base";
-import FormSelectItem from "../../../common/formComponents/formSelectItem";
+import ListItemSelect from "../../molecules/listItemSelect/listItemSelect";
 
 class MatchPlayersScreen extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class MatchPlayersScreen extends Component {
           <FlatList
             data={players}
             renderItem={p => (
-              <FormSelectItem
+              <ListItemSelect
                 image={p.item.image}
                 text={p.item.fullName}
                 onPress={() => this._onSelect(p.item)}

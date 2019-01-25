@@ -3,7 +3,7 @@ import { Image, Dimensions, StyleSheet } from "react-native";
 import { PropTypes } from "prop-types";
 
 import { getStaticImage } from "../../../services/mapStaticImageService";
-import AppMatch from "../../../common/appMatch";
+import AppMatch from "../../../models/appMatch";
 
 const MapStaticImage = ({ match, style, ...rest }) => {
   return (

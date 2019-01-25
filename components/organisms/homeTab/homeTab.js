@@ -4,7 +4,7 @@ import { Content, Tab } from "native-base";
 import PropTypes from "prop-types";
 import moment from "moment";
 
-import AppMatch from "../../../common/appMatch";
+import AppMatch from "../../../models/appMatch";
 import MatchList from "../matchList/matchList";
 
 import * as matchesSvc from "../../../services/matchesService";

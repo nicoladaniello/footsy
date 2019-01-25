@@ -12,8 +12,8 @@ import {
 } from "native-base";
 import * as authService from "../../../services/authService";
 import * as userService from "../../../services/userService";
-import AppUser from "../../../common/appUser";
-import FormSelectItem from "../../../common/formComponents/formSelectItem";
+import AppUser from "../../../models/appUser";
+import ListItemSelect from "../../molecules/listItemSelect/listItemSelect";
 
 class PlayersPickerScreen extends Component {
   state = {
@@ -113,7 +113,7 @@ class PlayersPickerScreen extends Component {
             data={filteredFriends}
             extraData={players}
             renderItem={f => (
-              <FormSelectItem
+              <ListItemSelect
                 active={players.map(p => p._id).indexOf(f.item._id) > -1}
                 image={f.item.image}
                 text={f.item.fullName}

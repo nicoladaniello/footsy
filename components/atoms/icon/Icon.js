@@ -25,6 +25,10 @@ const APP_ICONS = {
     type: "MaterialIcons",
     name: "attach_money"
   },
+  private: {
+    type: "MaterialIcons",
+    name: "lock"
+  },
   payment: {
     type: "MaterialCommunityIcons",
     name: "credit-card"

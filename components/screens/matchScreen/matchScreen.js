@@ -8,7 +8,7 @@ import MapStaticImage from "../../molecules/mapStaticImage/mapStaticImage";
 import ScrollAnimationView from "../../organisms/headerScrollAnimation/scrollAnimationView";
 import ScrollAnimationImage from "../../organisms/headerScrollAnimation/scrollAnimationImage";
 import MatchMapScreen from "./matchMapScreen";
-import AppMatch from "../../../common/appMatch";
+import AppMatch from "../../../models/appMatch";
 import MatchHeader from "../../molecules/matchHeader/matchHeader";
 import MatchItem from "../../molecules/matchItem/matchItem";
 import { formatTextUsers } from "../../../utils/textFormatter/textFormatter";

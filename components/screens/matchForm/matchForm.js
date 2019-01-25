@@ -14,14 +14,14 @@ import {
   List,
   Toast
 } from "native-base";
+
 import { MatchDurations, TeamSizes } from "../../../enviroment";
 import * as matchesSvc from "../../../services/matchesService";
+
 import MatchItemDatePicker from "../../molecules/matchItem/MatchItemDatePicker";
 import MatchItemActionSheet from "../../molecules/matchItem/matchItemActionSheet";
-import FormSwitch from "../../../common/formComponents/formSwitch";
 import MatchItemCurrencyInput from "../../molecules/matchItem/matchItemCurrencyInput";
-import FormPlayersItem from "../../../common/formComponents/formPlayersItem";
-import AppUserList from "../../../common/appUserList";
+import AppUserList from "../../../models/appUserList";
 import MatchItem from "../../molecules/matchItem/matchItem";
 
 class MatchForm extends Component {
@@ -199,14 +199,17 @@ class MatchForm extends Component {
 
             {/* Price input */}
             <MatchItemCurrencyInput onChangeValue={this._handlePriceChange} />
+            {/* End Price input */}
 
             {/* Private toggle */}
-            <FormSwitch
-              text="Private"
-              icon="ios-hand"
-              isActive={isPrivate}
-              onSelect={this._handlePrivateToggle}
+            <MatchItem
+              icon="private"
+              title="Make Private"
+              iosSwitch
+              switchOn={isPrivate}
+              onSwitch={this._handlePrivateToggle}
             />
+            {/* End Private toggle */}
 
             {/* Players picker */}
             <MatchItem

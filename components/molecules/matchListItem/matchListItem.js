@@ -13,7 +13,7 @@ import {
 import PropTypes from "prop-types";
 
 import SpacesLeftPie from "../spacesLeftPie/spacesLeftPie";
-import AppMatch from "../../../common/appMatch";
+import AppMatch from "../../../models/appMatch";
 
 const MatchListItem = ({ match, onPress }) => {
   return (

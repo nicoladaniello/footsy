@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { RefreshControl } from "react-native";
 import { Container, Content } from "native-base";
 import * as userMatchesService from "../../../services/userMatchesService";
-import AppMatch from "../../../common/appMatch";
+import AppMatch from "../../../models/appMatch";
 import MatchList from "../../organisms/matchList/matchList";
 
 class MyMatchesScreen extends Component {

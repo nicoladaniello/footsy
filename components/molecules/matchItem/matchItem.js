@@ -1,5 +1,13 @@
 import React from "react";
-import { ListItem, Body, Text, Left, Right, Thumbnail } from "native-base";
+import {
+  ListItem,
+  Body,
+  Text,
+  Left,
+  Right,
+  Thumbnail,
+  Switch
+} from "native-base";
 import PropTypes from "prop-types";
 
 import Icon from "../../atoms/icon/Icon";
@@ -7,16 +15,22 @@ import Icon from "../../atoms/icon/Icon";
 const ItemTypes = {
   nav: "chevron-right",
   more: "more",
-  directions: "directions"
+  directions: "directions",
+  switch: (isActive, onSelect) => (
+    <Switch value={isActive} onValueChange={onSelect} />
+  )
 };
 
 const MatchItem = ({
+  avatar,
+  icon,
+  type,
   title,
   subtitle,
-  icon,
-  avatar,
-  type,
   onPress,
+  iosSwitch,
+  switchOn,
+  onSwitch,
   children
 }) => {
   return (
@@ -33,6 +47,11 @@ const MatchItem = ({
       {type && (
         <Right>
           <Icon name={ItemTypes[type]} />
+        </Right>
+      )}
+      {iosSwitch && (
+        <Right>
+          <Switch value={switchOn} onValueChange={onSwitch} />
         </Right>
       )}
     </ListItem>
