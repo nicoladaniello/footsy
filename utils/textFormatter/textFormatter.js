@@ -1,8 +1,4 @@
-import React from "react";
-import { Right, Icon } from "native-base";
-import FormItem from "../../common/formComponents/formItem";
-
-const _formatLabel = users => {
+export const formatTextUsers = users => {
   const { list: userList } = users;
 
   if (!userList || !userList.length) return null;
@@ -18,20 +14,3 @@ const _formatLabel = users => {
       userList[1].name.first
     } and ${userList.length - 2} others`;
 };
-
-const ListPlayersItem = ({ players, onPress }) => {
-  return (
-    <FormItem
-      icon="add-players"
-      text={`${players.length} partecipants`}
-      note={_formatLabel(players)}
-      onPress={onPress}
-    >
-      <Right>
-        <Icon name="chevron-right" />
-      </Right>
-    </FormItem>
-  );
-};
-
-export default ListPlayersItem;

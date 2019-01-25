@@ -1,19 +1,21 @@
 import React from "react";
-import { ListItem, Body, Text, Left, Right } from "native-base";
+import { ListItem, Body, Text, Left, Right, Thumbnail } from "native-base";
 import PropTypes from "prop-types";
 
 import Icon from "../../atoms/icon/Icon";
 
-const MatchItem = ({ title, subtitle, icon, type, onPress }) => {
+const MatchItem = ({ title, subtitle, icon, avatar, type, onPress }) => {
   const types = {
-    nav: "nav",
-    dots: "dots"
+    nav: "chevron-right",
+    more: "more",
+    directions: "directions"
   };
 
   return (
-    <ListItem icon onPress={onPress}>
+    <ListItem icon={!!icon} avatar={!!avatar} onPress={onPress}>
       <Left>
-        <Icon primary name={icon} />
+        {icon && <Icon primary name={icon} />}
+        {avatar && <Thumbnail small source={avatar} />}
       </Left>
       <Body>
         <Text>{title}</Text>

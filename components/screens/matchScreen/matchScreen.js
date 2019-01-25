@@ -1,27 +1,17 @@
 import React, { Component } from "react";
 import { NavigationActions } from "react-navigation";
-import {
-  ListItem,
-  Left,
-  Body,
-  Button,
-  Icon,
-  Text,
-  Thumbnail,
-  Right,
-  List,
-  Spinner
-} from "native-base";
+import { Button, Text, List, Spinner } from "native-base";
+
 import * as matchesSvc from "../../../services/matchesService";
 import AppMapImage from "../../../common/gmaps-static-api/appMapImage";
 import ScrollAnimationView from "../../../common/headerScrollAnimation/scrollAnimationView";
 import ScrollAnimationImage from "../../../common/headerScrollAnimation/scrollAnimationImage";
 import MatchMapScreen from "./matchMapScreen";
-import FormItem from "../../../common/formComponents/formItem";
-import ListPlayersItem from "../../../common/listComponents/listPlayersItem";
 import AppMatch from "../../../common/appMatch";
 import MatchHeader from "../../molecules/matchHeader/matchHeader";
 import MatchItem from "../../molecules/matchItem/matchItem";
+import { formatTextUsers } from "../../../utils/textFormatter/textFormatter";
+import Icon from "../../atoms/icon/Icon";
 
 export default class MatchScreen extends Component {
   state = { data: null, mapModalVisible: false, loading: true };
@@ -34,7 +24,7 @@ export default class MatchScreen extends Component {
           transparent
           onPress={() => navigation.dispatch(NavigationActions.back())}
         >
-          <Icon type="MaterialCommunityIcons" name="chevron-left" />
+          <Icon name="chevron-right" />
         </Button>
       )
     };
@@ -99,53 +89,47 @@ export default class MatchScreen extends Component {
 
               {/* Address */}
               <MatchItem
+                type="directions"
                 icon="map-marker"
                 title={match.address.secondary_text}
               />
               {/* End Address */}
 
+              {/* Team Size */}
+              <MatchItem
+                icon="team"
+                title={`${match.teamSize} a side`}
+                subtitle="22/22 partecipated"
+              />
+              {/* End Team Size */}
+
               {/* Organiser */}
-              <ListItem avatar>
-                <Left>
-                  <Thumbnail small source={{ uri: match.organiser.image }} />
-                </Left>
-                <Body>
-                  <Text>Organised by {match.organiser.fullName}</Text>
-                  <Text note>21 matches organised - 5 stars</Text>
-                </Body>
-                <Right>
-                  <Icon
-                    small
-                    type="MaterialCommunityIcons"
-                    name="email-outline"
-                  />
-                </Right>
-              </ListItem>
+              <MatchItem
+                type="more"
+                avatar={{ uri: match.organiser.image }}
+                title={`Organised by ${match.organiser.fullName}`}
+                subtitle={`21 matches organised - 5 stars`}
+              />
               {/* End Organiser */}
 
               {/* Partecipants List */}
-              <ListPlayersItem
-                players={match.players}
+              <MatchItem
+                type="nav"
+                icon="add-players"
+                title={`${match.players.length} partecipants`}
+                subtitle={formatTextUsers(match.players)}
                 onPress={() =>
                   navigation.navigate("Players", { players: match.players })
                 }
               />
               {/* End Partecipants List */}
 
-              {/* Team Size */}
-              <FormItem
-                icon="team"
-                text={`${match.teamSize} a side`}
-                note="22/22 partecipated"
-              />
-              {/* End Team Size */}
-
               {/* Price */}
-              <FormItem icon="payment" text={match.formattedPrice} />
+              <MatchItem icon="payment" title={match.formattedPrice} />
               {/* End Price */}
 
-              <FormItem icon="share" text="Share" />
-              <FormItem icon="join" text="Join Game" />
+              <MatchItem icon="share" title="Share" />
+              <MatchItem icon="join" title="Join Game" />
             </List>
           }
         />
