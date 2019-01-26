@@ -7,11 +7,14 @@ import {
   Text
 } from "react-native";
 import { getCurrentUser } from "../../services/authService";
+import firebase, { Firebase } from "react-native-firebase";
 
 class BootstrapScreen extends Component {
   async componentWillMount() {
     try {
       const user = await getCurrentUser();
+
+      firebase.auth().onAuthStateChanged(user => console.log("USER", user));
 
       if (!user) return this.props.navigation.navigate("SignIn");
       this.props.navigation.navigate("App", { user });
