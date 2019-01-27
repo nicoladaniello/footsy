@@ -6,20 +6,27 @@ import {
   View,
   Text
 } from "react-native";
-import { getCurrentUser } from "../../services/authService";
-import firebase, { Firebase } from "react-native-firebase";
+
+import { GoogleSignin, statusCodes } from "react-native-google-signin";
+
+GoogleSignin.configure();
 
 class BootstrapScreen extends Component {
   async componentWillMount() {
     try {
-      const user = await getCurrentUser();
-
-      firebase.auth().onAuthStateChanged(user => console.log("USER", user));
-
-      if (!user) return this.props.navigation.navigate("SignIn");
+      const user = await GoogleSignin.signInSilently();
       this.props.navigation.navigate("App", { user });
-    } catch (ex) {
-      console.error(ex);
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_REQUIRED) {
+        // user has not signed in yet
+        this.props.navigation.navigate("SignIn");
+      } else {
+        // some other error
+        console.error(
+          "Error in bootstrapScreen.componentWillMOunt():\nGoogleSignin.isSignedIn() exception:",
+          ex
+        );
+      }
     }
   }
 

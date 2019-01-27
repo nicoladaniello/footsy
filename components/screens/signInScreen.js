@@ -10,9 +10,19 @@ import {
   View,
   H1
 } from "native-base";
-import { signInWithSocial } from "../../services/authService";
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes
+} from "react-native-google-signin";
+
+GoogleSignin.configure();
 
 class SignInScreen extends Component {
+  state = {
+    isSigninInProgress: false
+  };
+
   render() {
     const { height: screenHeight } = Dimensions.get("window");
     return (
@@ -33,6 +43,13 @@ class SignInScreen extends Component {
               source={{ uri: "https://via.placeholder.com/150/3498db/fff" }}
             />
             <H1 style={{ marginBottom: 120 }}>Footsy</H1>
+            <GoogleSigninButton
+              style={{ width: 48, height: 48 }}
+              size={GoogleSigninButton.Size.Icon}
+              color={GoogleSigninButton.Color.Dark}
+              onPress={this._signIn}
+              disabled={this.state.isSigninInProgress}
+            />
             <Button
               light
               block
@@ -54,10 +71,25 @@ class SignInScreen extends Component {
 
   _signIn = async () => {
     try {
-      const user = await signInWithSocial();
+      this.setState({ isSigninInProgress: true });
+      await GoogleSignin.hasPlayServices();
+      const user = await GoogleSignin.signIn();
       this.props.navigation.navigate("App", { user });
-    } catch (ex) {
-      console.error("Error logging in:", ex);
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // user cancelled the login flow
+        this.setState({ isSigninInProgress: false });
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        // operation (f.e. sign in) is in progress already
+        this.setState({ isSigninInProgress: true });
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        // play services not available or outdated
+        this.setState({ isSigninInProgress: false });
+      } else {
+        // some other error happened
+        this.setState({ isSigninInProgress: false });
+        console.error("Error in signInScreen._signIn:", error);
+      }
     }
   };
 }
