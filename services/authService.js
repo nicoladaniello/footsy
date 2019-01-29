@@ -1,39 +1,35 @@
-import { AsyncStorage } from "react-native";
-import jwtDecode from "jwt-decode";
-import * as userService from "./userService";
+import { GoogleSignin } from "react-native-google-signin";
+import firebase from "react-native-firebase";
+import UserService from "./userService";
 
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiX2lkIjoiNWJmYjAxYTI3YTUyYzM1NjI2ZTk0ODQzIiwiaWF0IjoxNTE2MjM5MDIyfQ.fwadRV6Ouhjo_djVjlTdbV7vwfPMQYpzuXsMedTP65s";
+export const signInWithGoogle = async () => {
+  await GoogleSignin.configure();
+  const data = await GoogleSignin.signIn();
+  // create a new firebase credential with the token
+  const credential = firebase.auth.GoogleAuthProvider.credential(
+    data.idToken,
+    data.accessToken
+  );
+  // login with credential
+  const currentUser = await firebase.auth().signInWithCredential(credential);
 
-export async function signInWithSocial() {
-  const { data: userToken, user } = await _httpSigIn();
-  if (!userToken || !user) throw new Error("Login failed.");
+  userService = new UserService();
+  userService.save(getAppUserInfos(currentUser));
 
-  await AsyncStorage.multiSet([
-    ["userToken", userToken],
-    ["currentUser", JSON.stringify(user)]
-  ]);
+  return currentUser;
+};
 
-  return user;
-}
+export const signOut = () => {
+  return firebase.auth().signOut();
+};
 
-export function signOut() {
-  return AsyncStorage.multiRemove(["userToken", "currentUser"]);
-}
-
-export async function getCurrentUser() {
-  const currentUser = await AsyncStorage.getItem("currentUser");
-  return JSON.parse(currentUser);
-}
-
-// server side implementing this
-const _httpSigIn = async () => {
-  const { _id } = jwtDecode(token);
-  const user = await userService.getUserServerSide(_id);
-
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve({ data: token, user });
-    }, 200);
-  });
+const getAppUserInfos = ({ additionalUserInfo }) => {
+  return {
+    isActive: true,
+    name: additionalUserInfo.name,
+    given_name: additionalUserInfo.given_name,
+    family_name: additionalUserInfo.family_name,
+    picture: additionalUserInfo.picture,
+    email: additionalUserInfo.email
+  };
 };

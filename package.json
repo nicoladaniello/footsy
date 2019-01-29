@@ -8,7 +8,6 @@
     "launch-ios": "react-native run-ios --simulator \"iPhone 8\""
   },
   "dependencies": {
-    "jwt-decode": "^2.2.0",
     "moment": "^2.22.2",
     "native-base": "^2.8.1",
     "prop-types": "^15.6.2",

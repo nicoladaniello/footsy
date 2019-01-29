@@ -10,13 +10,8 @@ import {
   View,
   H1
 } from "native-base";
-import {
-  GoogleSignin,
-  GoogleSigninButton,
-  statusCodes
-} from "react-native-google-signin";
-
-GoogleSignin.configure();
+import { GoogleSigninButton } from "react-native-google-signin";
+import { signInWithGoogle } from "../../services/authService";
 
 class SignInScreen extends Component {
   state = {
@@ -71,25 +66,10 @@ class SignInScreen extends Component {
 
   _signIn = async () => {
     try {
-      this.setState({ isSigninInProgress: true });
-      await GoogleSignin.hasPlayServices();
-      const user = await GoogleSignin.signIn();
-      this.props.navigation.navigate("App", { user });
+      const user = await signInWithGoogle();
+      console.log("user", user);
     } catch (error) {
-      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        // user cancelled the login flow
-        this.setState({ isSigninInProgress: false });
-      } else if (error.code === statusCodes.IN_PROGRESS) {
-        // operation (f.e. sign in) is in progress already
-        this.setState({ isSigninInProgress: true });
-      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        // play services not available or outdated
-        this.setState({ isSigninInProgress: false });
-      } else {
-        // some other error happened
-        this.setState({ isSigninInProgress: false });
-        console.error("Error in signInScreen._signIn:", error);
-      }
+      console.error(error);
     }
   };
 }

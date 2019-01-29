@@ -8,25 +8,27 @@ import {
 } from "react-native";
 
 import { GoogleSignin, statusCodes } from "react-native-google-signin";
+import firebase from "react-native-firebase";
 
 GoogleSignin.configure();
 
 class BootstrapScreen extends Component {
+  subscription = null;
+
   async componentWillMount() {
     try {
-      const user = await GoogleSignin.signInSilently();
-      this.props.navigation.navigate("App", { user });
+      this.subscription = firebase.auth().onAuthStateChanged(user => {
+        console.log(user);
+        this.props.navigation.navigate(user ? "App" : "SignIn", { user });
+      });
     } catch (error) {
-      if (error.code === statusCodes.SIGN_IN_REQUIRED) {
-        // user has not signed in yet
-        this.props.navigation.navigate("SignIn");
-      } else {
-        // some other error
-        console.error(
-          "Error in bootstrapScreen.componentWillMOunt():\nGoogleSignin.isSignedIn() exception:",
-          ex
-        );
-      }
+      console.error(error);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.subscription) {
+      this.subscription();
     }
   }
 

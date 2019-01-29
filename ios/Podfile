@@ -3,6 +3,7 @@ platform :ios, '9.0'
 
 # Required by RNFirebase
 pod 'Firebase/Core'
+pod 'Firebase/Firestore'
 pod 'Firebase/Auth'
 pod 'GoogleSignIn'
 
