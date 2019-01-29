@@ -12,6 +12,7 @@ import {
 } from "native-base";
 import { GoogleSigninButton } from "react-native-google-signin";
 import { signInWithGoogle } from "../../services/authService";
+import FirestoreService from "../../services/firestoreService";
 
 class SignInScreen extends Component {
   state = {
@@ -39,7 +40,7 @@ class SignInScreen extends Component {
             />
             <H1 style={{ marginBottom: 120 }}>Footsy</H1>
             <GoogleSigninButton
-              style={{ width: 48, height: 48 }}
+              style={{ width: "100%", height: 48 }}
               size={GoogleSigninButton.Size.Icon}
               color={GoogleSigninButton.Color.Dark}
               onPress={this._signIn}
@@ -69,7 +70,6 @@ class SignInScreen extends Component {
       this.setState({ isSigninInProgress: true });
       const user = await signInWithGoogle();
       this.props.navigation.navigate("App", { user });
-      console.log("user", user);
     } catch (error) {
       console.error(error);
     }

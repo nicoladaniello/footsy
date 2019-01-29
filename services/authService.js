@@ -2,34 +2,40 @@ import { GoogleSignin } from "react-native-google-signin";
 import firebase from "react-native-firebase";
 import UserService from "./userService";
 
-export const signInWithGoogle = async () => {
-  await GoogleSignin.configure();
-  const data = await GoogleSignin.signIn();
-  // create a new firebase credential with the token
-  const credential = firebase.auth.GoogleAuthProvider.credential(
-    data.idToken,
-    data.accessToken
-  );
-  // login with credential
-  const currentUser = await firebase.auth().signInWithCredential(credential);
+export async function signInWithGoogle() {
+  try {
+    await GoogleSignin.configure();
+    const data = await GoogleSignin.signIn();
+    // create a new firebase credential with the token
+    const credential = firebase.auth.GoogleAuthProvider.credential(
+      data.idToken,
+      data.accessToken
+    );
+    // login with credential
+    const UserCredential = await firebase
+      .auth()
+      .signInWithCredential(credential);
+    // update user details in db
+    const user = await _getAppUserAndUpdateDB(UserCredential.user);
 
-  userService = new UserService();
-  userService.save(getAppUserInfos(currentUser));
+    return user;
+  } catch (ex) {
+    console.error(ex);
+  }
+}
 
-  return currentUser;
-};
-
-export const signOut = () => {
+export async function signOut() {
   return firebase.auth().signOut();
-};
+}
 
-const getAppUserInfos = ({ additionalUserInfo }) => {
-  return {
+async function _getAppUserAndUpdateDB({ displayName, email, photoURL, uid }) {
+  const user = {
     isActive: true,
-    name: additionalUserInfo.name,
-    given_name: additionalUserInfo.given_name,
-    family_name: additionalUserInfo.family_name,
-    picture: additionalUserInfo.picture,
-    email: additionalUserInfo.email
+    name: displayName,
+    photoURL,
+    email
   };
-};
+
+  await UserService.save(uid, user);
+  return user;
+}

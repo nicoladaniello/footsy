@@ -18,7 +18,6 @@ class BootstrapScreen extends Component {
   async componentWillMount() {
     try {
       this.subscription = firebase.auth().onAuthStateChanged(user => {
-        console.log(user);
         this.props.navigation.navigate(user ? "App" : "SignIn", { user });
       });
     } catch (error) {
