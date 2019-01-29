@@ -18,10 +18,10 @@ class SettingsScreen extends Component {
     );
   }
 
-  _googleSignOut = async () => {
+  _googleSignOut = () => {
     try {
-      await signOut();
-      this.props.navigation.navigate("signIn");
+      signOut();
+      this.props.navigation.navigate("SignIn");
     } catch (error) {
       console.error("Error signing out:", error);
     }

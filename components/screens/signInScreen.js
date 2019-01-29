@@ -66,7 +66,9 @@ class SignInScreen extends Component {
 
   _signIn = async () => {
     try {
+      this.setState({ isSigninInProgress: true });
       const user = await signInWithGoogle();
+      this.props.navigation.navigate("App", { user });
       console.log("user", user);
     } catch (error) {
       console.error(error);
