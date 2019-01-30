@@ -7,7 +7,7 @@ import moment from "moment";
 import AppMatch from "../../../models/appMatch";
 import MatchList from "../matchList/matchList";
 
-import matchesSvc from "../../../services/matchesService";
+import matchesSvc from "../../../services/matchService";
 
 class HomeTab extends Component {
   constructor(props) {
@@ -28,8 +28,7 @@ class HomeTab extends Component {
   _loadMatches = async () => {
     try {
       this.setState({ refreshing: true });
-      const data = await matchesSvc.find();
-      data.map(m => new AppMatch(m));
+      const data = (await matchesSvc.find()).map(m => new AppMatch(m));
 
       console.log(data);
       // q =>

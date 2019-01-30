@@ -1,4 +1,3 @@
-import authService from "./authService";
 import dbService, { QueryFn, CollectionPredicate } from "./firestoreService";
 import AppMatch from "../models/appMatch";
 
@@ -13,10 +12,9 @@ async function find(queryFn?: QueryFn) {
   return docs;
 }
 
-async function get(userId: string) {
-  const snap = await colRef.doc(userId).get();
-  if (!snap.exists)
-    throw new Error("UserService.get(): document does not exist.");
+async function get(matchId: string) {
+  const snap = await colRef.doc(matchId).get();
+  if (!snap.exists) throw new Error("document does not exist.");
   return snap.data;
 }
 

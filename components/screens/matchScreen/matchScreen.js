@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { NavigationActions } from "react-navigation";
 import { Button, Text, List, Spinner } from "native-base";
 
-import * as matchesSvc from "../../../services/matchesService";
+import * as matchesSvc from "../../../services/matchService";
 
 import MapStaticImage from "../../molecules/mapStaticImage/mapStaticImage";
 import ScrollAnimationView from "../../organisms/headerScrollAnimation/scrollAnimationView";

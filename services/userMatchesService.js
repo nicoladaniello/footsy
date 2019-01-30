@@ -1,4 +1,3 @@
-import * as matchesService from "./matchesService";
 import { getCurrentUser } from "./authService";
 
 const userMatches = [

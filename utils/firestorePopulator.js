@@ -8,14 +8,22 @@ async function populateMatches() {
 
     const ref = firebase.firestore().collection("matches");
 
-    const formattedData = Object.keys(data).map(k => data[k]);
+    console.log(Object.keys(data.default));
+
+    const formattedData = Object.keys(data.default).map(k => data[k]);
     formattedData.forEach(m => {
-      delete m._id;
-      delete m.players;
+      console.log("m:", m);
+      m.coords = new firebase.firestore.GeoPoint(
+        m.address.latitude,
+        m.address.longitude
+      );
+      delete m.id;
+      delete m.address.latitude;
+      delete m.address.longitude;
       batch.set(ref.doc(), m);
     });
 
-    //   console.log(formattedData[0]);
+    console.log("formattedData", formattedData);
     /// commit operations
     return batch.commit();
   } catch (ex) {

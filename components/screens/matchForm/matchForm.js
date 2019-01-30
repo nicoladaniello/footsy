@@ -16,7 +16,7 @@ import {
 } from "native-base";
 
 import { MatchDurations, TeamSizes } from "../../../enviroment";
-import * as matchesSvc from "../../../services/matchesService";
+import * as matchesSvc from "../../../services/matchService";
 
 import MatchItemDatePicker from "../../molecules/matchItem/MatchItemDatePicker";
 import MatchItemActionSheet from "../../molecules/matchItem/matchItemActionSheet";
