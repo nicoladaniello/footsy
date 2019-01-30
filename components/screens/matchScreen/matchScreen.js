@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { NavigationActions } from "react-navigation";
 import { Button, Text, List, Spinner } from "native-base";
 
-import * as matchesSvc from "../../../services/matchService";
+import matchService from "../../../services/matchService";
 
 import MapStaticImage from "../../molecules/mapStaticImage/mapStaticImage";
 import ScrollAnimationView from "../../organisms/headerScrollAnimation/scrollAnimationView";
@@ -35,7 +35,7 @@ export default class MatchScreen extends Component {
     try {
       const { navigation } = this.props;
       const matchId = navigation.getParam("matchId", "NO-ID");
-      let data = await matchesSvc.getMatch(matchId);
+      let data = await matchService.get(matchId);
 
       if (!data) return this.setState({ loading: false });
 

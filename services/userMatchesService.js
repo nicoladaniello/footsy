@@ -2,27 +2,27 @@ import { getCurrentUser } from "./authService";
 
 const userMatches = [
   {
-    _id: "5c02c4204d8a8b3a4f5aff3f",
+    id: "5c02c4204d8a8b3a4f5aff3f",
     userId: "5bfb01a27a52c35626e94843",
     matchId: "5bfbb2663216bafb80a60855"
   },
   {
-    _id: "5c02c420b409a1633ac3582d",
+    id: "5c02c420b409a1633ac3582d",
     userId: "5bfb01a27a52c35626e94843",
     matchId: "5bfbb266a0bc21a66d0ba88f"
   },
   {
-    _id: "5c02c420578f104eb17bf1c6",
+    id: "5c02c420578f104eb17bf1c6",
     userId: "5bfb01a27a52c35626e94843",
     matchId: "5bfbb26649b2b201e9de1942"
   },
   {
-    _id: "5c02c420f342bdf8e991b38a",
+    id: "5c02c420f342bdf8e991b38a",
     userId: "5bfb01a27a52c35626e94843",
     matchId: "5bfbb2662b0d2a11b1cec27b"
   },
   {
-    _id: "5c02c420cf62e2c34c9cd81a",
+    id: "5c02c420cf62e2c34c9cd81a",
     userId: "5bfb01a27a52c35626e94843",
     matchId: "5bfbb266336aec881fb77232"
   }

@@ -11,7 +11,7 @@ const MatchList = ({ matches, onItemPress }) => {
       renderItem={match => (
         <MatchListItem
           match={match.item}
-          onPress={() => onItemPress(match.item._id)}
+          onPress={() => onItemPress(match.item.id)}
         />
       )}
       keyExtractor={(item, index) => index.toString()}

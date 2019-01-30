@@ -14,7 +14,7 @@ async function find(queryFn?: QueryFn) {
 
 async function get(matchId: string) {
   const snap = await colRef.doc(matchId).get();
-  if (!snap.exists) throw new Error("document does not exist.");
+  if (!snap.exists) throw new Error(`document ${matchId} does not exist.`);
   return { id: snap.id, ...snap.data() };
 }
 

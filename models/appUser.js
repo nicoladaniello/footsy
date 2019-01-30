@@ -1,5 +1,5 @@
 export default class AppUser {
-  _id = null;
+  id = null;
 
   constructor(user) {
     this.isValid(user);

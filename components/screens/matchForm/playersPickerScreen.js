@@ -58,7 +58,7 @@ class PlayersPickerScreen extends Component {
 
   _onSelect = player => {
     const players = [...this.state.players];
-    const index = players.map(p => p._id).indexOf(player._id);
+    const index = players.map(p => p.id).indexOf(player.id);
 
     if (index < 0) players.push(player);
     else players.splice(index, 1);
@@ -110,7 +110,7 @@ class PlayersPickerScreen extends Component {
             extraData={players}
             renderItem={f => (
               <ListItemSelect
-                active={players.map(p => p._id).indexOf(f.item._id) > -1}
+                active={players.map(p => p.id).indexOf(f.item.id) > -1}
                 image={f.item.image}
                 text={f.item.name}
                 onPress={() => this._onSelect(f.item)}
