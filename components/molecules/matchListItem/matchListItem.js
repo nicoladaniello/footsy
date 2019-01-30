@@ -56,7 +56,7 @@ const MatchListItem = ({ match, onPress }) => {
             style={{ marginRight: 4 }}
             source={{ uri: match.organiser.image }}
           />
-          <Text small>Organised by {match.organiser.fullName}</Text>
+          <Text small>Organised by {match.organiser.name}</Text>
         </View>
       </Body>
       <Right>

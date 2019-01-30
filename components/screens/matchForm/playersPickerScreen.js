@@ -45,7 +45,7 @@ class PlayersPickerScreen extends Component {
 
   _filterFriends = (query = "") => {
     const filteredFriends = query
-      ? this.state.filteredFriends.filter(f => f.fullName.includes(query))
+      ? this.state.filteredFriends.filter(f => f.name.includes(query))
       : this.state.friends;
 
     this.setState({ filteredFriends, query });
@@ -112,7 +112,7 @@ class PlayersPickerScreen extends Component {
               <ListItemSelect
                 active={players.map(p => p._id).indexOf(f.item._id) > -1}
                 image={f.item.image}
-                text={f.item.fullName}
+                text={f.item.name}
                 onPress={() => this._onSelect(f.item)}
               />
             )}

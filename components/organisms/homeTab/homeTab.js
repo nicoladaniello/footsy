@@ -29,8 +29,6 @@ class HomeTab extends Component {
     try {
       this.setState({ refreshing: true });
       const data = (await matchesSvc.find()).map(m => new AppMatch(m));
-
-      console.log(data);
       // q =>
       //   q.where("eventDate", ">=", this.state.date.valueOf())
       // )).map(m => new AppMatch(m));

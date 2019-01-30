@@ -7,10 +7,6 @@ export default class AppUser {
     this.friends = user.friends ? user.friends.map(f => AppUser(f)) : [];
   }
 
-  get fullName() {
-    return `${this.name.first} ${this.name.last}`;
-  }
-
   isValid(obj) {
     if (!obj.name) throw new Error("name must be specified in AppUser!");
   }

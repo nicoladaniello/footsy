@@ -2,7 +2,7 @@ import AppUser from "./appUser";
 import moment, { Moment } from "moment";
 
 export default class AppMatch {
-  id: string = null;
+  id?: string;
   address: any;
   description: string;
   eventDate: Moment;
@@ -14,8 +14,8 @@ export default class AppMatch {
   isPrivate: boolean;
 
   constructor(match) {
+    console.log(match);
     Object.assign(this, match);
-    this.organiser = new AppUser(this.organiser);
     this.eventDate = moment(this.eventDate);
   }
 

@@ -108,7 +108,7 @@ export default class MatchScreen extends Component {
               <MatchItem
                 type="more"
                 avatar={{ uri: match.organiser.image }}
-                title={`Organised by ${match.organiser.fullName}`}
+                title={`Organised by ${match.organiser.name}`}
                 subtitle={`21 matches organised - 5 stars`}
               />
               {/* End Organiser */}

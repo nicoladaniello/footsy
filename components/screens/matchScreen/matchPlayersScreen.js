@@ -14,7 +14,7 @@ class MatchPlayersScreen extends Component {
   }
 
   _onSelect = player => {
-    console.log("player:", player.fullName);
+    console.log("player:", player.name);
   };
 
   render() {
@@ -28,7 +28,7 @@ class MatchPlayersScreen extends Component {
             renderItem={p => (
               <ListItemSelect
                 image={p.item.image}
-                text={p.item.fullName}
+                text={p.item.name}
                 onPress={() => this._onSelect(p.item)}
               />
             )}

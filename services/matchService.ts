@@ -8,14 +8,14 @@ async function find(queryFn?: QueryFn) {
 
   const snap = await queryRef.get();
   const docs = [];
-  snap.forEach(doc => docs.push(doc.data()));
+  snap.forEach(doc => docs.push({ id: doc.id, ...doc.data() }));
   return docs;
 }
 
 async function get(matchId: string) {
   const snap = await colRef.doc(matchId).get();
   if (!snap.exists) throw new Error("document does not exist.");
-  return snap.data;
+  return { id: snap.id, ...snap.data() };
 }
 
 function save(match: AppMatch) {
