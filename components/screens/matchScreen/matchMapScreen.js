@@ -5,8 +5,8 @@ import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 
 const MatchMapScreen = ({ match, visible, onClose }) => {
   const accuracy = 120;
-  const lat = match.address.latitude;
-  const long = match.address.longitude;
+  const lat = match.coords.latitude;
+  const long = match.coords.longitude;
   const oneDegreeOfLatitudeInMeters = 111.32 * 1000;
   const latDelta = accuracy / oneDegreeOfLatitudeInMeters;
   const longDelta =
@@ -20,10 +20,10 @@ const MatchMapScreen = ({ match, visible, onClose }) => {
   };
   const marker = {
     latlng: {
-      latitude: match.address.latitude,
-      longitude: match.address.longitude
+      latitude: match.coords.latitude,
+      longitude: match.coords.longitude
     },
-    title: match.address.description
+    title: match.address.main_text
   };
 
   return (
@@ -35,7 +35,7 @@ const MatchMapScreen = ({ match, visible, onClose }) => {
           </Button>
         </Left>
         <Body>
-          <Title>{match.address.description}</Title>
+          <Title>{match.address.main_text}</Title>
         </Body>
         <Right />
       </Header>

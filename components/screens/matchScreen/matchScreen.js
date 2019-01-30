@@ -11,7 +11,6 @@ import MatchMapScreen from "./matchMapScreen";
 import AppMatch from "../../../models/appMatch";
 import MatchHeader from "../../molecules/matchHeader/matchHeader";
 import MatchItem from "../../molecules/matchItem/matchItem";
-import { formatTextUsers } from "../../../utils/textFormatter/textFormatter";
 import Icon from "../../atoms/icon/Icon";
 
 export default class MatchScreen extends Component {
@@ -114,15 +113,15 @@ export default class MatchScreen extends Component {
               {/* End Organiser */}
 
               {/* Partecipants List */}
-              <MatchItem
+              {/* <MatchItem
                 type="nav"
                 icon="add-players"
-                title={`${match.players.length} partecipants`}
+                title={`${match.playersCount} partecipants`}
                 subtitle={formatTextUsers(match.players)}
                 onPress={() =>
                   navigation.navigate("Players", { players: match.players })
                 }
-              />
+              /> */}
               {/* End Partecipants List */}
 
               {/* Price */}

@@ -10,7 +10,7 @@ const MapStaticImage = ({ match, style, ...rest }) => {
     <Image
       style={[styles.image, style]}
       {...rest}
-      source={{ uri: getStaticImage({ address: match.address }) }}
+      source={{ uri: getStaticImage({ coords: match.coords }) }}
     />
   );
 };

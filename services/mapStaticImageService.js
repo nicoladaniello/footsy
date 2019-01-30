@@ -5,18 +5,18 @@ import { MapsOptions } from "../enviroment";
 const baseUrl = "https://maps.googleapis.com/maps/api/staticmap?";
 
 export const getStaticImage = ({
-  address,
+  coords,
   width = 400,
   height = 240,
   zoom = 15,
   markerSize = "mid"
 }) => {
   const marker = encodeURI(
-    `size:${markerSize}|${address.latitude},${address.longitude}`
+    `size:${markerSize}|${coords.latitude},${coords.longitude}`
   );
   const params = {
     zoom,
-    center: `${address.latitude},${address.longitude}`,
+    center: `${coords.latitude},${coords.longitude}`,
     size: `${width}x${height}`,
     scale: PixelRatio.get() > 1 ? 2 : 1,
     key: MapsOptions.publicKey,
@@ -29,5 +29,6 @@ export const getStaticImage = ({
     .join("&");
 
   const url = baseUrl + formattedParams;
+  console.log(url);
   return url;
 };
