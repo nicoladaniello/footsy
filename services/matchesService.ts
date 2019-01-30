@@ -1,7 +1,8 @@
-import dbService, { CollectionPredicate, QueryFn } from "./firestoreService";
-import AppUser from "../models/appUser";
+import authService from "./authService";
+import dbService, { QueryFn, CollectionPredicate } from "./firestoreService";
+import AppMatch from "../models/appMatch";
 
-const colRef: CollectionPredicate = dbService.col("users");
+const colRef: CollectionPredicate = dbService.col("matches");
 
 async function find(queryFn?: QueryFn) {
   const queryRef: CollectionPredicate = queryFn ? queryFn(colRef) : colRef;
@@ -19,9 +20,8 @@ async function get(userId: string) {
   return snap.data;
 }
 
-function save(userId: string, user: AppUser) {
-  const doc = colRef.doc(userId);
-  return dbService.set(doc, user, true);
+function save(match: AppMatch) {
+  return dbService.add(colRef, match);
 }
 
 export default {

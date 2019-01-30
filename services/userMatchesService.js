@@ -40,7 +40,7 @@ export async function getUserMatches(userId) {
   if (!userMatches) return null;
 
   const matchesIds = userMatches.map(um => um.matchId);
-  return matchesService.getMatchesByIds(matchesIds);
+  return []; //matchesService.getMatchesByIds(matchesIds);
 }
 
 export async function getCurrentUserMatches() {

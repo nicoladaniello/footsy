@@ -10,8 +10,7 @@ import {
   Text,
   Content
 } from "native-base";
-import * as authService from "../../../services/authService";
-import * as userService from "../../../services/userService";
+import * as UserFriendsService from "../../../services/userFriendsService";
 import AppUser from "../../../models/appUser";
 import ListItemSelect from "../../molecules/listItemSelect/listItemSelect";
 
@@ -35,10 +34,7 @@ class PlayersPickerScreen extends Component {
 
       this.setState({ refreshing: true, players });
 
-      const currentUser = await authService.getCurrentUser();
-      const friends = (await userService.getUserFriends(currentUser._id)).map(
-        f => new AppUser(f)
-      );
+      const friends = (await UserFriendsService.get()).map(f => new AppUser(f));
       const filteredFriends = friends;
 
       this.setState({ friends, filteredFriends, refreshing: false });

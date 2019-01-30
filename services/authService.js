@@ -2,7 +2,7 @@ import { GoogleSignin } from "react-native-google-signin";
 import firebase from "react-native-firebase";
 import UserService from "./userService";
 
-export async function signInWithGoogle() {
+async function signInWithGoogle() {
   try {
     await GoogleSignin.configure();
     const data = await GoogleSignin.signIn();
@@ -24,8 +24,12 @@ export async function signInWithGoogle() {
   }
 }
 
-export async function signOut() {
+async function signOut() {
   return firebase.auth().signOut();
+}
+
+function getCurrentUser() {
+  firebase.auth.getCurrentUser();
 }
 
 async function _getAppUserAndUpdateDB({ displayName, email, photoURL, uid }) {
@@ -39,3 +43,9 @@ async function _getAppUserAndUpdateDB({ displayName, email, photoURL, uid }) {
   await UserService.save(uid, user);
   return user;
 }
+
+export default {
+  signInWithGoogle,
+  signOut,
+  getCurrentUser
+};

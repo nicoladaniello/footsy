@@ -7,7 +7,7 @@ import moment from "moment";
 import AppMatch from "../../../models/appMatch";
 import MatchList from "../matchList/matchList";
 
-import * as matchesSvc from "../../../services/matchesService";
+import matchesSvc from "../../../services/matchesService";
 
 class HomeTab extends Component {
   constructor(props) {
@@ -28,9 +28,13 @@ class HomeTab extends Component {
   _loadMatches = async () => {
     try {
       this.setState({ refreshing: true });
-      const data = (await matchesSvc.getMatchesByDate(this.state.date)).map(
-        m => new AppMatch(m)
-      );
+      const data = await matchesSvc.find();
+      data.map(m => new AppMatch(m));
+
+      console.log(data);
+      // q =>
+      //   q.where("eventDate", ">=", this.state.date.valueOf())
+      // )).map(m => new AppMatch(m));
       this.setState({ data, refreshing: false });
     } catch (ex) {
       console.error("HomeTab - Error loading the matches:", ex);
