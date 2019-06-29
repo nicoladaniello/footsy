@@ -99,7 +99,9 @@ export default class MatchScreen extends Component {
               <MatchItem
                 icon="team"
                 title={`${match.teamSize} a side`}
-                subtitle="22/22 partecipated"
+                subtitle={`${match.playersCount}/${
+                  match.playersTotal
+                } partecipated`}
               />
               {/* End Team Size */}
 
