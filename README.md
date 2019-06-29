@@ -10,9 +10,13 @@ The app make it easy to organise football matches with friends: you can create n
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-| ![footsy app](https://github.com/nicoladaniello/footsy/blob/master/prototypes/login.png) | ![footsy app](https://github.com/nicoladaniello/footsy/blob/master/prototypes/loading.png) |
-| ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| ![footsy app](https://github.com/nicoladaniello/footsy/blob/master/prototypes/list.png)  | ![footsy app](https://github.com/nicoladaniello/footsy/blob/master/prototypes/match.png)   |
+![footsy app](https://github.com/nicoladaniello/footsy/blob/master/prototypes/login.png)
+
+![footsy app](https://github.com/nicoladaniello/footsy/blob/master/prototypes/loading.png)
+
+| ![footsy app](https://github.com/nicoladaniello/footsy/blob/master/prototypes/list.png)
+
+![footsy app](https://github.com/nicoladaniello/footsy/blob/master/prototypes/match.png)
 
 ### Installing
 
