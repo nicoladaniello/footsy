@@ -12,10 +12,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 ![footsy app](https://github.com/nicoladaniello/footsy/blob/master/prototypes/login.png)
 
-![footsy app](https://github.com/nicoladaniello/footsy/blob/master/prototypes/loading.png)
-
-| ![footsy app](https://github.com/nicoladaniello/footsy/blob/master/prototypes/list.png)
-
 ![footsy app](https://github.com/nicoladaniello/footsy/blob/master/prototypes/match.png)
 
 ### Installing
