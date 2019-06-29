@@ -1,10 +1,10 @@
 # footsy
 
+![Footsy on Iphone](https://github.com/nicoladaniello/footsy/blob/master/prototypes/iphone.png)
+
 Footsy is a multiplatform mobile app build with react-native for occasional football players.
 
-The app make it easy to organise matches with your friends: Create a new game, invite your friends and play, or alteratively join a game organised by someone else.
-
-Future release with mobile payments coming soon.
+The app make it easy to organise football matches with friends: you can create new games, invite people, join other people games.
 
 ## Getting Started
 
@@ -15,21 +15,29 @@ These instructions will get you a copy of the project up and running on your loc
 Clone the repository
 
 ```
+
 $ git clone https://github.com/mmode/footsy.git
+
 ```
 
 Install dependencies
 
 ```
+
 $ cd footsy
+
 $ npm install
+
 ```
 
 Launch development server and ios simulator
 
 ```
+
 $ npm start
+
 $ npm run launch-ios
+
 ```
 
 to build the deployment files.
